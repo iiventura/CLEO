@@ -1,0 +1,52 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'plantilla/stylePlantilla.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'plantilla/styleForm.css' %}">
+        <title>Cita</title>
+    {% endblock %}
+
+</head>
+<body>
+
+    {% block content %}
+
+        <div class="ext">
+
+             <form method="POST"> {% csrf_token %}
+
+                {{form.as_p}}
+
+                <!-- añadimos los distintos tratamientos
+                <p>
+                    <label style="margin-right:55px; margin-left:-50px;">Tratamientos:</label>
+                    <select name="tratamientos" id ="tratamientos">
+                        {% for t in tratamientos %}
+                            <option value="{{ t }}" selected="selected">{{ t }}</option>
+                        {% endfor %}
+                    </select>
+                </p>
+    -->
+                <div>
+                    <input type="submit" value="Guardar">
+
+                    {% if messages %}
+
+                        {% for message in messages %}
+                            <li> {{ message }}</li>
+                        {% endfor %}
+
+                    {% endif %}
+
+                </div>
+
+             </form>
+        </div>
+
+    {% endblock %}
+
+</body>
+</html>

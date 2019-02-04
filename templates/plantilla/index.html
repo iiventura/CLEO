@@ -1,0 +1,52 @@
+{% load staticfiles %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        {% block css %}
+            <link rel="stylesheet" type="text/css" href="{% static 'plantilla/stylePlantilla.css' %}">
+            <title>CLEO</title>
+        {% endblock %}
+
+    </head>
+    <body>
+
+        <div  class="lista">
+            <ul class="menu">
+
+                <li><a href="#"> Empleado </a>
+
+                    <ul>
+                        <li> <a class="item" href="{% url 'app_altaEmpleado' %}">Alta</a> </li>
+                        <li> <a class="item" href="{% url 'app_bajaEmpleado' %}">Baja</a> </li>
+                        <li> <a class="item" href="{% url 'app_modificarEmpleado' %}">Modificar</a> </li>
+                        <li> <a class="item" href="{% url 'app_listarEmpleados' %}">Listar</a> </li>
+                    </ul>
+
+                </li>
+
+                <li><a href="#"> Clientes </a>
+
+                    <ul>
+                        <li> <a class="item" href="{% url 'app_registro' %}">Alta</a> </li>
+                        <li> <a class="item" href="{% url 'app_bajaCliente' %}">Baja</a> </li>
+                        <li> <a class="item" href="{% url 'app_modificarCliente' %}">Modificar</a> </li>
+                        <li> <a class="item" href="{% url 'app_listarClientes' %}">Listar</a> </li>
+                    </ul>
+
+                </li>
+
+
+                <li><a href="{% url 'app_logout' %}">Salir</a> </li>
+
+            </ul>
+        </div>
+
+        <!-- aqui cambiamso los paneles -->
+        <div class="paneles">
+
+            {% block content %}{% endblock %}
+
+        </div>
+
+    </body>
+</html>
