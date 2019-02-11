@@ -306,6 +306,39 @@ def modificar(request):
             'cliente': False,'encargado': encargado, 'Basico': basico})
 
 
+def datosClienteEmp(request):
+    encargado, basico = comprobarSesion(request)
+
+    #peticion GET
+    formDni = FormClienteDelete()
+    if 'dni' in request.GET:
+        query = request.GET['dni'] #query tiene le valor del dni
+        dni = str(query)
+
+        if Cliente.objects.filter(dni=dni):
+
+            cli = Cliente.objects.get(dni=dni)
+            data = {
+                "nom": cli.nombre,
+                "ape": cli.apellidos,
+                "dir": cli.direccion,
+                "tlf": cli.telefono,
+                "email": cli.email,
+            }
+
+            return render(request, 'inforCliEmp.html', {"formDni": formDni, "buscado": True, "datos": data,
+                        'cliente': False,'encargado': encargado, 'Basico': basico})
+
+        else: #si es error vuelve a lanzar la pagina
+            messages.error(request, "El cliente no existe.")
+            return HttpResponseRedirect("/apps/datosClienteEmp")
+
+    # primera vista
+    formDni = FormClienteDelete()
+
+    return render(request, 'inforCliEmp.html', {"formDni": formDni, "buscado": False,
+            'cliente': False,'encargado': encargado, 'Basico': basico})
+
 def listar(request):
 
   datosFinales = datosClientes()

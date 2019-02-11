@@ -125,6 +125,34 @@ def modificar(request):
     return render(request, 'modMaq.html', {"formId": formId, "buscado": False,
         'cliente': False,'encargado': encargado, 'Basico': basico})
 
+def datos(request):
+    encargado, basico = comprobarSesion(request)
+    # peticion GET
+    formId = FormMaquinaDelete()
+    if 'nombre' in request.GET:
+        query = request.GET['nombre']  # query tiene le valor del dni
+
+        nombre = str(query)
+
+        if Maquina.objects.filter(nombre=nombre):
+            maq = Maquina.objects.get(nombre=nombre)
+
+            data = {
+                "nombre": maq.nombre,
+                "nomTipoEle": str(maq.tipomaquina.nombre).title(),
+                "fecha": maq.fechaingreso,
+            }
+            return render(request, 'datosMaq.html', {"formId": formId, "buscado": True, "datos": data,'cliente': False,
+                        'encargado': encargado, 'Basico': basico})
+        else:
+            messages.error(request, "La maquina no existe.")
+            return HttpResponseRedirect("/apps/datosMaquina")
+
+    # primera vista
+    formId = FormMaquinaDelete()
+    return render(request, 'datosMaq.html', {"formId": formId, "buscado": False,
+        'cliente': False,'encargado': encargado, 'Basico': basico})
+
 def listar(request):
 
     datosFinales = datosMaquinas()

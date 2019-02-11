@@ -111,6 +111,33 @@ def modificar(request):
     return render(request, 'modSala.html', {"formId": formId, "buscado": False,
         'cliente': False,'encargado': encargado, 'Basico': basico})
 
+def datos(request):
+    encargado, basico = comprobarSesion(request)
+    formId = FormSalaDelete()
+    if 'nombre' in request.GET:
+        query = request.GET['nombre']  # query tiene le valor del dni
+
+        nombre = str(query)
+
+        if Sala.objects.filter(nombre=nombre):
+            sala = Sala.objects.get(nombre=nombre)
+
+            data = {
+                "nombre": sala.nombre,
+            }
+
+
+            return render(request, 'datosSala.html', {"formId": formId, "buscado": True, "datos": data,
+                'cliente': False,'encargado': encargado, 'Basico': basico})
+        else:
+            messages.error(request, "La sala no existe.")
+            return HttpResponseRedirect("/apps/datosSala")
+
+    # primera vista
+    formId = FormSalaDelete()
+    return render(request, 'datosSala.html', {"formId": formId, "buscado": False,'cliente': False,
+            'encargado': encargado, 'Basico': basico})
+
 def listar(request):
 
     datosFinales = datosSala()

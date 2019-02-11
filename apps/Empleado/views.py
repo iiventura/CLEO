@@ -196,6 +196,43 @@ def modificar(request):
     return render(request, 'modEmp.html', {"formDni": formDni, "buscado": False,'cliente': False,
                 'encargado': encargado, 'Basico': basico})
 
+def datosOtrosEmpleado(request):
+    encargado, basico = comprobarSesion(request)
+    # peticion GET
+    formId = FormEmpleadoDelete()
+    if 'dni' in request.GET:
+        query = request.GET['dni']  # query tiene le valor del dni
+
+        dni = str(query)
+
+        if Empleado.objects.filter(dni=dni):
+
+            emp = Empleado.objects.get(dni=dni)
+
+            data = {
+                "dni": emp.dni,
+                "nom": emp.nombre,
+                "ape": emp.apellidos,
+                "email": emp.email,
+                "dir": emp.direccion,
+                "tlf": emp.telefono,
+                "tipo": str(emp.tipoempleado.nombre).title(),#tipoEmpleadoId(datos.tipoempleado),
+                "pass": emp.password,
+            }
+
+            return render(request, 'inforOtroEmp.html', {"formId": formId, "buscado": True,"datos": data,
+                    'cliente': False,'encargado': encargado, 'Basico': basico})
+
+        else: #si es error vuelve a lanzar la pagina
+            messages.error(request, "El empleado no existe.")
+            return HttpResponseRedirect("/apps/datosOtrosEmpleado")
+
+    # primera vista
+    formDni = FormEmpleadoDelete()
+
+    return render(request, 'inforOtroEmp.html', {"formDni": formDni, "buscado": False,'cliente': False,
+                'encargado': encargado, 'Basico': basico})
+
 def listar(request):
 
   datosFinales = datosEmpleados()
@@ -223,7 +260,7 @@ def datosEmpleado(request):
 
     encargado,basico = comprobarSesion(request)
 
-    return render(request, 'inforEmp.html', {"datos": data,'cliente': False,
+    return render(request, 'inforEmp.html', {"datos": data,'cliente': False,"buscado": True,
         'encargado': encargado, 'Basico': basico})
 
 

@@ -2,17 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1cad444-d42c-4845-a31b-fc0744670b36" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/apps/Sala/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/Sala/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/sala/listarSala.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/sala/modSala.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/cliente/inforCliEmp.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/empleado/inforOtroEmp.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/maquina/datosMaq.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/sala/datosSala.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/Index/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/Index/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/base/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/base/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/base/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/base/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Cliente/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/Cliente/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Cliente/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/Cliente/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Empleado/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/Empleado/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Empleado/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/Empleado/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Maquina/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/Maquina/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Maquina/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/Maquina/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Sala/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/Sala/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Sala/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/apps/Sala/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/empleado/inforEmp.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/empleado/inforEmp.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/plantilla/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/plantilla/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,45 +25,53 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/apps/Sala/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="78" column="60" selection-start-line="78" selection-start-column="60" selection-end-line="78" selection-end-column="60" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/sala/modSala.html">
+        <entry file="file://$PROJECT_DIR$/apps/Empleado/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="753">
-              <caret line="63" column="7" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/maquina/modMaq.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="8" column="32" lean-forward="true" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/apps/Sala/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="51" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
+            <state relative-caret-position="150">
+              <caret line="10" column="85" selection-start-line="10" selection-start-column="63" selection-end-line="10" selection-end-column="85" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/apps/Empleado/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="44" selection-start-line="44" selection-end-line="44" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+                <element signature="e#351#1432#0" />
+                <element signature="e#1457#3572#0" />
+                <element signature="e#3597#4373#0" />
+                <element signature="e#4403#7081#0" />
+                <element signature="e#7111#9789#0" />
+                <element signature="e#7107#7326#0" />
+                <element signature="e#7361#7960#0" />
+                <element signature="e#7989#8585#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/empleado/inforOtroEmp.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="271">
+              <caret line="43" column="38" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/maquina/datosMaq.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="370">
+              <caret line="46" column="16" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -107,24 +118,39 @@
         <option value="$PROJECT_DIR$/apps/Sala/models.py" />
         <option value="$PROJECT_DIR$/apps/Sala/forms.py" />
         <option value="$PROJECT_DIR$/templates/sala/listarSala.html" />
-        <option value="$PROJECT_DIR$/templates/plantilla/index.html" />
-        <option value="$PROJECT_DIR$/apps/Sala/urls.py" />
         <option value="$PROJECT_DIR$/base/settings.py" />
         <option value="$PROJECT_DIR$/templates/sala/modSala.html" />
         <option value="$PROJECT_DIR$/templates/maquina/modMaq.html" />
+        <option value="$PROJECT_DIR$/apps/Sala/urls.py" />
+        <option value="$PROJECT_DIR$/apps/Maquina/urls.py" />
+        <option value="$PROJECT_DIR$/apps/Maquina/views.py" />
         <option value="$PROJECT_DIR$/apps/Sala/views.py" />
+        <option value="$PROJECT_DIR$/templates/sala/datosSala.html" />
+        <option value="$PROJECT_DIR$/templates/maquina/datosMaq.html" />
+        <option value="$PROJECT_DIR$/apps/Cliente/urls.py" />
+        <option value="$PROJECT_DIR$/apps/Cliente/views.py" />
+        <option value="$PROJECT_DIR$/templates/cliente/inforCli.html" />
+        <option value="$PROJECT_DIR$/templates/cliente/inforCliEmp.html" />
+        <option value="$PROJECT_DIR$/apps/Empleado/urls.py" />
+        <option value="$PROJECT_DIR$/templates/plantilla/index.html" />
+        <option value="$PROJECT_DIR$/templates/empleado/inforEmp.html" />
+        <option value="$PROJECT_DIR$/apps/Empleado/views.py" />
+        <option value="$PROJECT_DIR$/templates/empleado/inforOtroEmp.html" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds">
+    <option name="x" value="338" />
+    <option name="y" value="120" />
     <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="height" value="830" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -141,28 +167,18 @@
               <item name="CLEO" type="b2602c69:ProjectViewProjectNode" />
               <item name="CLEO" type="462c0819:PsiDirectoryNode" />
               <item name="apps" type="462c0819:PsiDirectoryNode" />
-              <item name="Sala" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CLEO" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CLEO" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CLEO" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CLEO" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CLEO" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CLEO" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="plantilla" type="462c0819:PsiDirectoryNode" />
+              <item name="Empleado" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CLEO" type="b2602c69:ProjectViewProjectNode" />
               <item name="CLEO" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CLEO" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CLEO" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="empleado" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="CLEO" type="b2602c69:ProjectViewProjectNode" />
@@ -170,23 +186,10 @@
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="maquina" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="CLEO" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CLEO" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="plantilla" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CLEO" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CLEO" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="sala" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -194,6 +197,12 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates/empleado" />
+      <recent name="$PROJECT_DIR$/templates/cliente" />
+      <recent name="$PROJECT_DIR$/templates/sala" />
+      <recent name="$PROJECT_DIR$/templates/maquina" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/apps" />
     </key>
@@ -227,9 +236,9 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="bottom" id="Python Console" order="1" />
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
@@ -245,6 +254,25 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="0" />
+      <window_info anchor="bottom" id="Python Console" order="1" />
+      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="3" />
+      <window_info anchor="bottom" id="Find" order="4" />
+      <window_info anchor="bottom" id="Run" order="5" />
+      <window_info anchor="bottom" id="Debug" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32891566" />
+      <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
@@ -259,9 +287,6 @@
           <caret line="72" column="21" selection-start-line="72" selection-start-column="21" selection-end-line="72" selection-end-column="21" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/cliente/inforCli.html">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/plantilla/registro.html">
       <provider selected="true" editor-type-id="text-editor" />
@@ -289,16 +314,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="251">
           <caret line="190" selection-start-line="190" selection-end-line="190" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/Maquina/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="1" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -333,27 +348,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apps/Maquina/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="166" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/plantilla/alta.html">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apps/Empleado/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3637">
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/maquina/listarMaquinas.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -369,13 +365,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/plantilla/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="753">
-          <caret line="72" column="29" lean-forward="true" selection-start-line="72" selection-start-column="29" selection-end-line="72" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/base/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="556">
@@ -383,37 +372,168 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/sala/modSala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="63" column="7" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/maquina/modMaq.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/apps/Sala/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="51" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
+        <state relative-caret-position="120">
+          <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/maquina/modMaq.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="8" column="32" lean-forward="true" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/sala/modSala.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="753">
-          <caret line="63" column="7" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apps/Sala/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="78" column="60" selection-start-line="78" selection-start-column="60" selection-end-line="78" selection-end-column="60" />
+        <state relative-caret-position="381">
+          <caret line="138" column="12" selection-start-line="138" selection-start-column="12" selection-end-line="138" selection-end-column="12" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/sala/datosSala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="47" column="29" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/Cliente/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="76" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="76" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/Maquina/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="33" lean-forward="true" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/cliente/inforCli.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="47">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/cliente/inforCliEmp.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="46" column="29" selection-start-line="46" selection-start-column="29" selection-end-line="46" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/cliente/modCli.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="72" column="42" selection-end-line="87" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/Maquina/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="144" column="102" selection-start-line="144" selection-start-column="102" selection-end-line="144" selection-end-column="102" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/Cliente/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="310" selection-start-line="310" selection-end-line="310" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/empleado/modEmp.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="91" column="8" selection-start-line="91" selection-start-column="8" selection-end-line="91" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/Empleado/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="85" selection-start-line="10" selection-start-column="63" selection-end-line="10" selection-end-column="85" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/plantilla/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="35" column="109" selection-start-line="35" selection-start-column="109" selection-end-line="35" selection-end-column="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/empleado/inforEmp.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/Empleado/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#351#1432#0" />
+            <element signature="e#1457#3572#0" />
+            <element signature="e#3597#4373#0" />
+            <element signature="e#4403#7081#0" />
+            <element signature="e#7111#9789#0" />
+            <element signature="e#7107#7326#0" />
+            <element signature="e#7361#7960#0" />
+            <element signature="e#7989#8585#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/maquina/datosMaq.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="46" column="16" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/empleado/inforOtroEmp.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="43" column="38" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
         </state>
       </provider>
     </entry>
