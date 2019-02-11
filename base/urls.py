@@ -21,4 +21,5 @@ urlpatterns = [
     path('apps/index',include('apps.Index.urls')),
     path('apps/',include('apps.Cliente.urls')), #cliente
     path('apps/',include('apps.Empleado.urls')), #empleado
+    path('apps/',include('apps.Maquina.urls')), #maquina
 ]

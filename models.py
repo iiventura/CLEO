@@ -91,26 +91,7 @@ class Inventario(models.Model):
         managed = False
         db_table = 'Inventario'
         unique_together = (('id', 'proveedor', 'producto', 'pedido'),)
-False
-False
-False
-False
 
-
-class Maquina(models.Model):
-    id = models.AutoField()
-    nombre = models.CharField(max_length=45, blank=True, null=True)
-    fechaingreso = models.CharField(db_column='fechaIngreso', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    tipomaquina = models.ForeignKey('Tipomaquina', models.DO_NOTHING, db_column='tipoMaquina_id')  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'Maquina'
-        unique_together = (('id', 'tipomaquina'),)
-False
-False
-False
-False
 
 
 class Notificacion(models.Model):
@@ -289,22 +270,7 @@ class Tipoempleado(models.Model):
     class Meta:
         managed = False
         db_table = 'tipoEmpleado'
-False
-False
-False
-False
 
-
-class Tipomaquina(models.Model):
-    nombre = models.CharField(max_length=45, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'tipoMaquina'
-False
-False
-False
-False
 
 
 class Tipoproducto(models.Model):

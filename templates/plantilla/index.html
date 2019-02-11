@@ -10,41 +10,89 @@
     </head>
     <body>
 
-        <div  class="lista">
-            <ul class="menu">
+        {% if not cliente  and  not encargado and not basico %}
 
-                <li><a href="#"> Empleado </a>
+                <h1> DEBES ESTAR LOGEADO </h1>
+                <a class="item" href="{% url 'app_loginEmpleado' %}">Empleado</a>
+                <a class="item" href="{% url 'app_loginCliente' %}">Cliente</a>
 
-                    <ul>
-                        <li> <a class="item" href="{% url 'app_altaEmpleado' %}">Alta</a> </li>
-                        <li> <a class="item" href="{% url 'app_bajaEmpleado' %}">Baja</a> </li>
-                        <li> <a class="item" href="{% url 'app_modificarEmpleado' %}">Modificar</a> </li>
-                        <li> <a class="item" href="{% url 'app_listarEmpleados' %}">Listar</a> </li>
-                    </ul>
+        {% else %}
 
-                </li>
+            <div  class="lista">
+                <ul class="menu">
 
-                <li><a href="#"> Clientes </a>
+                    <!-- ********************** EMPLEADO ********************** -->
 
-                    <ul>
-                        <li> <a class="item" href="{% url 'app_registro' %}">Alta</a> </li>
-                        <li> <a class="item" href="{% url 'app_bajaCliente' %}">Baja</a> </li>
-                        <li> <a class="item" href="{% url 'app_modificarCliente' %}">Modificar</a> </li>
-                        <li> <a class="item" href="{% url 'app_listarClientes' %}">Listar</a> </li>
-                    </ul>
+                    {% if not cliente %}
 
-                </li>
+                        <li><a href="#"> Empleado </a>
+
+                            <ul>
+                                <li> <a class="item" href="{% url 'app_altaEmpleado' %}">Alta</a> </li>
+                                <li> <a class="item" href="{% url 'app_bajaEmpleado' %}">Baja</a> </li>
+                                <li> <a class="item" href="{% url 'app_modificarEmpleado' %}">Modificar</a> </li>
+                                <li> <a class="item" href="{% url 'app_listarEmpleados' %}">Listar</a> </li>
+                                <li> <a class="item" href="{% url 'app_datosEmpleado' %}">Datos</a> </li>
+                            </ul>
+
+                        </li>
+
+                        <li><a href="#"> Clientes </a>
+
+                            <ul>
+                                <li> <a class="item" href="{% url 'app_altaCliente' %}">Alta</a> </li>
+                                <li> <a class="item" href="{% url 'app_bajaCliente' %}">Baja</a> </li>
+                                <li> <a class="item" href="{% url 'app_modificarCliente' %}">Modificar</a> </li>
+                                <li> <a class="item" href="{% url 'app_listarClientes' %}">Listar</a> </li>
+                            </ul>
+
+                        </li>
+
+                        <li><a href="#">Maquina</a>
+
+                            <ul>
+                                <li> <a class="item" href="{% url 'app_nuevaMaquina' %}">Nueva</a> </li>
+                                <li> <a class="item" href="{% url 'app_modificarMaquina' %}">Modificar</a> </li>
+                                <li> <a class="item" href="{% url 'app_borrarMaquina' %}"> Baja </a> </li>
+                                <li> <a class="item" href="{% url 'app_listarMaquinas' %}"> Listar </a> </li>
+
+                            </ul>
+
+                        </li>
+
+                    {% endif %}
+
+                    <!-- ********************** CLIENTE ********************** -->
+                    {% if cliente %}
+
+                        <li><a href="#"> Mi informacion </a>
+
+                            <ul>
+                                <li> <a class="item" href="{% url 'app_datosCliente' %}">Datos</a> </li>
+                                <li> <a class="item" href="{% url 'app_modificarMisDatosCliente' %}">Modificar</a> </li>
+                                <li> <a class="item" href="{% url 'app_citasCliente' %}">Mis citas</a> </li>
+                            </ul>
+
+                        </li>
+
+                    {% endif %}
+
+                    <!-- ********************** TODOS ********************** -->
+                    <li><a href="{% url 'app_logout' %}">Salir</a> </li>
 
 
-                <li><a href="{% url 'app_logout' %}">Salir</a> </li>
 
-            </ul>
-        </div>
+                </ul>
+            </div>
+        {% endif %}
 
         <!-- aqui cambiamso los paneles -->
         <div class="paneles">
 
-            {% block content %}{% endblock %}
+            {% block content %}
+
+
+            {% endblock %}
 
         </div>
 

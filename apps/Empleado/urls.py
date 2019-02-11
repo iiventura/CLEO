@@ -7,4 +7,6 @@ urlpatterns = [
     path('bajaEmpleado', views.baja, name='app_bajaEmpleado'),
     path('modificarEmpleado', views.modificar, name='app_modificarEmpleado'),
     path('listarEmpleados', views.listar, name='app_listarEmpleados'),
+    path('datosEmpleado', views.datosEmpleado, name='app_datosEmpleado'),
+    path('', views.logout, name='app_logout'),
 ]

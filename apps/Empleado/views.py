@@ -6,29 +6,35 @@ from django.contrib import messages
 import MySQLdb
 import re
 from django.db import connection
+from django.utils import timezone
 
 # Create your views here.
 
 def login(request):
- # si es una peticion post
+
     if request.method == "POST":
         form = FormEmpleadoLogin(request.POST)
 
         if form.is_valid():
             datos = form.cleaned_data
 
-            #recogemos los datos
+            # recogemos los datos
             email = datos.get("email")
             password = datos.get("password")
 
-            if empleadoRegistradoEmail(email):
-                if emailContraseña(email,password):
-                    request.session["session_key"] = email
-                    return HttpResponseRedirect("/apps/index")
-                else:
-                    messages.error(request, "Usuario y contraseña no coinciden.")
+        if Empleado.objects.filter(email=email):
+            emp = Empleado.objects.get(email=email)
+            if emp.password == password:
+                request.session["session_key"] = email
+                f = timezone.now().date()
+                request.session["expire_date"] = str(f)
+
+                encargado, basico = comprobarSesion(request)
+                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
             else:
                 messages.error(request, "Usuario y contraseña no coinciden.")
+        else:
+            messages.error(request, "Usuario no coincide")
 
     else:
         form = FormEmpleadoLogin()
@@ -37,7 +43,7 @@ def login(request):
     return render(request, 'loginEmpleado.html', {'form': form})
 
 def alta(request):
-
+    encargado, basico = comprobarSesion(request)
     if request.method == "POST":
         form = FormEmpleadoInsert(request.POST)
 
@@ -70,16 +76,17 @@ def alta(request):
                 messages.error(request, 'El telefono no es correcto.')
                 messages.error(request, '')
 
-            elif not existEmpleadoDni(dni):
-                if not empleadoRegistradoEmail(email):  # comprobamos si ya existe ese empleado
+            elif not Empleado.objects.filter(dni=dni).exists():
+                if not Empleado.objects.filter(email=email).exists():  # comprobamos si ya existe ese empleado
 
-                    id = idTipoEmpleadoPorNom(tipo)
-                    instTipoEmpleado = Tipoempleado.objects.get(id=id)
+                    instTipoEmpleado = Tipoempleado.objects.get(nombre=tipo)
 
                     e = Empleado(dni=dni, codigo=cod, nombre=nom, apellidos=ape,email=email,
                                  direccion=dir,telefono=tlf,tipoempleado=instTipoEmpleado, password=password)
                     e.save()
-                    return HttpResponseRedirect("/apps/index")
+
+
+                    return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
                 else:
                     messages.error(request, 'El empleado ya existe.')
             else:
@@ -88,10 +95,11 @@ def alta(request):
     else:
         form = FormEmpleadoInsert()
 
-    return render(request, 'alta.html', {'form': form, 'elem': "empleado"})
+    return render(request, 'alta.html', {'form': form, 'elem': "empleado", 'cliente': False,
+                'encargado': encargado, 'Basico': basico})
 
 def baja(request):
-
+    encargado, basico = comprobarSesion(request)
     if request.method == "POST":
         form = FormEmpleadoDelete(request.POST)
 
@@ -101,7 +109,7 @@ def baja(request):
             # recogemos los datos
             dni = datos.get("dni")
 
-            if existEmpleadoDni(dni):
+            if Empleado.objects.filter(dni=dni).exists():
                 Empleado.objects.filter(dni=dni).delete()
                 return HttpResponseRedirect("/apps/index")
             else:
@@ -111,36 +119,34 @@ def baja(request):
     else:
         form = FormEmpleadoDelete()
 
-    return render(request, 'borrar.html', {'form': form, 'elem':"empleado"})
+    return render(request, 'borrar.html', {'form': form, 'elem':"empleado", 'cliente': False,
+                'encargado': encargado, 'Basico': basico})
 
 def modificar(request):
-
+    encargado, basico = comprobarSesion(request)
     if request.method == "POST":
         form = FormEmpleadoUpdate(request.POST)
         dni = request.GET.get("dni") #obtenemos el dni que hemos buscado
 
         if form.is_valid():
-            datos = form.cleaned_data
+            emp = form.cleaned_data
 
             # recogemos los datos
-            tipo = datos.get("Tipo")
-            nom = datos.get("nombre")
-            ape = datos.get("apellidos")
-            email = datos.get("email")
-            dir = datos.get("direccion")
-            tlf = datos.get("telefono")
-            password = datos.get("password")
+            tipo = emp.get("Tipo")
+            nom = emp.get("nombre")
+            ape = emp.get("apellidos")
+            email = emp.get("email")
+            dir = emp.get("direccion")
+            tlf = emp.get("telefono")
+            password = emp.get("password")
 
             # comprobamos el telefono
             if not (len(tlf) == 9 and tlf.isdigit()):
                 messages.error(request, 'El telefono no es correcto.')
             else:
 
-                id = idPorDni(dni)
-                antiEmple = Empleado.objects.get(id=id)
-
-                id = idTipoEmpleadoPorNom(tipo)
-                instTipoEmpleado = Tipoempleado.objects.get(id=id)
+                antiEmple = Empleado.objects.get(email=email)
+                instTipoEmpleado = Tipoempleado.objects.get(nombre=tipo)
 
                 #actualizamos datos
                 antiEmple.nombre = nom
@@ -152,7 +158,7 @@ def modificar(request):
                 antiEmple.password = password
                 antiEmple.save()
 
-                return HttpResponseRedirect("/apps/index")
+                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
 
     # peticion GET
     formId = FormEmpleadoDelete()
@@ -161,26 +167,24 @@ def modificar(request):
 
         dni = str(query)
 
-        if existEmpleadoDni(dni):
+        if Empleado.objects.filter(dni=dni):
 
-            id = idPorDni(dni)
-            datos = Empleado.objects.get(id=id)
+            emp = Empleado.objects.get(dni=dni)
 
             data = {
-                "nom": datos.nombre,
-                "ape": datos.apellidos,
-                "email": datos.email,
-                "dir": datos.direccion,
-                "tlf": datos.telefono,
-                "nomTipoEle": str(datos.tipoempleado.nombre).title(),#tipoEmpleadoId(datos.tipoempleado),
-                "pass": datos.password,
+                "nom": emp.nombre,
+                "ape": emp.apellidos,
+                "email": emp.email,
+                "dir": emp.direccion,
+                "tlf": emp.telefono,
+                "nomTipoEle": str(emp.tipoempleado.nombre).title(),#tipoEmpleadoId(datos.tipoempleado),
+                "pass": emp.password,
             }
 
             datosTipos = listaTiposEmpleado(data["nomTipoEle"])
 
-            # lo que lanza si no hemos dado al boton y crea el evento post
-            return render(request, 'modEmp.html', {"formId": formId, "buscado": True,
-                        "datos": data, "datosTipos": datosTipos})
+            return render(request, 'modEmp.html', {"formId": formId, "buscado": True,"datos": data,
+                    "datosTipos": datosTipos,'cliente': False,'encargado': encargado, 'Basico': basico})
 
         else: #si es error vuelve a lanzar la pagina
             messages.error(request, "El empleado no existe.")
@@ -188,20 +192,58 @@ def modificar(request):
 
     # primera vista
     formDni = FormEmpleadoDelete()
-    return render(request, 'modEmp.html', {"formDni": formDni, "buscado": False})
+
+    return render(request, 'modEmp.html', {"formDni": formDni, "buscado": False,'cliente': False,
+                'encargado': encargado, 'Basico': basico})
 
 def listar(request):
 
   datosFinales = datosEmpleados()
-  return render(request, 'listarEmpleados.html',{"datos":datosFinales})
+  encargado, basico = comprobarSesion(request)
+
+  return render(request, 'listarEmpleados.html',{"datos":datosFinales, 'cliente': False,
+        'encargado': encargado, 'Basico': basico})
+
+def datosEmpleado(request):
+
+    email = request.session["session_key"]  # me da el email, lo que hemos guardado en la sesion
+    emp = Empleado.objects.get(email=email)
+
+    data = {
+        "dni": emp.dni,
+        "cod": emp.codigo,
+        "tipo": emp.tipoempleado.nombre,
+        "nom": emp.nombre,
+        "ape": emp.apellidos,
+        "email": emp.email,
+        "dir": emp.direccion,
+        "tlf": emp.telefono,
+        "cnt": emp.password,
+    }
+
+    encargado,basico = comprobarSesion(request)
+
+    return render(request, 'inforEmp.html', {"datos": data,'cliente': False,
+        'encargado': encargado, 'Basico': basico})
+
 
 def logout(request):
-    #print("*********",Session.objects.all())
-    #Session.objects.get(session_key='dsvlkup0w8w7ws7o1q35njxtfvhh6elg').delete()
+
+    # print("*********",Session.objects.all())
+    # Session.objects.get(session_key='dsvlkup0w8w7ws7o1q35njxtfvhh6elg').delete()
 
     try:
+
+        email = request.session["session_key"]
         del request.session['session_key']
-        return HttpResponseRedirect("/apps/loginEmpleado")
+
+        if not Empleado.objects.filter(email=email):
+            return HttpResponseRedirect("/apps/loginCliente")
+        else:
+            return HttpResponseRedirect("/apps/loginEmpleado")
+
+        # diferencias con la sesion si es cliente o empleado y lanzar loginCliente o loginEmpeado
+
     except KeyError:
         return HttpResponse("Error, no estás logeado.")
 
@@ -209,117 +251,52 @@ def logout(request):
     METODOS AUXILIARES
 """
 
-def empleadoRegistradoEmail(email):
-    cursor = connection.cursor()
-    query = "SELECT * FROM Empleado WHERE email =  %(email)s"
-    cursor.execute(query, {'email': email})
-    datosEmpleado = cursor.fetchall()
+def comprobarSesion(request):
+    email = request.session["session_key"]
+    emp = Empleado.objects.get(email=email)
 
-    return datosEmpleado
+    if emp.tipoempleado.nombre == 'encargado':
+        encargado = True
+        basico = False
+    else:
+        encargado = False
+        basico = True
 
-def emailContraseña(email,password):
-    cursor = connection.cursor()
-    query = "SELECT * FROM Empleado WHERE email =  %(email)s and password = %(password)s"
-    cursor.execute(query, {'email': email, 'password': password})
-    datosEmpleado = cursor.fetchall()
-
-    return datosEmpleado
-
-def existEmpleadoDni(dni):
-    cursor = connection.cursor()
-    query = "SELECT * FROM Empleado WHERE dni =  %(dni)s"
-    cursor.execute(query, {'dni': dni})
-    datosEmpleado = cursor.fetchall()
-
-    return datosEmpleado
-
-def idTipoEmpleadoPorNom(nombre):
-    cursor = connection.cursor()
-    query = "SELECT id FROM tipoEmpleado WHERE nombre =  %(nombre)s"
-    cursor.execute(query, {'nombre': nombre})
-    tipo = cursor.fetchall()
-
-    cad = str(tipo)
-    cad = cad[2:len(cad)-3]
-
-    return cad
+    return encargado, basico;
 
 def datosEmpleados():
-    cursor = connection.cursor()
-    query = "select * from Empleado"
-    cursor.execute(query)
-    datosEmpleados = cursor.fetchall()
 
+    datos = Empleado.objects.all();
     datosFinales = []
 
-    if datosEmpleados:
+    for emp in datos:
 
-        for emp in datosEmpleados:
+        instTipoEmpleado = Tipoempleado.objects.get(id=emp.tipoempleado.id)
 
-            instTipoEmpleado = Tipoempleado.objects.get(id=emp[8])
+        data = {
+            "dni": emp.dni,
+            "cod": emp.codigo,
+            "nom": emp.nombre,
+            "ape": emp.apellidos,
+            "email": emp.email,
+            "dir": emp.direccion,
+            "tlf": emp.telefono,
+            "tipo": instTipoEmpleado.nombre.title(),
+        }
 
-            data = {
-                "dni": emp[1],
-                "cod": emp[2],
-                "nom": emp[3],
-                "ape": emp[4],
-                "email": emp[5],
-                "dir": emp[6],
-                "tlf": emp[7],
-                "tipo": instTipoEmpleado.nombre.title(),
-            }
-
-            datosFinales.append(data)
+        datosFinales.append(data)
 
     return datosFinales
 
-def dniPorEmail(email):
-    cursor = connection.cursor()
-    query = "SELECT * FROM Empleado WHERE email =  %(email)s"
-    cursor.execute(query, {'email': email})
-    empleado = cursor.fetchall()
-
-    cad = str(empleado[0])
-    cad = cad[1:len(cad) - 1]  # paraentesis del principio y final
-    cad = cad.split(",")
-
-    return cad[0][1:len(cad)]
-
-def idPorDni(dni):
-    cursor = connection.cursor()
-    query = "SELECT id FROM Empleado WHERE dni =  %(dni)s"
-    cursor.execute(query, {'dni': dni})
-    empleado = cursor.fetchall()
-
-    cad = str(empleado[0])
-    cad = cad[1:len(cad) - 2]
-
-    return cad
-
 def listaTiposEmpleado(nombre):
 
-    cursor = connection.cursor()
-    query = "select * from tipoEmpleado"
-    cursor.execute(query)
-    datos = cursor.fetchall()
-
-    #quitamos los []
-    campos = str(datos)
-    campos = campos[1:len(campos)-1]
-
-    id = 1;
-    cadSplit = campos.split(",")
+    tipos = Tipoempleado.objects.all();
     lista = []
 
-    for x in cadSplit:
-        if id == 0:
-            cad = x[2:len(x)-2] #obtenemos el nombre
-            nom = str(cad).title()
-            if nom != nombre:
-                lista.append(nom) #lo guardamos
-            id += 1
-        else:
-            id -= 1
+    for tipo in tipos:
+        nom = str(tipo.nombre).title();
+        if nom != nombre:
+            lista.append(nom)
 
     return lista
 

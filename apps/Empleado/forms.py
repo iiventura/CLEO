@@ -1,29 +1,16 @@
 from django import forms
 import MySQLdb
 from django.db import connection
+from apps.Empleado.models import Tipoempleado
 
 def tipoChoice():
 
-    cursor = connection.cursor()
-    query = "select * from tipoEmpleado"
-    cursor.execute(query)
-    datos = cursor.fetchall()
-
-    #quitamos los []
-    campos = str(datos)
-    campos = campos[1:len(campos)-1]
-
-    id = 1;
-    cadSplit = campos.split(",")
+    tipos = Tipoempleado.objects.all();
     lista = []
 
-    for x in cadSplit:
-        if id == 0:
-            cad = x[2:len(x)-2] #obtenemos el nombre
-            lista.append(str(cad).title()) #lo guardamos
-            id += 1
-        else:
-            id -= 1
+    for tipo in tipos:
+        nom = str(tipo.nombre).title();
+        lista.append(nom)
 
     resultado = []
     resultado.append(('', 'Selecciona'))

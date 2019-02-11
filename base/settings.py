@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'apps.Index',
     'apps.Cliente',
     'apps.Empleado',
+    'apps.Maquina',
 ]
 
 MIDDLEWARE = [
@@ -60,7 +61,8 @@ TEMPLATES = [
         'DIRS': [
                  BASE_DIR + "/templates/plantilla",
                  BASE_DIR + "/templates/cliente",
-                 BASE_DIR + "/templates/empleado"
+                 BASE_DIR + "/templates/empleado",
+                 BASE_DIR + "/templates/maquina"
         ],
         'APP_DIRS': True,
         'OPTIONS': {
