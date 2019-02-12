@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'plantilla/stylePlantilla.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'plantilla/styleForm.css' %}">
+        <title>Mis datos</title>
+    {% endblock %}
+
+
+</head>
+<body>
+
+ {% block content %}
+
+    <div class="ext">
+        <h1> Mis datos </h1>
+        <p>
+            <label for="dni">Dni:</label>
+            <input type="text" name="dni" id="dni" value="{{datos.dni}}" readonly="readonly">
+        </p>
+
+        <p>
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" id="nombre" value="{{datos.nom}}" readonly="readonly">
+        </p>
+        <p>
+            <label for="apellidos">Apellidos:</label>
+            <input type="text" name="apellidos" id="apellidos" value="{{datos.ape}}" readonly="readonly">
+        </p>
+
+        <p>
+            <label for="email">Email:</label>
+            <input type="text" name="email" id="email" value="{{datos.email}}" readonly="readonly">
+        </p>
+
+        <p>
+            <label for="direccion">Direccion:</label>
+            <input type="text" name="direccion" id="direccion" value="{{datos.dir}}" readonly="readonly">
+        </p>
+        <p>
+            <label for="telefono">Telefono:</label>
+            <input type="text" name="telefono" id="telefono" value="{{datos.tlf}}" readonly="readonly">
+        </p>
+
+        <p>
+            <label for="contraseña">Contraseña:</label>
+            <input type="text" estado="contraseña" id="contraseña" maxlength="45"  value="{{datos.cnt}}"  readonly="readonly">
+        </p>
+
+    </div>
+
+ {% endblock %}
+
+</body>
+</html>
