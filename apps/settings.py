@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'modules.Sala',
     'modules.Promocion',
     'modules.Producto',
+    'modules.Proveedor',
 ]
 
 MIDDLEWARE = [
@@ -68,7 +69,8 @@ TEMPLATES = [
                  BASE_DIR + "/templates/maquina",
                  BASE_DIR + "/templates/sala",
                  BASE_DIR + "/templates/promocion",
-                 BASE_DIR + "/templates/producto"
+                 BASE_DIR + "/templates/producto",
+                 BASE_DIR + "/templates/proveedor"
         ],
         'APP_DIRS': True,
         'OPTIONS': {

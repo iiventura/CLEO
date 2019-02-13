@@ -31,7 +31,7 @@ def nueva(request):
     else:
         form = FormProductoInsert()
 
-    return render(request, 'alta.html', {'form': form, 'elem':"maquina",'cliente': False,
+    return render(request, 'alta.html', {'form': form, 'elem':"producto",'cliente': False,
         'encargado': encargado, 'basico': basico})
 
 def borrar(request):
@@ -52,7 +52,7 @@ def borrar(request):
                 messages.error(request, "El producto no existe.")
     else:
         form = FormProductoDelete()
-    return render(request, 'borrar.html', {'form': form, 'elem': "maquina",'cliente': False,
+    return render(request, 'borrar.html', {'form': form, 'elem': "producto",'cliente': False,
         'encargado': encargado, 'basico': basico})
 
 def modificar(request):
