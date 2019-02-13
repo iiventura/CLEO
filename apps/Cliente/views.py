@@ -4,13 +4,7 @@ from apps.Cliente.models import Cliente
 from apps.Empleado.views import comprobarSesion
 from .forms import *
 from django.contrib import messages
-from django.contrib.sessions.models import Session
 from django.utils import timezone
-from apps.Empleado.models import Empleado
-from datetime import datetime
-import MySQLdb
-import re
-from django.db import connection
 
 # Create your views here.
 
@@ -104,7 +98,7 @@ def modificarMisDatosCliente(request):
                 antiClie.save()
 
                 # si el evento post ha sido correcot
-                return render(request, 'index.html', {'cliente': True, 'encargado': False, 'Basico': False})
+                return render(request, 'index.html', {'cliente': True, 'encargado': False, 'basico': False})
 
     # peticion GET
     else:
@@ -119,7 +113,7 @@ def modificarMisDatosCliente(request):
             "cnt": cli.password,
         }
 
-    return render(request, 'modDatoCli.html', {"datos": data, 'cliente': True, 'encargado': False, 'Basico': False})
+    return render(request, 'modDatoCli.html', {"datos": data, 'cliente': True, 'encargado': False, 'basico': False})
 
 
 def alta(request):
@@ -162,7 +156,7 @@ def alta(request):
                                 puntuacion=0, password=password)
                     c.save()
 
-                    return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
+                    return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
                 else:
                     messages.error(request, 'El cliente ya existe.')
             else:
@@ -173,7 +167,7 @@ def alta(request):
 
     #lo que lanza si no hemso dado al boton y crea el evento post
     return render(request, 'alta.html', {'form': form, 'elem':"cliente",'cliente': False,
-        'encargado': encargado, 'Basico': basico})
+        'encargado': encargado, 'basico': basico})
 
 def login(request):
 
@@ -197,7 +191,7 @@ def login(request):
 
                 #session_key = request.session["session_key"] #me da el email, lo que hemos guardado en la sesion
 
-                return render(request,'index.html',{'cliente':True, 'encargado':False, 'Basico':False})
+                return render(request,'index.html',{'cliente':True, 'encargado':False, 'basico':False})
             else:
                 messages.error(request, "Usuario y contraseña no coinciden.")
         else:
@@ -228,14 +222,14 @@ def baja(request):
                 #del request.session['session_key']
                 #request.session.modified = True
 
-                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
+                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
             else:
                 messages.error(request, "El cliente no existe.")
     else:
         form = FormClienteDelete()
 
     return render(request, 'borrar.html', {'form': form, 'elem':"cliente",'cliente': False,
-            'encargado': encargado, 'Basico': basico})
+            'encargado': encargado, 'basico': basico})
 
 def modificar(request):
     encargado, basico = comprobarSesion(request)
@@ -272,7 +266,7 @@ def modificar(request):
                 antiClie.save()
 
                 # si el evento post ha sido correcot
-                return render(request, 'index.html', {'cliente': False,'encargado': encargado, 'Basico': basico})
+                return render(request, 'index.html', {'cliente': False,'encargado': encargado, 'basico': basico})
 
     #peticion GET
     formDni = FormClienteDelete()
@@ -293,7 +287,7 @@ def modificar(request):
             }
 
             return render(request, 'modCli.html', {"formDni": formDni, "buscado": True, "datos": data,
-                        'cliente': False,'encargado': encargado, 'Basico': basico})
+                        'cliente': False,'encargado': encargado, 'basico': basico})
 
         else: #si es error vuelve a lanzar la pagina
             messages.error(request, "El cliente no existe.")
@@ -303,7 +297,7 @@ def modificar(request):
     formDni = FormClienteDelete()
 
     return render(request, 'modCli.html', {"formDni": formDni, "buscado": False,
-            'cliente': False,'encargado': encargado, 'Basico': basico})
+            'cliente': False,'encargado': encargado, 'basico': basico})
 
 
 def datosClienteEmp(request):
@@ -327,7 +321,7 @@ def datosClienteEmp(request):
             }
 
             return render(request, 'inforCliEmp.html', {"formDni": formDni, "buscado": True, "datos": data,
-                        'cliente': False,'encargado': encargado, 'Basico': basico})
+                        'cliente': False,'encargado': encargado, 'basico': basico})
 
         else: #si es error vuelve a lanzar la pagina
             messages.error(request, "El cliente no existe.")
@@ -337,7 +331,7 @@ def datosClienteEmp(request):
     formDni = FormClienteDelete()
 
     return render(request, 'inforCliEmp.html', {"formDni": formDni, "buscado": False,
-            'cliente': False,'encargado': encargado, 'Basico': basico})
+            'cliente': False,'encargado': encargado, 'basico': basico})
 
 def listar(request):
 
@@ -345,7 +339,7 @@ def listar(request):
   encargado, basico = comprobarSesion(request)
 
   return render(request, 'listarClientes.html',{"datos":datosFinales,
-        'cliente': False,'encargado': encargado, 'Basico': basico})
+        'cliente': False,'encargado': encargado, 'basico': basico})
 
 def datosCliente(request):
 
@@ -364,11 +358,11 @@ def datosCliente(request):
     }
 
     #lo que lanza si no hemos dado al boton y crea el evento post
-    return render(request, 'inforCli.html', {"datos": data,'cliente': True, 'encargado': False, 'Basico': False})
+    return render(request, 'inforCli.html', {"datos": data,'cliente': True, 'encargado': False, 'basico': False})
 
 
 def citasCliente(request):
-    return render(request, 'index.html', {'cliente': True, 'encargado': False, 'Basico': False})
+    return render(request, 'index.html', {'cliente': True, 'encargado': False, 'basico': False})
 
 """
     METODOS AUXILIARES

@@ -128,32 +128,7 @@ False
 False
 
 
-class Producto(models.Model):
-    id = models.IntegerField()
-    nombre = models.CharField(max_length=45, blank=True, null=True)
-    tipoproducto = models.ForeignKey('Tipoproducto', models.DO_NOTHING, db_column='tipoProducto_id')  # Field name made lowercase.
 
-    class Meta:
-        managed = False
-        db_table = 'Producto'
-        unique_together = (('id', 'tipoproducto'),)
-False
-False
-False
-False
-
-
-class Promocion(models.Model):
-    nombre = models.CharField(max_length=45, blank=True, null=True)
-    observaciones = models.CharField(max_length=45, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'Promocion'
-False
-False
-False
-False
 
 
 class Proveedor(models.Model):
@@ -268,12 +243,7 @@ class Tipoempleado(models.Model):
 
 
 
-class Tipoproducto(models.Model):
-    nombre = models.CharField(max_length=45, blank=True, null=True)
 
-    class Meta:
-        managed = False
-        db_table = 'tipoProducto'
 False
 False
 False

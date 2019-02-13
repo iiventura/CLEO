@@ -25,7 +25,7 @@ SECRET_KEY = '46yqb-l-qig_r1olx$j@hxa45phmx@3q*v6@pz($d%yj#jw2x2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*',]
 
 
 # Application definition
@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'apps.Empleado',
     'apps.Maquina',
     'apps.Sala',
+    'apps.Promocion',
+    'apps.Producto',
 ]
 
 MIDDLEWARE = [
@@ -64,7 +66,9 @@ TEMPLATES = [
                  BASE_DIR + "/templates/cliente",
                  BASE_DIR + "/templates/empleado",
                  BASE_DIR + "/templates/maquina",
-                 BASE_DIR+"/templates/sala"
+                 BASE_DIR + "/templates/sala",
+                 BASE_DIR + "/templates/promocion",
+                 BASE_DIR + "/templates/producto"
         ],
         'APP_DIRS': True,
         'OPTIONS': {

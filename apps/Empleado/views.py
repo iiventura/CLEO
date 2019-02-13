@@ -1,11 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect,HttpResponse
-from apps.Empleado.models import Empleado,Tipoempleado
+from .models import Empleado,Tipoempleado
 from .forms import *
 from django.contrib import messages
-import MySQLdb
-import re
-from django.db import connection
 from django.utils import timezone
 
 # Create your views here.
@@ -24,13 +21,14 @@ def login(request):
 
         if Empleado.objects.filter(email=email):
             emp = Empleado.objects.get(email=email)
+
             if emp.password == password:
                 request.session["session_key"] = email
                 f = timezone.now().date()
                 request.session["expire_date"] = str(f)
 
                 encargado, basico = comprobarSesion(request)
-                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
+                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
             else:
                 messages.error(request, "Usuario y contraseña no coinciden.")
         else:
@@ -86,7 +84,7 @@ def alta(request):
                     e.save()
 
 
-                    return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
+                    return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
                 else:
                     messages.error(request, 'El empleado ya existe.')
             else:
@@ -96,7 +94,7 @@ def alta(request):
         form = FormEmpleadoInsert()
 
     return render(request, 'alta.html', {'form': form, 'elem': "empleado", 'cliente': False,
-                'encargado': encargado, 'Basico': basico})
+                'encargado': encargado, 'basico': basico})
 
 def baja(request):
     encargado, basico = comprobarSesion(request)
@@ -120,7 +118,7 @@ def baja(request):
         form = FormEmpleadoDelete()
 
     return render(request, 'borrar.html', {'form': form, 'elem':"empleado", 'cliente': False,
-                'encargado': encargado, 'Basico': basico})
+                'encargado': encargado, 'basico': basico})
 
 def modificar(request):
     encargado, basico = comprobarSesion(request)
@@ -158,7 +156,7 @@ def modificar(request):
                 antiEmple.password = password
                 antiEmple.save()
 
-                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
+                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
 
     # peticion GET
     formId = FormEmpleadoDelete()
@@ -184,7 +182,7 @@ def modificar(request):
             datosTipos = listaTiposEmpleado(data["nomTipoEle"])
 
             return render(request, 'modEmp.html', {"formId": formId, "buscado": True,"datos": data,
-                    "datosTipos": datosTipos,'cliente': False,'encargado': encargado, 'Basico': basico})
+                    "datosTipos": datosTipos,'cliente': False,'encargado': encargado, 'basico': basico})
 
         else: #si es error vuelve a lanzar la pagina
             messages.error(request, "El empleado no existe.")
@@ -194,7 +192,7 @@ def modificar(request):
     formDni = FormEmpleadoDelete()
 
     return render(request, 'modEmp.html', {"formDni": formDni, "buscado": False,'cliente': False,
-                'encargado': encargado, 'Basico': basico})
+                'encargado': encargado, 'basico': basico})
 
 def datosOtrosEmpleado(request):
     encargado, basico = comprobarSesion(request)
@@ -221,7 +219,7 @@ def datosOtrosEmpleado(request):
             }
 
             return render(request, 'inforOtroEmp.html', {"formId": formId, "buscado": True,"datos": data,
-                    'cliente': False,'encargado': encargado, 'Basico': basico})
+                    'cliente': False,'encargado': encargado, 'basico': basico})
 
         else: #si es error vuelve a lanzar la pagina
             messages.error(request, "El empleado no existe.")
@@ -231,7 +229,7 @@ def datosOtrosEmpleado(request):
     formDni = FormEmpleadoDelete()
 
     return render(request, 'inforOtroEmp.html', {"formDni": formDni, "buscado": False,'cliente': False,
-                'encargado': encargado, 'Basico': basico})
+                'encargado': encargado, 'basico': basico})
 
 def listar(request):
 
@@ -239,7 +237,7 @@ def listar(request):
   encargado, basico = comprobarSesion(request)
 
   return render(request, 'listarEmpleados.html',{"datos":datosFinales, 'cliente': False,
-        'encargado': encargado, 'Basico': basico})
+        'encargado': encargado, 'basico': basico})
 
 def datosEmpleado(request):
 
@@ -261,7 +259,7 @@ def datosEmpleado(request):
     encargado,basico = comprobarSesion(request)
 
     return render(request, 'inforEmp.html', {"datos": data,'cliente': False,"buscado": True,
-        'encargado': encargado, 'Basico': basico})
+        'encargado': encargado, 'basico': basico})
 
 
 def logout(request):

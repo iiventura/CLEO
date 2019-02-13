@@ -25,20 +25,99 @@
 
                     {% if not cliente %}
 
-                        <li><a href="#"> Empleado </a>
+                        {% if encargado %}
+
+                            <li><a href="#"> Empleado </a>
+
+                                <ul>
+                                    <li> <a class="item" href="{% url 'app_altaEmpleado' %}">Alta</a> </li>
+                                    <li> <a class="item" href="{% url 'app_bajaEmpleado' %}">Baja</a> </li>
+                                    <li> <a class="item" href="{% url 'app_modificarEmpleado' %}">Modificar</a> </li>
+                                    <li> <a class="item" href="{% url 'app_listarEmpleados' %}">Listar</a> </li>
+                                    <li> <a class="item" href="{% url 'app_datosEmpleado' %}">Datos</a> </li>
+                                    <li> <a class="item" href="{% url 'app_datosOtrosEmpleado' %}">Datos empleado</a> </li>
+                                </ul>
+
+                            </li>
+
+                            <li><a href="#">Maquina</a>
+
+                                <ul>
+                                    <li> <a class="item" href="{% url 'app_nuevaMaquina' %}">Nuevo</a> </li>
+                                    <li> <a class="item" href="{% url 'app_modificarMaquina' %}">Modificar</a> </li>
+                                    <li> <a class="item" href="{% url 'app_borrarMaquina' %}"> Baja </a> </li>
+                                    <li> <a class="item" href="{% url 'app_listarMaquinas' %}"> Listar </a> </li>
+                                    <li> <a class="item" href="{% url 'app_datosMaquina' %}">Datos </a> </li>
+                                </ul>
+
+                            </li>
+
+                            <li><a href="#"> Sala </a>
+
+                                <ul>
+                                    <li> <a class="item" href="{% url 'app_altaSala' %}">Alta</a> </li>
+                                    <li> <a class="item" href="{% url 'app_bajaSala' %}">Baja</a> </li>
+                                    <li> <a class="item" href="{% url 'app_modificarSala' %}">Modificar</a> </li>
+                                    <li> <a class="item" href="{% url 'app_listarSalas' %}">Listar</a> </li>
+                                    <li> <a class="item" href="{% url 'app_datosSala' %}">Datos </a> </li>
+                                </ul>
+
+                            </li>
+
+                            <li><a href="#">Producto</a>
+
+                                <ul>
+                                    <li> <a class="item" href="{% url 'app_nuevoProducto' %}">Nueva</a> </li>
+                                    <li> <a class="item" href="{% url 'app_modificarProducto' %}">Modificar</a> </li>
+                                    <li> <a class="item" href="{% url 'app_borrarProducto' %}"> Baja </a> </li>
+                                    <li> <a class="item" href="{% url 'app_listarProductos' %}"> Listar </a> </li>
+                                </ul>
+
+                            </li>
+
+                            <li><a href="#">Promocion</a>
 
                             <ul>
-                                <li> <a class="item" href="{% url 'app_altaEmpleado' %}">Alta</a> </li>
-                                <li> <a class="item" href="{% url 'app_bajaEmpleado' %}">Baja</a> </li>
-                                <li> <a class="item" href="{% url 'app_modificarEmpleado' %}">Modificar</a> </li>
-                                <li> <a class="item" href="{% url 'app_listarEmpleados' %}">Listar</a> </li>
-                                <li> <a class="item" href="{% url 'app_datosEmpleado' %}">Datos</a> </li>
-                                <li> <a class="item" href="{% url 'app_datosOtrosEmpleado' %}">Datos empleado</a> </li>
+                                <li> <a class="item" href="{% url 'app_nuevaPromocion' %}">Nueva</a> </li>
+                                <li> <a class="item" href="{% url 'app_modificarPromocion' %}">Modificar</a> </li>
+                                <li> <a class="item" href="{% url 'app_borrarPromocion' %}"> Baja </a> </li>
+                                <li> <a class="item" href="{% url 'app_listarPromociones' %}"> Listar </a> </li>
+                                <li> <a class="item" href="{% url 'app_datosPromocion' %}">Datos </a> </li>
                             </ul>
 
                         </li>
 
-                        <li><a href="#"> Clientes </a>
+                        {% else %}
+
+                            <li><a href="#"> Empleado </a>
+
+                                <ul>
+                                    <li> <a class="item" href="{% url 'app_datosEmpleado' %}">Datos</a> </li>
+                                </ul>
+
+                            </li>
+
+                            <li><a href="#">Maquina</a>
+
+                                <ul>
+                                    <li> <a class="item" href="{% url 'app_listarMaquinas' %}"> Listar </a> </li>
+                                    <li> <a class="item" href="{% url 'app_datosMaquina' %}">Datos </a> </li>
+                                </ul>
+
+                            </li>
+
+                            <li><a href="#"> Sala </a>
+
+                                <ul>
+                                    <li> <a class="item" href="{% url 'app_listarSalas' %}">Listar</a> </li>
+                                    <li> <a class="item" href="{% url 'app_datosSala' %}">Datos </a> </li>
+                                </ul>
+
+                            </li>
+
+                        {% endif %}
+
+                         <li><a href="#"> Clientes </a>
 
                             <ul>
                                 <li> <a class="item" href="{% url 'app_altaCliente' %}">Alta</a> </li>
@@ -50,29 +129,7 @@
 
                         </li>
 
-                        <li><a href="#">Maquina</a>
 
-                            <ul>
-                                <li> <a class="item" href="{% url 'app_nuevaMaquina' %}">Nueva</a> </li>
-                                <li> <a class="item" href="{% url 'app_modificarMaquina' %}">Modificar</a> </li>
-                                <li> <a class="item" href="{% url 'app_borrarMaquina' %}"> Baja </a> </li>
-                                <li> <a class="item" href="{% url 'app_listarMaquinas' %}"> Listar </a> </li>
-                                <li> <a class="item" href="{% url 'app_datosMaquina' %}">Datos </a> </li>
-                            </ul>
-
-                        </li>
-
-                        <li><a href="#"> Sala </a>
-
-                            <ul>
-                                <li> <a class="item" href="{% url 'app_altaSala' %}">Alta</a> </li>
-                                <li> <a class="item" href="{% url 'app_bajaSala' %}">Baja</a> </li>
-                                <li> <a class="item" href="{% url 'app_modificarSala' %}">Modificar</a> </li>
-                                <li> <a class="item" href="{% url 'app_listarSalas' %}">Listar</a> </li>
-                                <li> <a class="item" href="{% url 'app_datosSala' %}">Datos </a> </li>
-                            </ul>
-
-                        </li>
 
                     {% endif %}
 

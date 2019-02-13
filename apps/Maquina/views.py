@@ -4,9 +4,6 @@ from apps.Maquina.models import Maquina, Tipomaquina
 from apps.Empleado.views import comprobarSesion
 from .forms import *
 from django.contrib import messages
-from datetime import datetime
-import MySQLdb
-import re
 
 # Create your views here.
 def nueva(request):
@@ -27,7 +24,7 @@ def nueva(request):
                 m = Maquina(nombre=nomMaq,fechaingreso=fecha,tipomaquina=instTipoMaquina);
                 m.save()
 
-                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
+                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
             else:
                 messages.error(request, 'La maquina ya existe.')
                 messages.error(request, '')
@@ -35,7 +32,7 @@ def nueva(request):
         form = FormMaquinaInsert()
 
     return render(request, 'alta.html', {'form': form, 'elem':"maquina",'cliente': False,
-        'encargado': encargado, 'Basico': basico})
+        'encargado': encargado, 'basico': basico})
 
 def borrar(request):
     encargado, basico = comprobarSesion(request)
@@ -50,13 +47,13 @@ def borrar(request):
 
             if Maquina.objects.filter(nombre=nombre):
                 Maquina.objects.get(nombre=nombre).delete()
-                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
+                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
             else:
                 messages.error(request, "La maquina no existe.")
     else:
         form = FormMaquinaDelete()
     return render(request, 'borrar.html', {'form': form, 'elem': "maquina",'cliente': False,
-        'encargado': encargado, 'Basico': basico})
+        'encargado': encargado, 'basico': basico})
 
 def modificar(request):
     encargado, basico = comprobarSesion(request)
@@ -93,7 +90,7 @@ def modificar(request):
                 antiMaq.fechaingreso = fecha
                 antiMaq.save()
 
-                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
+            return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
 
     # peticion GET
     formId = FormMaquinaDelete()
@@ -115,7 +112,7 @@ def modificar(request):
 
             return render(request, 'modMaq.html', {"formId": formId, "buscado": True, "datos": data,
                         "datosTipo":datosTipos, "nomAnt": data["nombre"],'cliente': False,
-                        'encargado': encargado, 'Basico': basico})
+                        'encargado': encargado, 'basico': basico})
         else:
             messages.error(request, "La maquina no existe.")
             return HttpResponseRedirect("/apps/modificarMaquina")
@@ -123,7 +120,7 @@ def modificar(request):
     # primera vista
     formId = FormMaquinaDelete()
     return render(request, 'modMaq.html', {"formId": formId, "buscado": False,
-        'cliente': False,'encargado': encargado, 'Basico': basico})
+        'cliente': False,'encargado': encargado, 'basico': basico})
 
 def datos(request):
     encargado, basico = comprobarSesion(request)
@@ -143,7 +140,7 @@ def datos(request):
                 "fecha": maq.fechaingreso,
             }
             return render(request, 'datosMaq.html', {"formId": formId, "buscado": True, "datos": data,'cliente': False,
-                        'encargado': encargado, 'Basico': basico})
+                        'encargado': encargado, 'basico': basico})
         else:
             messages.error(request, "La maquina no existe.")
             return HttpResponseRedirect("/apps/datosMaquina")
@@ -151,14 +148,14 @@ def datos(request):
     # primera vista
     formId = FormMaquinaDelete()
     return render(request, 'datosMaq.html', {"formId": formId, "buscado": False,
-        'cliente': False,'encargado': encargado, 'Basico': basico})
+        'cliente': False,'encargado': encargado, 'basico': basico})
 
 def listar(request):
 
     datosFinales = datosMaquinas()
     encargado, basico = comprobarSesion(request)
     return render(request, 'listarMaquinas.html', {"datos": datosFinales,'cliente': False,
-        'encargado': encargado, 'Basico': basico})
+        'encargado': encargado, 'basico': basico})
 
 """
         METODOS AUXILIARES
