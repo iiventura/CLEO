@@ -274,10 +274,10 @@ def logout(request):
 
         if not Empleado.objects.filter(email=email):
             #return HttpResponseRedirect("/cliente/loginCliente")
-            return HttpResponseRedirect("/index//")
+            return HttpResponseRedirect("/index/login")
         else:
             #return HttpResponseRedirect("/empleado/loginEmpleado")
-            return HttpResponseRedirect("/index//")
+            return HttpResponseRedirect("/index/login")
 
         # diferencias con la sesion si es cliente o empleado y lanzar loginCliente o loginEmpeado
 
