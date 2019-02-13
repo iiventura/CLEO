@@ -103,11 +103,8 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-<<<<<<< HEAD
-# settings
-settings.py
-=======
+
 #setting
 settings.py
 .idea/
->>>>>>> 7d9217080ce7fa196a5ab2e1ce1fc18d34320774
+

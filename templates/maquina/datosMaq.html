@@ -1,0 +1,70 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'plantilla/stylePlantilla.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'plantilla/styleForm.css' %}">
+        <title>Modificar maquina</title>
+    {% endblock %}
+
+
+</head>
+<body>
+
+ {% block content %}
+
+    <div class="ext">
+
+        {% if not buscado %}
+            <form method="GET"> {% csrf_token %}
+
+                {% for field in formId %}
+                    <p> {{ field.label_tag }} {{ field }} </p>
+                {% endfor %}
+
+                <div>
+                    <input type="submit" value="Buscar">
+
+                    {% if messages %}
+
+                        {% for message in messages %}
+                            <li> {{ message }}</li>
+                        {% endfor %}
+
+                    {% endif %}
+
+                </div>
+
+            </form>
+        {% endif %}
+
+         {% if buscado %}
+
+            <form method="POST">{% csrf_token %}
+
+                <h1> Datos de: {{datos.nombre}} </h1>
+                <p>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" name="nombre" id="nombre" maxlength="45" value="{{datos.nombre}}" readonly>
+                </p>
+                <p>
+                   <label for="id_Tipo">Tipo:</label>
+                    <input type="text" name="id_Tipo" id="id_Tipo" maxlength="45" value="{{datos.fecha}}" readonly>
+                </p>
+
+                <p>
+                    <label for="id_fechaingreso">Fecha:</label>
+                    <input type="text" name="fechaingreso" id="id_fechaingreso" maxlength="45" value="{{datos.nomTipoEle}}" readonly>
+                </p>
+
+            </form>
+        {% endif %}
+
+    </div>
+
+ {% endblock %}
+
+</body>
+</html>

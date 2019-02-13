@@ -1,0 +1,93 @@
+
+/*fromato de la lista general*/
+ul.menu {
+    display: inline-block;
+    zoom: 1;
+    margin: 0;
+    list-style-type: none;
+    border: #333 solid 1px;
+    border-radius: 5px;
+    padding: 0 5px;
+    background: #EFEFEF;
+}
+
+/* los submenus de cada opcion*/
+ul.menu ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #EFEFEF;
+    border: #333 solid 1px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+/* tamaño*/
+ul.menu li a {
+    display: block;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: black;
+}
+
+/* formato de los elemento de la lista*/
+ul.menu li {
+    position: relative;
+    display: inline-block;
+    zoom: 1;
+    border-left: #333 solid 1px;
+}
+
+/*animacion al pasar por encima*/
+ul.menu li a:hover {
+    text-decoration: underline;
+}
+
+ul.menu ul li {
+    display: block;
+    border: none;
+    border-top: #333 solid 1px;
+}
+
+/*el borde del primer elemento de las opciones*/
+ul.menu li:first-child {
+    border: none;
+}
+
+/*desplegar submenu al pasar por encima*/
+ul.menu li:hover ul {
+    display: block;
+}
+
+.lista{
+  text-align: center;
+  padding:20px;
+  background-color: grey;
+}
+
+.paneles{
+    width: 100%;
+    height: 100%;
+    padding-top:20px;
+}
+
+body{
+    background-color: green;
+}
+
+caption{
+    padding-top:10px;
+}
+
+table{
+    width: 100%;
+    padding:20px;
+}
+
+th, td {
+    border: 1px solid black;
+    width: 20%;
+    padding:2px;
+}
