@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c1cad444-d42c-4845-a31b-fc0744670b36" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/apps/Cliente/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Cliente/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Cliente/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Cliente/forms.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Cliente/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Cliente/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Cliente/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Cliente/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Cliente/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Cliente/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Empleado/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Empleado/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Empleado/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Empleado/forms.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Empleado/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Empleado/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Empleado/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Empleado/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Empleado/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Empleado/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Index/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Index/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Index/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Index/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Index/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Index/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Index/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Index/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Maquina/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Maquina/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Maquina/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Maquina/forms.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Maquina/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Maquina/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Maquina/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Maquina/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Maquina/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Sala/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Sala/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Sala/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Sala/forms.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Sala/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Sala/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Sala/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Sala/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/Sala/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/wsgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/plantilla/styleForm.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/plantilla/stylePlantilla.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/cliente/inforCli.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/cliente/inforCliEmp.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/cliente/listarClientes.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/cliente/loginCli.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/cliente/modCli.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/cliente/modDatoCli.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/empleado/inforEmp.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/empleado/inforOtroEmp.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/empleado/listarEmpleados.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/empleado/loginEmpleado.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/empleado/modEmp.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/maquina/datosMaq.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/maquina/listarMaquinas.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/maquina/modMaq.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/plantilla/alta.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/plantilla/borrar.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/plantilla/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/plantilla/registro.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/sala/datosSala.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/sala/listarSala.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/sala/modSala.html" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>bac</find>
+      <find>sala</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/static/plantilla/stylePlantilla.css" />
+        <option value="$PROJECT_DIR$/apps/Index/views.py" />
+        <option value="$PROJECT_DIR$/base/urls.py" />
+        <option value="$PROJECT_DIR$/models.py" />
+        <option value="$PROJECT_DIR$/apps/Sala/models.py" />
+        <option value="$PROJECT_DIR$/apps/Sala/forms.py" />
+        <option value="$PROJECT_DIR$/templates/sala/listarSala.html" />
+        <option value="$PROJECT_DIR$/base/settings.py" />
+        <option value="$PROJECT_DIR$/templates/sala/modSala.html" />
+        <option value="$PROJECT_DIR$/templates/maquina/modMaq.html" />
+        <option value="$PROJECT_DIR$/apps/Sala/urls.py" />
+        <option value="$PROJECT_DIR$/apps/Maquina/urls.py" />
+        <option value="$PROJECT_DIR$/apps/Maquina/views.py" />
+        <option value="$PROJECT_DIR$/apps/Sala/views.py" />
+        <option value="$PROJECT_DIR$/templates/sala/datosSala.html" />
+        <option value="$PROJECT_DIR$/templates/maquina/datosMaq.html" />
+        <option value="$PROJECT_DIR$/apps/Cliente/urls.py" />
+        <option value="$PROJECT_DIR$/apps/Cliente/views.py" />
+        <option value="$PROJECT_DIR$/templates/cliente/inforCli.html" />
+        <option value="$PROJECT_DIR$/templates/cliente/inforCliEmp.html" />
+        <option value="$PROJECT_DIR$/apps/Empleado/urls.py" />
+        <option value="$PROJECT_DIR$/templates/plantilla/index.html" />
+        <option value="$PROJECT_DIR$/templates/empleado/inforEmp.html" />
+        <option value="$PROJECT_DIR$/apps/Empleado/views.py" />
+        <option value="$PROJECT_DIR$/templates/empleado/inforOtroEmp.html" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="-6" />
+    <option name="width" value="1386" />
+    <option name="height" value="788" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="CLEO" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CLEO" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates/empleado" />
+      <recent name="$PROJECT_DIR$/templates/cliente" />
+      <recent name="$PROJECT_DIR$/templates/sala" />
+      <recent name="$PROJECT_DIR$/templates/maquina" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/apps" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c1cad444-d42c-4845-a31b-fc0744670b36" name="Default Changelist" comment="" />
+      <created>1549895319228</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1549895319228</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Updating Changes from last Session">
+      <created>1549983005717</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1549983005717</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Updating Changes from last Session">
+      <created>1549983193155</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1549983193155</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Updating Changes from last Session">
+      <created>1549983355945</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1549983355945</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-6" y="0" width="1386" height="788" extended-state="1" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="0" />
+      <window_info anchor="bottom" id="Python Console" order="1" />
+      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="3" />
+      <window_info anchor="bottom" id="Find" order="4" />
+      <window_info anchor="bottom" id="Run" order="5" />
+      <window_info anchor="bottom" id="Debug" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32891566" />
+      <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="0" />
+      <window_info anchor="bottom" id="Python Console" order="1" />
+      <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="3" />
+      <window_info anchor="bottom" id="Find" order="4" />
+      <window_info anchor="bottom" id="Run" order="5" />
+      <window_info anchor="bottom" id="Debug" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.32891566" />
+      <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Updating Changes from last Session" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updating Changes from last Session" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/templates/cliente/modDatoCli.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/plantilla/stylePlantilla.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="72" column="21" selection-start-line="72" selection-start-column="21" selection-end-line="72" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/plantilla/registro.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/Index/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/Index/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/Maquina/models.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="190" selection-start-line="190" selection-end-line="190" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/base/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/Sala/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="24" selection-start-column="24" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/Sala/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/Maquina/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/plantilla/alta.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/maquina/listarMaquinas.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="39" column="7" selection-end-line="39" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/sala/listarSala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="41" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/base/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="556">
+          <caret line="66" column="37" selection-start-line="66" selection-start-column="37" selection-end-line="66" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/sala/modSala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="63" column="7" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/maquina/modMaq.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/Sala/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/Sala/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="138" column="12" selection-start-line="138" selection-start-column="12" selection-end-line="138" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/sala/datosSala.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="47" column="29" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/Cliente/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="76" selection-start-line="11" selection-start-column="57" selection-end-line="11" selection-end-column="76" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/Maquina/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="33" lean-forward="true" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/cliente/inforCli.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="47">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/cliente/inforCliEmp.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="46" column="29" selection-start-line="46" selection-start-column="29" selection-end-line="46" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/cliente/modCli.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="72" column="42" selection-end-line="87" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/Maquina/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="144" column="102" selection-start-line="144" selection-start-column="102" selection-end-line="144" selection-end-column="102" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/Cliente/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="310" selection-start-line="310" selection-end-line="310" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/empleado/modEmp.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="496">
+          <caret line="91" column="8" selection-start-line="91" selection-start-column="8" selection-end-line="91" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/Empleado/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="85" selection-start-line="10" selection-start-column="63" selection-end-line="10" selection-end-column="85" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/plantilla/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="35" column="109" selection-start-line="35" selection-start-column="109" selection-end-line="35" selection-end-column="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/empleado/inforEmp.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/apps/Empleado/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="44" selection-start-line="44" selection-end-line="44" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#351#1432#0" />
+            <element signature="e#1457#3572#0" />
+            <element signature="e#3597#4373#0" />
+            <element signature="e#4403#7081#0" />
+            <element signature="e#7111#9789#0" />
+            <element signature="e#7107#7326#0" />
+            <element signature="e#7361#7960#0" />
+            <element signature="e#7989#8585#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/maquina/datosMaq.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="46" column="16" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/empleado/inforOtroEmp.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="43" column="38" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+  </component>
+</project>
