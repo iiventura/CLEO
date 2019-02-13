@@ -1,5 +1,4 @@
 from django import forms
-
 from .models import Tipoempleado
 
 def tipoChoice():
@@ -10,33 +9,6 @@ def tipoChoice():
     for tipo in tipos:
         nom = str(tipo.nombre).title();
         lista.append(nom)
-
-    resultado = []
-    resultado.append(('', 'Selecciona'))
-    for i in lista:
-        resultado.append((str(i), str(i)))
-
-    return tuple(resultado)
-
-def estadoChoice():
-    #db = MySQLdb.connect(user='root', db='tfg1', passwd='root2018', host='localhost')
-    cursor = db.cursor()
-    query = "SHOW COLUMNS FROM Empleado LIKE 'estado'"
-    cursor.execute(query)
-    datos = cursor.fetchall()
-
-    nueva = str(datos)
-    d1 = nueva.split("enum")
-    d2 = d1[1].split("(")
-    d3 = d2[1].split(")")
-    d4 = d3[0].split(",")#tiene todas las opciones
-    db.close()
-
-    lista = []
-    #cogemos todas las opciones y las guardamos en una lista
-    for op in d4:
-        t = op[1:len(op) - 1]
-        lista.append(t)
 
     resultado = []
     resultado.append(('', 'Selecciona'))
