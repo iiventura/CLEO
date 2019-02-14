@@ -48,7 +48,7 @@ def registro(request):
                                 puntuacion=0, password=password)
                     c.save()
 
-                    return HttpResponseRedirect("/apps/loginCliente")
+                    return HttpResponseRedirect("/cliente/loginCliente")
                 else:
                     messages.error(request, 'El cliente ya existe.')
             else:
@@ -292,7 +292,7 @@ def modificar(request):
 
         else: #si es error vuelve a lanzar la pagina
             messages.error(request, "El cliente no existe.")
-            return HttpResponseRedirect("/apps/modificarCliente")
+            return HttpResponseRedirect("/cliente/modificarCliente")
 
     # primera vista
     formDni = FormClienteDelete()
@@ -326,7 +326,7 @@ def datosClienteEmp(request):
 
         else: #si es error vuelve a lanzar la pagina
             messages.error(request, "El cliente no existe.")
-            return HttpResponseRedirect("/apps/datosClienteEmp")
+            return HttpResponseRedirect("/cliente/datosClienteEmp")
 
     # primera vista
     formDni = FormClienteDelete()
