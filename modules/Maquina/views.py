@@ -116,7 +116,7 @@ def modificar(request):
                         'encargado': encargado, 'Basico': basico})
         else:
             messages.error(request, "La maquina no existe.")
-            return HttpResponseRedirect("/apps/modificarMaquina")
+            return HttpResponseRedirect("/maquina/modificarMaquina")
 
     # primera vista
     formId = FormMaquinaDelete()
@@ -144,7 +144,7 @@ def datos(request):
                         'encargado': encargado, 'Basico': basico})
         else:
             messages.error(request, "La maquina no existe.")
-            return HttpResponseRedirect("/apps/datosMaquina")
+            return HttpResponseRedirect("/maquina/datosMaquina")
 
     # primera vista
     formId = FormMaquinaDelete()
