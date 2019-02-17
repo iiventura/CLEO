@@ -1,0 +1,18 @@
+1. Crear api
+    python manage.py startapp <api>
+2. Modificar  settings.py
+    INSTALLED_APP=[...
+        modules.<Api>]
+    TEMPLATES=[BASE_DIR+"/templates/<api>"]
+
+3. Copiar el modelo en models.py
+4. Configurar en api al admin.py
+5. Crear en api el urls.py
+    urlspatterns=[...]
+6. Configurar las vistas del api en views.py
+7. Crear las plantillas del api
+
+ Crear forms.py
+ Configurar las views.py
+ Crear los templates del modulo
+ Anadir la ruta url al apps

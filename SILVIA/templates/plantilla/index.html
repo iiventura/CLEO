@@ -1,0 +1,119 @@
+{% load staticfiles %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        {% block css %}
+            <link rel="stylesheet" type="text/css" href="{% static 'plantilla/stylePlantilla.css' %}">
+            <title>CLEO</title>
+        {% endblock %}
+
+    </head>
+    <body>
+
+        {% if not cliente  and  not encargado and not basico %}
+
+                <h1> DEBES ESTAR LOGEADO </h1>
+                <a class="item" href="{% url 'app_loginEmpleado' %}">Empleado</a>
+                <a class="item" href="{% url 'app_loginCliente' %}">Cliente</a>
+
+        {% else %}
+
+            <div  class="lista">
+                <ul class="menu">
+
+                    <!-- ********************** EMPLEADO ********************** -->
+
+                    {% if not cliente %}
+
+                        {% if encargado %}
+
+                            <li><a href="#"> Empleado </a>
+
+                                <ul>
+                                    <li> <a class="item" href="{% url 'app_altaEmpleado' %}">Alta</a> </li>
+                                    <li> <a class="item" href="{% url 'app_bajaEmpleado' %}">Baja</a> </li>
+                                    <li> <a class="item" href="{% url 'app_modificarEmpleado' %}">Modificar</a> </li>
+                                    <li> <a class="item" href="{% url 'app_listarEmpleados' %}">Listar</a> </li>
+                                    <li> <a class="item" href="{% url 'app_datosEmpleado' %}">Perfil</a> </li>
+                                    <li> <a class="item" href="{% url 'app_datosOtrosEmpleado' %}">Buscar Empleado</a> </li>
+                                </ul>
+
+                            </li>
+
+
+
+
+                        </li>
+
+                        {% else %}
+
+                            <li><a href="#"> Empleado </a>
+
+                                <ul>
+                                    <li> <a class="item" href="{% url 'app_datosEmpleado' %}">Datos</a> </li>
+                                </ul>
+
+                            </li>
+
+                            <li><a href="#">Maquina</a>
+
+                                <ul>
+                                    <li> <a class="item" href="{% url 'app_listarMaquinas' %}"> Listar </a> </li>
+                                    <li> <a class="item" href="{% url 'app_datosMaquina' %}">Datos </a> </li>
+                                </ul>
+
+                            </li>
+
+                            <li><a href="#"> Sala </a>
+
+                                <ul>
+                                    <li> <a class="item" href="{% url 'app_listarSalas' %}">Listar</a> </li>
+                                    <li> <a class="item" href="{% url 'app_datosSala' %}">Datos </a> </li>
+                                </ul>
+
+                            </li>
+
+                        {% endif %}
+
+
+
+
+
+                    {% endif %}
+
+                    <!-- ********************** CLIENTE ********************** -->
+                    {% if cliente %}
+
+                        <li><a href="#"> Mi informacion </a>
+
+                            <ul>
+                                <li> <a class="item" href="{% url 'app_datosCliente' %}">Datos</a> </li>
+                                <li> <a class="item" href="{% url 'app_modificarMisDatosCliente' %}">Modificar</a> </li>
+                                <li> <a class="item" href="{% url 'app_citasCliente' %}">Mis citas</a> </li>
+                            </ul>
+
+                        </li>
+
+                    {% endif %}
+
+                    <!-- ********************** TODOS ********************** -->
+                    <li><a href="{% url 'app_logout' %}">Salir</a> </li>
+
+
+
+                </ul>
+            </div>
+        {% endif %}
+
+        <!-- aqui cambiamso los paneles -->
+        <div class="paneles">
+
+            {% block content %}
+
+
+            {% endblock %}
+
+        </div>
+
+    </body>
+</html>

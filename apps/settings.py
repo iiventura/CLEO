@@ -37,13 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'modules.Index',
-    'modules.Cliente',
-    'modules.Empleado',
-    'modules.Maquina',
-    'modules.Sala',
-    'modules.Promocion',
-    'modules.Producto',
+    'modules.Entrance',
+    'modules.Employee',
+    #'modules.apps.Cliente',
+    #'modules.Maquina',
+    #'modules.Sala',
+    #'modules.Promocion',
+    #'modules.Producto',
 ]
 
 MIDDLEWARE = [
@@ -94,7 +94,7 @@ DATABASES = {
         'NAME': 'cleodb',
         'USER': 'root',
         'PASSWORD': '',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'HOST': 'db',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 }
