@@ -37,14 +37,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'modules.Index',
-    'modules.Cliente',
-    'modules.Empleado',
-    'modules.Maquina',
-    'modules.Sala',
-    'modules.Promocion',
-    'modules.Producto',
-    'modules.Proveedor',
+    'modules.Main',
+    #'modules.Employee',
+    #'modules.Index',
+    #'modules.Cliente',
+    #'modules.Empleado',
+    #'modules.Maquina',
+    #'modules.Sala',
+    #'modules.Promocion',
+    #'modules.Producto',
+    #'modules.Proveedor',
 ]
 
 MIDDLEWARE = [
@@ -63,14 +65,14 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-                 BASE_DIR + "/templates/plantilla",
-                 BASE_DIR + "/templates/cliente",
-                 BASE_DIR + "/templates/empleado",
-                 BASE_DIR + "/templates/maquina",
-                 BASE_DIR + "/templates/sala",
-                 BASE_DIR + "/templates/promocion",
-                 BASE_DIR + "/templates/producto",
-                 BASE_DIR + "/templates/proveedor"
+                os.path.join(BASE_DIR, '/modules/Main/templates'),
+                # BASE_DIR + "/templates/cliente",
+                # BASE_DIR + "/templates/empleado",
+                # BASE_DIR + "/templates/maquina",
+                # BASE_DIR + "/templates/sala",
+                  #BASE_DIR + "/templates/promocion",
+                 #BASE_DIR + "/templates/producto",
+                 #BASE_DIR + "/templates/proveedor"
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -139,7 +141,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/modules/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR,'static'),

@@ -1,6 +1,6 @@
 from django import forms
 from django.utils import timezone
-from modules.Maquina.models import Tipomaquina
+from SILVIA.Maquina import Tipomaquina
 
 def tipoChoice():
 

@@ -1,46 +1,45 @@
-from django.shortcuts import render
-
 # Create your views here.
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from .models import Promocion
-from ..Empleado.views import comprobarSesion
+from .models import Proveedor
+from SILVIA.Empleado.views import comprobarSesion
 from .forms import *
 from django.contrib import messages
 
 # Create your views here.
-def nueva(request):
+def nuevo(request):
     encargado, basico = comprobarSesion(request)
     if request.method == "POST":
-        form = FormPromocionInsert(request.POST)
+        form = FormProveedorInsert(request.POST)
 
         if form.is_valid():
             datos = form.cleaned_data
 
             # recogemos los datos
             nomPro = datos.get("nombre")
-            obs = datos.get("observaciones")
+            con = datos.get("contacto")
+            des = datos.get("descripcion")
 
 
-            if not Promocion.objects.filter(nombre=nomPro): #todavia se puede guardar una maquina mas
+            if not Proveedor.objects.filter(nombre=nomPro): #todavia se puede guardar una maquina mas
 
-                s = Promocion(nombre=nomPro, observaciones=obs)
+                s = Proveedor(nombre=nomPro, contacto=con, descripcion=des)
                 s.save()
 
                 return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
             else:
-                messages.error(request, 'La Promocion ya existe.')
+                messages.error(request, 'El proveedor ya existe.')
                 messages.error(request, '')
     else:
-        form = FormPromocionInsert()
+        form = FormProveedorInsert()
 
-    return render(request, 'alta.html', {'form': form, 'elem':"promocion",'cliente': False,
+    return render(request, 'alta.html', {'form': form, 'elem':"proveedor",'cliente': False,
         'encargado': encargado, 'basico': basico})
 
 def borrar(request):
     encargado, basico = comprobarSesion(request)
     if request.method == "POST":
-        form = FormPromocionDelete(request.POST)
+        form = FormProveedorDelete(request.POST)
 
         if form.is_valid():
             datos = form.cleaned_data
@@ -48,109 +47,114 @@ def borrar(request):
             # recogemos los datos
             nombre = datos.get("nombre")
 
-            if Promocion.objects.filter(nombre=nombre):
-                Promocion.objects.get(nombre=nombre).delete()
+            if Proveedor.objects.filter(nombre=nombre):
+                Proveedor.objects.get(nombre=nombre).delete()
                 return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
             else:
-                messages.error(request, "La promocion no existe.")
+                messages.error(request, "El proveedor no existe.")
     else:
-        form = FormPromocionDelete()
-    return render(request, 'borrar.html', {'form': form, 'elem': "promocion",'cliente': False,
+        form = FormProveedorDelete()
+    return render(request, 'borrar.html', {'form': form, 'elem': "maquina",'cliente': False,
         'encargado': encargado, 'basico': basico})
 
 def modificar(request):
     encargado, basico = comprobarSesion(request)
     # si es una peticion post
     if request.method == "POST":
-        form = FormPromocionUpdate(request.POST)
+        form = FormProveedorUpdate(request.POST)
         nombreAnt = request.GET.get("nombre")  # obtenemos el dni que hemos buscado
 
         if form.is_valid():
             datos = form.cleaned_data
 
             # recogemos los datos
-            obs = datos.get("observaciones")
+            con = datos.get("contacto")
+            desc = datos.get("descripcion")
 
-            antiPromo= Promocion.objects.get(nombre=nombreAnt)
-            antiPromo.observaciones = obs
-            antiPromo.save()
+            antiProv= Proveedor.objects.get(nombre=nombreAnt)
+            antiProv.contacto = con
+            antiProv.descripcion = desc
+            antiProv.save()
 
             return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
 
     # peticion GET
-    formId = FormPromocionDelete()
+    formId = FormProveedorDelete()
     if 'nombre' in request.GET:
         query = request.GET['nombre']  # query tiene le valor del dni
 
         nombre = str(query)
 
-        if Promocion.objects.filter(nombre=nombre):
-            promo = Promocion.objects.get(nombre=nombre)
+        if Proveedor.objects.filter(nombre=nombre):
+            pro = Proveedor.objects.get(nombre=nombre)
 
             data = {
-                "nombre": promo.nombre,
-                "obs": promo.observaciones,
+                "nombre": pro.nombre,
+                "con": pro.contacto,
+                "desc": pro.descripcion,
             }
 
 
-            return render(request, 'modPromo.html', {"formId": formId, "buscado": True, "datos": data,
+            return render(request, 'modProv.html', {"formId": formId, "buscado": True, "datos": data,
                         'cliente': False,'encargado': encargado, 'basico': basico})
         else:
             messages.error(request, "La promocion no existe.")
-            return HttpResponseRedirect("/promocion/modificarPromocion")
+            return HttpResponseRedirect("/proveedor/modificarProveedor")
 
     # primera vista
-    formId = FormPromocionDelete()
-    return render(request, 'modPromo.html', {"formId": formId, "buscado": False,
+    formId = FormProveedorDelete()
+    return render(request, 'modProv.html', {"formId": formId, "buscado": False,
         'cliente': False,'encargado': encargado, 'basico': basico})
 
 def datos(request):
     encargado, basico = comprobarSesion(request)
-    formId = FormPromocionDelete()
+    formId = FormProveedorDelete()
     if 'nombre' in request.GET:
         query = request.GET['nombre']  # query tiene le valor del dni
 
         nombre = str(query)
 
-        if Promocion.objects.filter(nombre=nombre):
-            promo = Promocion.objects.get(nombre=nombre)
+        if Proveedor.objects.filter(nombre=nombre):
+            promo = Proveedor.objects.get(nombre=nombre)
 
             data = {
                 "nombre": promo.nombre,
-                "obs": promo.observaciones,
+                "contacto": promo.contacto,
+                "desc": promo.descripcion,
             }
 
-            return render(request, 'datosPromocion.html', {"formId": formId, "buscado": True, "datos": data,
+            return render(request, 'datosProveedor.html', {"formId": formId, "buscado": True, "datos": data,
                 'cliente': False,'encargado': encargado, 'basico': basico})
         else:
             messages.error(request, "La sala no existe.")
-            return HttpResponseRedirect("/promocion/datosPromocion")
+            return HttpResponseRedirect("/proveedor/datosProveedor")
 
     # primera vista
-    formId = FormPromocionDelete()
-    return render(request, 'datosPromocion.html', {"formId": formId, "buscado": False,'cliente': False,
+    formId = FormProveedorDelete()
+    return render(request, 'datosProveedor.html', {"formId": formId, "buscado": False,'cliente': False,
             'encargado': encargado, 'basico': basico})
 
 def listar(request):
 
-    datosFinales = datosPromocion()
+    datosFinales = datosProveedor()
     encargado, basico = comprobarSesion(request)
-    return render(request, 'listarPromociones.html', {"datos": datosFinales,'cliente': False,
+    return render(request, 'listarProveedores.html', {"datos": datosFinales,'cliente': False,
         'encargado': encargado, 'basico': basico})
 
 """
         METODOS AUXILIARES
 """
-def datosPromocion():
+def datosProveedor():
 
-    datos = Promocion.objects.all();
+    datos = Proveedor.objects.all();
     datosFinales = []
 
     for pro in datos:
 
         data = {
-            "nom": pro.nombre,
-            "obs": pro.observaciones,
+            "nombre": pro.nombre,
+            "con": pro.contacto,
+            "desc": pro.descripcion,
         }
 
         datosFinales.append(data)

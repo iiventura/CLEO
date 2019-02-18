@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .models import Maquina
-from ..Empleado.views import comprobarSesion
+from SILVIA.Empleado.views import comprobarSesion
 from .forms import *
 from django.contrib import messages
 
