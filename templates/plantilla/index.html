@@ -77,15 +77,27 @@
 
                             <li><a href="#">Promocion</a>
 
-                            <ul>
-                                <li> <a class="item" href="{% url 'app_nuevaPromocion' %}">Nueva</a> </li>
-                                <li> <a class="item" href="{% url 'app_modificarPromocion' %}">Modificar</a> </li>
-                                <li> <a class="item" href="{% url 'app_borrarPromocion' %}"> Baja </a> </li>
-                                <li> <a class="item" href="{% url 'app_listarPromociones' %}"> Listar </a> </li>
-                                <li> <a class="item" href="{% url 'app_datosPromocion' %}">Datos </a> </li>
-                            </ul>
+                                <ul>
+                                    <li> <a class="item" href="{% url 'app_nuevaPromocion' %}">Nueva</a> </li>
+                                    <li> <a class="item" href="{% url 'app_modificarPromocion' %}">Modificar</a> </li>
+                                    <li> <a class="item" href="{% url 'app_borrarPromocion' %}"> Baja </a> </li>
+                                    <li> <a class="item" href="{% url 'app_listarPromociones' %}"> Listar </a> </li>
+                                    <li> <a class="item" href="{% url 'app_datosPromocion' %}">Datos </a> </li>
+                                </ul>
 
-                        </li>
+                            </li>
+
+                             <li><a href="#">Proveedor</a>
+
+                                <ul>
+                                    <li> <a class="item" href="{% url 'app_nuevoProveedor' %}">Nuevo</a> </li>
+                                    <li> <a class="item" href="{% url 'app_modificarProveedor' %}">Modificar</a> </li>
+                                    <li> <a class="item" href="{% url 'app_borrarProveedor' %}"> Baja </a> </li>
+                                    <li> <a class="item" href="{% url 'app_listarProveedores' %}"> Listar </a> </li>
+                                    <li> <a class="item" href="{% url 'app_datosProveedor' %}">Datos </a> </li>
+                                </ul>
+
+                            </li>
 
                         {% else %}
 

@@ -100,7 +100,7 @@ def modificar(request):
                                                    'cliente': False,'encargado': encargado, 'Basico': basico})
         else:
             messages.error(request, "La sala no existe.")
-            return HttpResponseRedirect("/apps/modificarSala")
+            return HttpResponseRedirect("/sala/modificarSala")
 
     # primera vista
     formId = FormSalaDelete()
@@ -127,7 +127,7 @@ def datos(request):
                 'cliente': False,'encargado': encargado, 'Basico': basico})
         else:
             messages.error(request, "La sala no existe.")
-            return HttpResponseRedirect("/apps/datosSala")
+            return HttpResponseRedirect("/sala/datosSala")
 
     # primera vista
     formId = FormSalaDelete()

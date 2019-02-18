@@ -25,5 +25,6 @@ urlpatterns = [
     path('sala/',include('modules.Sala.urls')), #sala
     path('promocion/', include('modules.Promocion.urls')), #promocion
     path('producto/', include('modules.Producto.urls')), #promocion
+    path('proveedor/', include('modules.Proveedor.urls')), #promocion
 
 ]
