@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+        <form class="create" method="POST">
+            {% csrf_token %}
+
+            {{form.as_p}}
+
+        </form>
+
+{% endblock %}

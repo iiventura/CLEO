@@ -38,10 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'modules.Main',
-    #'modules.Employee',
+    'modules.Empleado',
     #'modules.Index',
     #'modules.Cliente',
-    #'modules.Empleado',
     #'modules.Maquina',
     #'modules.Sala',
     #'modules.Promocion',
@@ -66,6 +65,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
                 os.path.join(BASE_DIR, '/modules/Main/templates'),
+                os.path.join(BASE_DIR, '/modules/Empleado/templates'),
                 # BASE_DIR + "/templates/cliente",
                 # BASE_DIR + "/templates/empleado",
                 # BASE_DIR + "/templates/maquina",
@@ -141,7 +141,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/modules/static/'
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR,'static'),

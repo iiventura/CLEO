@@ -1,1 +1,10 @@
-strong {color: red;}
+.container form {
+  width: 100%;
+  background-color: red;
+}
+
+.head-img {
+  background-color:blue;
+}
+
+.create{}
