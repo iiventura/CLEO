@@ -63,3 +63,23 @@ def nuevo(request):
         form = FormEmpleadoInsert()
 
     return render(request, 'nuevo.html', {'form': form})
+
+def listar(request):
+    datos = Empleado.objects.all()
+    lista = []
+
+    for empleado in datos:
+        tipoEmpleado = Tipoempleado.objects.get(id=empleado.tipoempleado.id)
+        data={
+           "id": empleado.id,
+            #"dni": empleado.dni,
+            #"cod": empleado.codigo,
+            "nom": empleado.nombre,
+            "ape": empleado.apellidos,
+            "email": empleado.email,
+            #"dir": empleado.direccion,
+            #"tlf": empleado.telefono,
+            "tipo": tipoEmpleado.nombre.title(),
+        }
+        lista.append(data)
+    return render(request,'lista.html',{"lista":lista})

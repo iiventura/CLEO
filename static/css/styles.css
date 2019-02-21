@@ -16,8 +16,6 @@ body{
   border: 1px solid #20135C;
 }
 
-
-
 .navbar .navbar-brand, .glyphicon-home, .glyphicon-log-out, .glyphicon-user{
     color: #E8B12A;
 }
@@ -117,4 +115,32 @@ footer strong{
   text-align: center;
   margin-bottom: 2%;
   
+}
+
+/*TABLE*/
+table,th{
+  text-align: center;
+  color: #0E043D;
+}
+
+tbody tr{
+  color: #20135C;
+}
+
+tbody tr:hover, tbody tr:hover a {
+  color: #DBD0BE !important;
+  background-color: #0E043D !important;
+  
+}
+
+tbody .glyphicon-trash:hover{
+  color:  #DC9D00;
+}
+
+tbody td a{
+  color: #0E043D;
+}
+tbody td a:hover{
+  text-decoration: none;
+   color:  #DC9D00 !important;
 }
