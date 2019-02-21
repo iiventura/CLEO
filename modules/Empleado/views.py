@@ -10,6 +10,7 @@ def main(request):
 
 
 def nuevo(request):
+    #encargado, basico = comprobarSesion(request)
     if request.method == "POST":
         form = FormEmpleadoInsert(request.POST)
 
@@ -37,7 +38,7 @@ def nuevo(request):
             else:
                 messages.error(request, 'El Dni no es correcto.')
 
-            # comprobamso telefono
+            #comprobamso telefono
             if not (len(tlf) == 9 and tlf.isdigit()):
                 messages.error(request, 'El telefono no es correcto.')
                 messages.error(request, '')
@@ -47,9 +48,10 @@ def nuevo(request):
 
                     instTipoEmpleado = Tipoempleado.objects.get(nombre=tipo)
 
-                    e = Empleado(dni=dni, codigo=cod, nombre=nom, apellidos=ape, email=email,
-                                 direccion=dir, telefono=tlf, tipoempleado=instTipoEmpleado, password=password)
+                    e = Empleado(dni=dni, codigo=cod, nombre=nom, apellidos=ape,email=email,
+                                 direccion=dir,telefono=tlf,tipoempleado=instTipoEmpleado, password=password)
                     e.save()
+
 
                     return render(request, 'nuevo.html', {'form': form})
                 else:
@@ -59,4 +61,5 @@ def nuevo(request):
 
     else:
         form = FormEmpleadoInsert()
-        return render(request, 'nuevo.html', {'form': form})
+
+    return render(request, 'nuevo.html', {'form': form})
