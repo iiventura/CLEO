@@ -4,7 +4,10 @@ from . import views
 urlpatterns = [
     path('', views.main, name='app_main'),
     path('nuevo', views.nuevo, name='app_nuevo'),
-    path('listar', views.listar, name='app_listar'),
+    path('lista', views.listar, name='app_listar'),
+    path('<int:pk>', views.perfil, name='app_perfil'),
+#    path('<int:pk>/eliminar', views.perfil, name='app_eliminar'),
+
 
 
 ]

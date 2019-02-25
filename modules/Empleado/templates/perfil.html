@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="container perfil">
+        <h1 class="subtitle">Empleado</h1>
+        <div class="row ">
+            <div class="col-md-4 foto">
+                 <img class="img-thumbnail" src="{% static 'img/person.jpg' %}" alt="Flowers in Chania">
+            </div>
+            <div class="col-md-8 datos">
+
+            </div>
+        </div>
+        <div class="row ubotones">
+            <form>
+                <div class="col-md-6 edit">
+                    <button>Editar</button>
+                </div>
+                <div class="col-md-6 del">
+                    <button>Eliminar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

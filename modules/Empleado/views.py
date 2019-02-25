@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect,HttpResponse
 from .models import Empleado, Tipoempleado
 from .forms import *
 from django.contrib import messages
@@ -83,3 +84,21 @@ def listar(request):
         }
         lista.append(data)
     return render(request,'lista.html',{"lista":lista})
+
+def perfil(request,pk ):
+    #empleado = get_object_or_404(Empleado, pk=pk)
+    emp = Empleado.objects.get(id=pk)
+
+    data = {
+        "dni": emp.dni,
+        "cod": emp.codigo,
+        "tipo": emp.tipoempleado.nombre,
+        "nom": emp.nombre,
+        "ape": emp.apellidos,
+        "email": emp.email,
+        "dir": emp.direccion,
+        "tlf": emp.telefono,
+        "cnt": emp.password,
+    }
+
+    return render(request, 'perfil.html', {"datos": data})
