@@ -25,13 +25,6 @@ class Cita(models.Model):
         db_table = 'cita'
         unique_together = (('id', 'estadocita', 'sala', 'cliente', 'empleado', 'tratamiento', 'horarioentrada', 'horariosalida'),)
 
-
-
-
-
-
-
-
 class Estadocita(models.Model):
     nombre = models.CharField(max_length=45, blank=True, null=True)
 
@@ -47,23 +40,6 @@ class Estadofactura(models.Model):
         managed = False
         db_table = 'estadofactura'
 
-
-class Estadomensaje(models.Model):
-    nombre = models.CharField(max_length=45, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'estadomensaje'
-
-
-class Estadopedido(models.Model):
-    nombre = models.CharField(max_length=45, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'estadopedido'
-
-
 class Factura(models.Model):
     id = models.AutoField(primary_key=True)
     costeporcobrar = models.FloatField(db_column='costePorCobrar', blank=True, null=True)  # Field name made lowercase.
@@ -76,17 +52,6 @@ class Factura(models.Model):
         managed = False
         db_table = 'factura'
         unique_together = (('id', 'estadofactura', 'cita'),)
-
-
-class Horario(models.Model):
-    hora = models.TimeField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'horario'
-
-
-
 
 
 class Inventario(models.Model):
@@ -105,96 +70,6 @@ class Inventario(models.Model):
         unique_together = (('id', 'proveedor', 'producto', 'pedido'),)
 
 
-
-
-
-class Notificacion(models.Model):
-    id = models.AutoField(primary_key=True)
-    estadomensaje = models.ForeignKey(Estadomensaje, models.DO_NOTHING, db_column='estadoMensaje_id')  # Field name made lowercase.
-    tipousuario = models.ForeignKey('Tipousuario', models.DO_NOTHING, db_column='tipoUsuario_id')  # Field name made lowercase.
-    mensaje = models.CharField(max_length=45, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'notificacion'
-        unique_together = (('id', 'estadomensaje', 'tipousuario'),)
-
-
-class Pedido(models.Model):
-    id = models.AutoField(primary_key=True)
-    cantidad = models.IntegerField(blank=True, null=True)
-    fecha = models.DateTimeField(blank=True, null=True)
-    estadopedido = models.ForeignKey(Estadopedido, models.DO_NOTHING, db_column='estadoPedido_id')  # Field name made lowercase.
-    producto = models.ForeignKey('Producto', models.DO_NOTHING, db_column='Producto_id')  # Field name made lowercase.
-    proveedor = models.ForeignKey('Proveedor', models.DO_NOTHING, db_column='Proveedor_id')  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'pedido'
-        unique_together = (('id', 'estadopedido', 'producto', 'proveedor'),)
-
-
-class Producto(models.Model):
-    id = models.IntegerField()
-    nombre = models.CharField(max_length=45, blank=True, null=True)
-    tipoproducto = models.ForeignKey('Tipoproducto', models.DO_NOTHING, db_column='tipoProducto_id')  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'producto'
-        unique_together = (('id', 'tipoproducto'),)
-
-
-class Promocion(models.Model):
-    nombre = models.CharField(max_length=45, blank=True, null=True)
-    observaciones = models.CharField(max_length=45, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'promocion'
-
-
-class Proveedor(models.Model):
-    id = models.IntegerField(primary_key=True)
-    nombre = models.CharField(max_length=45, blank=True, null=True)
-    contacto = models.CharField(max_length=45, blank=True, null=True)
-    descripcion = models.CharField(max_length=45, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'proveedor'
-
-
-class Publicidad(models.Model):
-    id = models.AutoField(primary_key=True)
-    fechainicio = models.DateTimeField(db_column='fechaInicio', blank=True, null=True)  # Field name made lowercase.
-    fechafin = models.DateTimeField(db_column='fechaFin', blank=True, null=True)  # Field name made lowercase.
-    promocion = models.ForeignKey(Promocion, models.DO_NOTHING, db_column='Promocion_id')  # Field name made lowercase.
-    cliente = models.ForeignKey(Cliente, models.DO_NOTHING, db_column='Cliente_id')  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'publicidad'
-        unique_together = (('id', 'promocion', 'cliente'),)
-
-
-
-
-
-class Tipoproducto(models.Model):
-    nombre = models.CharField(max_length=45, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'tipoproducto'
-
-
-class Tipousuario(models.Model):
-    nombre = models.CharField(max_length=45, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'tipousuario'
 
 
 

@@ -21,7 +21,7 @@ def nueva(request):
             tipo = datos.get("Tipo")
 
             if not Maquina.objects.filter(nombre=nomMaq): #todavia se puede guardar una maquina mas
-                instTipoMaquina = Tipomaquina.objects.get(nombre=tipo)
+                instTipoMaquina = Tipomaquina.objects.get(id=tipo)
                 m = Maquina(nombre=nomMaq,fechaingreso=fecha,tipomaquina=instTipoMaquina);
                 m.save()
 
@@ -91,7 +91,7 @@ def modificar(request):
                 antiMaq.fechaingreso = fecha
                 antiMaq.save()
 
-                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
+            return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
 
     # peticion GET
     formId = FormMaquinaDelete()
@@ -106,7 +106,7 @@ def modificar(request):
             data = {
                 "nombre": maq.nombre,
                 "nomTipoEle": str(maq.tipomaquina.nombre).title(),
-                "fecha": maq.fechaingreso,
+                "fecha": str(maq.fechaingreso),
             }
 
             datosTipos = listaTiposMaquina(data["nomTipoEle"])
@@ -138,7 +138,7 @@ def datos(request):
             data = {
                 "nombre": maq.nombre,
                 "nomTipoEle": str(maq.tipomaquina.nombre).title(),
-                "fecha": maq.fechaingreso,
+                "fecha": str(maq.fechaingreso),
             }
             return render(request, 'datosMaq.html', {"formId": formId, "buscado": True, "datos": data,'cliente': False,
                         'encargado': encargado, 'Basico': basico})
@@ -172,7 +172,7 @@ def datosMaquinas():
 
         data = {
             "nom": maq.nombre,
-            "fec": maq.fechaingreso,
+            "fec": str(maq.fechaingreso),
             "tipo": instTipoMaquina.nombre.title(),
         }
 

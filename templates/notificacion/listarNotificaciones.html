@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'plantilla/stylePlantilla.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'plantilla/styleForm.css' %}">
+        <title>Listar notificaciones</title>
+    {% endblock %}
+
+
+</head>
+<body>
+
+ {% block content %}
+
+    <div class="ext">
+        <table>
+            <caption>Lista de notificaciones </caption>
+
+            <tr>
+                <th> Id</th>
+                <th> Estado</th>
+                <th> Usuario</th>
+                <th> Mensaje</th>
+            </tr>
+             {% for d in datos %}
+                <tr>
+                     <td> {{d.id}} </td>
+                     <td> {{d.est}} </td>
+                     <td> {{d.usu}} </td>
+                     <td> {{d.sms}} </td>
+                </tr>
+             {% endfor %}
+        </table>
+    </div>
+
+ {% endblock %}
+
+</body>
+</html>

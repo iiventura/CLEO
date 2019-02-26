@@ -25,6 +25,11 @@ urlpatterns = [
     path('sala/',include('modules.Sala.urls')), #sala
     path('promocion/', include('modules.Promocion.urls')), #promocion
     path('producto/', include('modules.Producto.urls')), #promocion
-    path('proveedor/', include('modules.Proveedor.urls')), #promocion
+    path('proveedor/', include('modules.Proveedor.urls')), #proveedor
+    path('tratamiento/', include('modules.Tratamiento.urls')), #tratamiento
+    path('horario/', include('modules.HorarioEmpleado.urls')), #horarioempleado
+    path('pedido/', include('modules.Pedido.urls')), #pedido
+    path('publicidad/', include('modules.Publicidad.urls')), #publicidad
+    path('notificacion/', include('modules.Notificacion.urls')), #notificacion
 
 ]

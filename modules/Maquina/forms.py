@@ -1,9 +1,8 @@
 from django import forms
 from django.utils import timezone
-from modules.Maquina.models import Tipomaquina
+from .models import Tipomaquina
 
 def tipoChoice():
-
     tipos = Tipomaquina.objects.all();
     lista = []
 
@@ -17,6 +16,7 @@ def tipoChoice():
         resultado.append((str(i), str(i)))
 
     return tuple(resultado)
+
 
 
 class FormMaquinaInsert(forms.Form):

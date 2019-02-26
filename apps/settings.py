@@ -45,6 +45,11 @@ INSTALLED_APPS = [
     'modules.Promocion',
     'modules.Producto',
     'modules.Proveedor',
+    'modules.Tratamiento',
+    'modules.HorarioEmpleado',
+    'modules.Pedido',
+    'modules.Publicidad',
+    'modules.Notificacion',
 ]
 
 MIDDLEWARE = [
@@ -70,7 +75,12 @@ TEMPLATES = [
                  BASE_DIR + "/templates/sala",
                  BASE_DIR + "/templates/promocion",
                  BASE_DIR + "/templates/producto",
-                 BASE_DIR + "/templates/proveedor"
+                 BASE_DIR + "/templates/proveedor",
+                 BASE_DIR + "/templates/tratamiento",
+                 BASE_DIR + "/templates/horario",
+                 BASE_DIR + "/templates/pedido",
+                 BASE_DIR + "/templates/publicidad",
+                 BASE_DIR + "/templates/notificacion"
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -96,7 +106,7 @@ DATABASES = {
         'NAME': 'CLEO',
         'USER': 'root',
         'PASSWORD': 'root2018',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'HOST': 'localhost', #'db',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
         
         'OPTIONS': {
@@ -141,7 +151,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 
