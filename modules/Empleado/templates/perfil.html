@@ -4,20 +4,67 @@
     <div class="container perfil">
         <h1 class="subtitle">Empleado</h1>
         <div class="row ">
+            <div class="col-md-2"></div>
             <div class="col-md-4 foto">
-                 <img class="img-thumbnail" src="{% static 'img/person.jpg' %}" alt="Flowers in Chania">
-            </div>
-            <div class="col-md-8 datos">
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <img class="img-thumbnail img-responsive" src="{% static 'img/person.jpg' %}" alt="Perfil">
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
 
             </div>
+            <div class="col-md-4 datos">
+               <ul>
+                   <li>
+                       <strong>Nombre:</strong>
+                       {{datos.nom}}
+                   </li>
+                   <li>
+                       <strong>Apellidos:</strong>
+                       {{datos.ape}}
+                   </li>
+                   <li>
+                       <strong>DNI:</strong>
+                       {{datos.dni}}
+                   </li>
+                   <li>
+                       <strong>Email:</strong>
+                       {{datos.email}}
+                   </li>
+                   <li>
+                       <strong>Telefono:</strong>
+                       {{datos.tlf}}
+                   </li>
+                   <li>
+                       <strong>Direccion:</strong>
+                       {{datos.dir}}
+                   </li>
+                   <li>
+                       <strong>Tipo:</strong>
+                       {{datos.tipo}}
+                   </li>
+                   <li>
+                       <strong>Codigo:</strong>
+                       {{datos.cod}}
+                   </li>
+               </ul>
+            </div>
+            <div class="col-md-2"></div>
         </div>
         <div class="row ubotones">
+
             <form>
                 <div class="col-md-6 edit">
-                    <button>Editar</button>
+                    <button  type="submit" formmethod="get" formaction="/empleado/{{datos.id }}/modificar" class="btn ">Editar
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </button>
                 </div>
                 <div class="col-md-6 del">
-                    <button>Eliminar</button>
+                    <button  type="submit" formmethod="get" formaction="/empleado/{{datos.id }}/eliminar"class="btn ">Eliminar
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
                 </div>
             </form>
         </div>

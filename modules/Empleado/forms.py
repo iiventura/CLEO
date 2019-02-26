@@ -45,10 +45,6 @@ class FormEmpleadoInsert(forms.Form):
         widget=(forms.TextInput(attrs={"id": "password"})))
 
 
-class FormEmpleadoDelete(forms.Form):
-    dni = forms.CharField(max_length=9, label="Dni ",
-        required=False, #lo ponemos para que no nos salga que es requerido al mostrarlo
-        widget=(forms.TextInput(attrs={"id": "dni"})))
 
 class FormEmpleadoUpdate(forms.Form):
     nombre = forms.CharField(max_length=45, label="Nombre ",
@@ -68,6 +64,5 @@ class FormEmpleadoUpdate(forms.Form):
 
     Tipo = forms.ChoiceField(choices=tipoChoice())
 
-    password = forms.CharField(max_length=45, label="Contraseña",
-            widget=(forms.TextInput(attrs={"id": "password"})))
+
 

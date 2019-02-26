@@ -144,3 +144,30 @@ tbody td a:hover{
   text-decoration: none;
    color:  #DC9D00 !important;
 }
+
+
+/*PERFILES*/
+.perfil li{
+  list-style-type: none;
+  padding: 2%;
+  color: #20135C;
+  font-style:italic;
+}
+
+.perfil strong {
+  color: #0E043D;
+  font-style:normal;
+}
+.edit button, .del button {
+  width: 40%;
+  background-color:  #0E043D;
+  color:  #DBD0BE !important;
+}
+
+.edit .glyphicon-edit, .del .glyphicon-remove {
+  color: #E8B12A;
+}
+
+.edit button{
+  margin-left: 50%;
+}

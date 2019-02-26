@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect,HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, Http404
 from .models import Empleado, Tipoempleado
 from .forms import *
 from django.contrib import messages
@@ -73,32 +73,67 @@ def listar(request):
         tipoEmpleado = Tipoempleado.objects.get(id=empleado.tipoempleado.id)
         data={
            "id": empleado.id,
-            #"dni": empleado.dni,
-            #"cod": empleado.codigo,
             "nom": empleado.nombre,
             "ape": empleado.apellidos,
             "email": empleado.email,
-            #"dir": empleado.direccion,
-            #"tlf": empleado.telefono,
             "tipo": tipoEmpleado.nombre.title(),
         }
         lista.append(data)
     return render(request,'lista.html',{"lista":lista})
 
 def perfil(request,pk ):
-    #empleado = get_object_or_404(Empleado, pk=pk)
-    emp = Empleado.objects.get(id=pk)
-
-    data = {
-        "dni": emp.dni,
-        "cod": emp.codigo,
-        "tipo": emp.tipoempleado.nombre,
-        "nom": emp.nombre,
-        "ape": emp.apellidos,
-        "email": emp.email,
-        "dir": emp.direccion,
-        "tlf": emp.telefono,
-        "cnt": emp.password,
-    }
+    try:
+        empleado = Empleado.objects.get(id=pk)
+        tipo = Tipoempleado.objects.get(id=empleado.tipoempleado.id)
+        data = {
+            "id": empleado.id,
+            "dni": empleado.dni,
+            "cod": empleado.codigo,
+            "tipo": tipo.nombre.title(),
+            "nom": empleado.nombre,
+            "ape": empleado.apellidos,
+            "email": empleado.email,
+            "dir": empleado.direccion,
+            "tlf": empleado.telefono,
+        }
+    except Empleado.DoesNotExist:
+        raise Http404("Empleado no existe")
 
     return render(request, 'perfil.html', {"datos": data})
+
+def eliminar(request,pk ):
+    try:
+        empleado = Empleado.objects.get(id=pk)
+        Empleado.objects.filter(id=empleado.id).delete()
+
+    except Empleado.DoesNotExist:
+        raise Http404("Empleado no existe")
+
+    return HttpResponseRedirect("/empleado/lista")
+
+def modificar(request,pk ):
+    try:
+        empleado = Empleado.objects.get(id=pk)
+
+    except Empleado.DoesNotExist:
+        raise Http404("Empleado no existe")
+
+    data = {
+        "nombre": empleado.nombre,
+        "apellidos": empleado.apellidos,
+        "email": empleado.email,
+        "direccion": empleado.direccion,
+        "tlf": empleado.telefono
+    }
+    tipo =str(empleado.tipoempleado.nombre).title()
+    print()
+    if request.method == 'GET':
+        form = FormEmpleadoUpdate()
+
+        return render(request,'empleado.html',{'form': form, 'data':data, 'tipo':tipo})
+
+
+    elif request.method == 'POST':
+        form = FormEmpleadoUpdate(request.POST)
+
+    return HttpResponseRedirect("/empleado/lista")

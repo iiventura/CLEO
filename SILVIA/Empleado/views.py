@@ -40,62 +40,6 @@ def login(request):
     #lo que lanza si no hemso dado al boton y crea el evento post
     return render(request, 'loginEmpleado.html', {'form': form})
 
-def alta(request):
-    encargado, basico = comprobarSesion(request)
-    if request.method == "POST":
-        form = FormEmpleadoInsert(request.POST)
-
-        if form.is_valid():
-            datos = form.cleaned_data
-
-            # recogemos los datos
-            dni = datos.get("dni")
-            cod = datos.get("codigo")
-            nom = datos.get("nombre")
-            ape = datos.get("apellidos")
-            email = datos.get("email")
-            dir = datos.get("direccion")
-            tlf = datos.get("telefono")
-            tipo = datos.get("Tipo")
-            password = datos.get("password")
-
-            # comprobamos dni
-            if len(dni) == 9:
-                numeros = dni[0:8]
-                letra = dni[8:9]
-
-                if not numeros.isdigit() and letra.isalpha():
-                    messages.error(request, 'El Dni no es correcto.')
-            else:
-                messages.error(request, 'El Dni no es correcto.')
-
-            #comprobamso telefono
-            if not (len(tlf) == 9 and tlf.isdigit()):
-                messages.error(request, 'El telefono no es correcto.')
-                messages.error(request, '')
-
-            elif not Empleado.objects.filter(dni=dni).exists():
-                if not Empleado.objects.filter(email=email).exists():  # comprobamos si ya existe ese empleado
-
-                    instTipoEmpleado = Tipoempleado.objects.get(nombre=tipo)
-
-                    e = Empleado(dni=dni, codigo=cod, nombre=nom, apellidos=ape,email=email,
-                                 direccion=dir,telefono=tlf,tipoempleado=instTipoEmpleado, password=password)
-                    e.save()
-
-
-                    return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
-                else:
-                    messages.error(request, 'El empleado ya existe.')
-            else:
-                messages.error(request, 'El empleado ya existe.')
-
-    else:
-        form = FormEmpleadoInsert()
-
-    return render(request, 'alta.html', {'form': form, 'elem': "empleado", 'cliente': False,
-                'encargado': encargado, 'basico': basico})
-
 def baja(request):
     encargado, basico = comprobarSesion(request)
     if request.method == "POST":
@@ -303,7 +247,7 @@ def comprobarSesion(request):
 
 def datosEmpleados():
 
-    datos = Empleado.objects.all();
+    datos = Empleado.objects.all()
     datosFinales = []
 
     for emp in datos:
