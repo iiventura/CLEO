@@ -1,0 +1,33 @@
+{% extends "ebase.html" %}
+
+{% block content %}
+    <h1 class="subtitle">Salas</h1>
+    <div class="container list-sala">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for d in lista %}
+                <tr>
+                    <td> {{d.nom}} </td>
+                    <td>
+                        <a href="/sala/{{d.id }}/eliminar">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/sala/{{d.id }}/modificar">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
