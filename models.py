@@ -26,12 +26,6 @@ class Cita(models.Model):
         unique_together = (('id', 'estadocita', 'sala', 'cliente', 'empleado', 'tratamiento', 'horarioentrada', 'horariosalida'),)
 
 
-
-
-
-
-
-
 class Estadocita(models.Model):
     nombre = models.CharField(max_length=45, blank=True, null=True)
 
@@ -39,6 +33,19 @@ class Estadocita(models.Model):
         managed = False
         db_table = 'estadocita'
 
+
+class Factura(models.Model):
+    id = models.AutoField(primary_key=True)
+    costeporcobrar = models.FloatField(db_column='costePorCobrar', blank=True, null=True)  # Field name made lowercase.
+    total = models.FloatField(blank=True, null=True)
+    fecha = models.DateTimeField(blank=True, null=True)
+    estadofactura = models.ForeignKey(Estadofactura, models.DO_NOTHING, db_column='estadoFactura_id')  # Field name made lowercase.
+    cita = models.ForeignKey(Cita, models.DO_NOTHING, db_column='Cita_id')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'factura'
+        unique_together = (('id', 'estadofactura', 'cita'),)
 
 class Estadofactura(models.Model):
     nombre = models.CharField(max_length=45, blank=True, null=True)
@@ -64,18 +71,7 @@ class Estadopedido(models.Model):
         db_table = 'estadopedido'
 
 
-class Factura(models.Model):
-    id = models.AutoField(primary_key=True)
-    costeporcobrar = models.FloatField(db_column='costePorCobrar', blank=True, null=True)  # Field name made lowercase.
-    total = models.FloatField(blank=True, null=True)
-    fecha = models.DateTimeField(blank=True, null=True)
-    estadofactura = models.ForeignKey(Estadofactura, models.DO_NOTHING, db_column='estadoFactura_id')  # Field name made lowercase.
-    cita = models.ForeignKey(Cita, models.DO_NOTHING, db_column='Cita_id')  # Field name made lowercase.
 
-    class Meta:
-        managed = False
-        db_table = 'factura'
-        unique_together = (('id', 'estadofactura', 'cita'),)
 
 
 class Horario(models.Model):
