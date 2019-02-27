@@ -8,7 +8,7 @@ from django.utils import timezone
 
 
 def main(request):
-    return render(request, 'index.html')
+    return render(request, 'eindex.html')
 
 
 def nuevo(request):
@@ -55,7 +55,7 @@ def nuevo(request):
                     e.save()
 
 
-                    return render(request, 'nuevo.html', {'form': form})
+                    return render(request, 'enuevo.html', {'form': form})
                 else:
                     messages.error(request, 'El empleado ya existe.')
             else:
@@ -64,7 +64,7 @@ def nuevo(request):
     else:
         form = FormEmpleadoInsert()
 
-    return render(request, 'nuevo.html', {'form': form})
+    return render(request, 'enuevo.html', {'form': form})
 
 def listar(request):
     datos = Empleado.objects.all()
@@ -80,7 +80,7 @@ def listar(request):
             "tipo": tipoEmpleado.nombre.title(),
         }
         lista.append(data)
-    return render(request,'lista.html',{"lista":lista})
+    return render(request,'elista.html',{"lista":lista})
 
 def perfil(request,pk ):
     try:
@@ -100,7 +100,7 @@ def perfil(request,pk ):
     except Empleado.DoesNotExist:
         raise Http404("Empleado no existe")
 
-    return render(request, 'perfil.html', {"datos": data})
+    return render(request, 'eperfil.html', {"datos": data})
 
 def eliminar(request,pk ):
     try:
