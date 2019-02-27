@@ -9,9 +9,8 @@
         </div>
     {% endif %}
         <h1 class="subtitle">Modificar Empleado</h1>
-
         <form class="create post-form" method="POST">
-            <input type="hidden" name="csrfmiddlewaretoken" value="nlV51lsg4B0kI9f82NiApTdhTMxQ7ECQhxhWffkLsrgeYFvTX8lAvXR7zaMBFvvH">
+            {% csrf_token %}
 
             <p><label for="nombre">Nombre :</label>
                 <input type="text" name="nombre" id="nombre" maxlength="45" value="{{data.nombre}}" required>
@@ -20,7 +19,7 @@
                 <input type="text" name="apellidos" id="apellidos" maxlength="45" value="{{data.apellidos}}" required>
             </p>
             <p><label for="email">Email :</label>
-                <input type="text" name="email" id="email" maxlength="45" value="{{data.email}}"required>
+                <input type="email" name="email" id="email" maxlength="45" value="{{data.email}}"required>
             </p>
             <p><label for="direccion">Direccion:</label>
                 <input type="text" name="direccion" id="direccion" maxlength="45" value="{{data.direccion}}" required>
@@ -28,17 +27,16 @@
             <p><label for="telefono">Telefono :</label>
                 <input type="text" name="telefono" id="telefono" maxlength="45" value="{{data.tlf}}" required>
             </p>
-            <p><label for="id_Tipo">Tipo:</label>
-                <select name="Tipo" required id="id_Tipo">
-                    {% if tipo == "Basico" %}
-                        <option value="Basico" selected>Basico</option>
-                        <option value="Encargado">Encargado</option>
-                    {% elif tipo == "Encargado"  %}
-                        <option value="Encargado" selected>Basico</option>
-                        <option value= "Basico" >Encargado</option>
+             <p><label for="id_Tipo">Tipo:</label>
+                <select name="tipo" required id="id_Tipo">
+                    <option value="{{data.tipo}}" selected>{{data.tipo}}</option>
+                    {% if data.tipo == "Basico" %}
+                    <option value="Encargado">Encargado</option>
+                    {% elif data.tipo == "Encargado" %}
+                    <option value="Basico">Basico</option>
                     {% endif %}
-                </select></p>
-
+                </select>
+            </p>
             <div class="row ">
                 <input type="submit" class="btn " value="Modificar">
             </div>

@@ -45,24 +45,28 @@ class FormEmpleadoInsert(forms.Form):
         widget=(forms.TextInput(attrs={"id": "password"})))
 
 
-
 class FormEmpleadoUpdate(forms.Form):
-    nombre = forms.CharField(max_length=45, label="Nombre ",
-            widget=(forms.TextInput(attrs={"id": "nombre"})))
+     nombre = forms.CharField(max_length=45, label="Nombre ",
+        widget=(forms.TextInput(attrs={"id": "nombre"})))
 
-    apellidos = forms.CharField(max_length=45, label="Apellidos ",
-            widget=(forms.TextInput(attrs={"id": "apellidos"})))
+     apellidos = forms.CharField(max_length=45,label="Apellidos ",
+        widget = (forms.TextInput(attrs = {"id" : "apellidos"})))
 
-    email = forms.EmailField(max_length=45, label="Email ",
-            widget=(forms.TextInput(attrs={"id": "email"})))
+     email = forms.EmailField(max_length=45, label="Email ",
+        widget=(forms.TextInput(attrs={"id": "email"})))
 
-    direccion = forms.CharField(max_length=45, label="Direccion",
-            widget=(forms.TextInput(attrs={"id": "direccion"})))
+     direccion = forms.CharField(max_length=45, label="Direccion",
+        widget = (forms.TextInput(attrs = {"id" : "direccion"})))
 
-    telefono = forms.CharField(max_length=45, label="Telefono ",
-             widget=(forms.TextInput(attrs={"id": "telefono"})))
+     telefono = forms.CharField(max_length=45, label="Telefono ",
+        widget=(forms.TextInput(attrs={"id": "telefono"})))
 
-    Tipo = forms.ChoiceField(choices=tipoChoice())
+     Tipo = forms.ChoiceField(choices=tipoChoice())
+
+
+
+
+
 
 
 

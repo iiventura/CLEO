@@ -1,3 +1,4 @@
+from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse, Http404
 from .models import Empleado, Tipoempleado
@@ -115,25 +116,28 @@ def modificar(request,pk ):
     try:
         empleado = Empleado.objects.get(id=pk)
 
+        if request.method == 'GET':
+            form = FormEmpleadoUpdate()
+            data = {
+                "nombre": empleado.nombre,
+                "apellidos": empleado.apellidos,
+                "email": empleado.email,
+                "direccion": empleado.direccion,
+                "tlf": empleado.telefono,
+                "tipo": str(empleado.tipoempleado.nombre).title()
+            }
+            return render(request, 'empleado.html', {'form': form, 'data': data})
+
+
+        elif request.method == 'POST':
+            form = FormEmpleadoUpdate(request.POST)
+           # for elem in request.POST
+            print(form.is_valid())
+            return HttpResponseRedirect("/empleado/" + str(pk))
+
+
+
     except Empleado.DoesNotExist:
         raise Http404("Empleado no existe")
 
-    data = {
-        "nombre": empleado.nombre,
-        "apellidos": empleado.apellidos,
-        "email": empleado.email,
-        "direccion": empleado.direccion,
-        "tlf": empleado.telefono
-    }
-    tipo =str(empleado.tipoempleado.nombre).title()
-    print()
-    if request.method == 'GET':
-        form = FormEmpleadoUpdate()
-
-        return render(request,'empleado.html',{'form': form, 'data':data, 'tipo':tipo})
-
-
-    elif request.method == 'POST':
-        form = FormEmpleadoUpdate(request.POST)
-
-    return HttpResponseRedirect("/empleado/lista")
+    return HttpResponseRedirect("/empleado/"+str(pk))

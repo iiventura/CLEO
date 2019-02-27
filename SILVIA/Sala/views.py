@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .models import Sala
-from SILVIA.Empleado.views import comprobarSesion
+from SILVIA.Revisar.Empleado.views import comprobarSesion
 from .forms import *
 from django.contrib import messages
 

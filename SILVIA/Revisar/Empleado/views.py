@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect,HttpResponse
+
+from modules.Empleado.forms import FormEmpleadoInsert, FormEmpleadoUpdate
 from .models import Empleado,Tipoempleado
 from .forms import *
 from django.contrib import messages
@@ -40,29 +42,8 @@ def login(request):
     #lo que lanza si no hemso dado al boton y crea el evento post
     return render(request, 'loginEmpleado.html', {'form': form})
 
-def baja(request):
-    encargado, basico = comprobarSesion(request)
-    if request.method == "POST":
-        form = FormEmpleadoDelete(request.POST)
 
-        if form.is_valid():
-            datos = form.cleaned_data
 
-            # recogemos los datos
-            dni = datos.get("dni")
-
-            if Empleado.objects.filter(dni=dni).exists():
-                Empleado.objects.filter(dni=dni).delete()
-                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
-            else:
-                messages.error(request, "El empleado no existe.")
-        else:
-            form = FormEmpleadoDelete()
-    else:
-        form = FormEmpleadoDelete()
-
-    return render(request, 'borrar.html', {'form': form, 'elem':"empleado", 'cliente': False,
-                'encargado': encargado, 'basico': basico})
 
 def modificar(request):
     encargado, basico = comprobarSesion(request)
@@ -247,7 +228,7 @@ def comprobarSesion(request):
 
 def datosEmpleados():
 
-    datos = Empleado.objects.all()
+    datos = Empleado.objects.all();
     datosFinales = []
 
     for emp in datos:
