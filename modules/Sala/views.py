@@ -1,3 +1,4 @@
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render
 from .forms import FormSalaInsert
 from .models import Sala
@@ -26,4 +27,29 @@ def nuevo(request):
     else:
         form = FormSalaInsert()
 
-    return render(request, 'nuevoP.html', {'form': form})
+    return render(request, 'snuevo.html', {'form': form})
+
+
+
+def listar(request):
+    datos = Sala.objects.all()
+    lista = []
+
+    for sala in datos:
+        data={
+           "id": sala.id,
+            "nom": sala.nombre,
+        }
+        lista.append(data)
+    return render(request,'./slista.html',{"lista":lista})
+
+
+
+def eliminar(request,pk ):
+    try:
+        sala = Sala.objects.get(id=pk)
+        sala.delete()
+    except Sala.DoesNotExist:
+        raise Http404("Empleado no existe")
+
+    return HttpResponseRedirect("/sala/lista")

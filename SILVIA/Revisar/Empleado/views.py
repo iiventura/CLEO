@@ -30,7 +30,7 @@ def login(request):
                 request.session["expire_date"] = str(f)
 
                 encargado, basico = comprobarSesion(request)
-                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
+                return render(request, 'eindex.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
             else:
                 messages.error(request, "Usuario y contraseña no coinciden.")
         else:
@@ -81,7 +81,7 @@ def modificar(request):
                 antiEmple.password = password
                 antiEmple.save()
 
-                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
+                return render(request, 'eindex.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
 
     # peticion GET
     formId = FormEmpleadoDelete()

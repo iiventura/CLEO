@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'modules.Main',
     'modules.Empleado',
     'modules.Sala',
+    'modules.Maquina',
 ]
 
 MIDDLEWARE = [
@@ -61,6 +62,7 @@ TEMPLATES = [
                 os.path.join(BASE_DIR, '/modules/Main/templates'),
                 os.path.join(BASE_DIR, '/modules/Empleado/templates'),
                 os.path.join(BASE_DIR, '/modules/Sala/templates'),
+                os.path.join(BASE_DIR, '/modules/Maquina/templates'),
 
         ],
         'APP_DIRS': True,

@@ -26,7 +26,7 @@ def nuevo(request):
                 s = Proveedor(nombre=nomPro, contacto=con, descripcion=des)
                 s.save()
 
-                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
+                return render(request, 'eindex.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
             else:
                 messages.error(request, 'El proveedor ya existe.')
                 messages.error(request, '')
@@ -49,7 +49,7 @@ def borrar(request):
 
             if Proveedor.objects.filter(nombre=nombre):
                 Proveedor.objects.get(nombre=nombre).delete()
-                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
+                return render(request, 'eindex.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
             else:
                 messages.error(request, "El proveedor no existe.")
     else:
@@ -76,7 +76,7 @@ def modificar(request):
             antiProv.descripcion = desc
             antiProv.save()
 
-            return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
+            return render(request, 'eindex.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
 
     # peticion GET
     formId = FormProveedorDelete()

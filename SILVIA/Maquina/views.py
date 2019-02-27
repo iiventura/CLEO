@@ -25,7 +25,7 @@ def nueva(request):
                 m = Maquina(nombre=nomMaq,fechaingreso=fecha,tipomaquina=instTipoMaquina);
                 m.save()
 
-                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
+                return render(request, 'eindex.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
             else:
                 messages.error(request, 'La maquina ya existe.')
                 messages.error(request, '')
@@ -48,7 +48,7 @@ def borrar(request):
 
             if Maquina.objects.filter(nombre=nombre):
                 Maquina.objects.get(nombre=nombre).delete()
-                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
+                return render(request, 'eindex.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
             else:
                 messages.error(request, "La maquina no existe.")
     else:
@@ -91,7 +91,7 @@ def modificar(request):
                 antiMaq.fechaingreso = fecha
                 antiMaq.save()
 
-                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
+                return render(request, 'eindex.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
 
     # peticion GET
     formId = FormMaquinaDelete()

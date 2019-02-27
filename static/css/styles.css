@@ -118,6 +118,13 @@ footer strong{
 }
 
 /*TABLE*/
+.list-empleados{
+  width: 85% 
+}
+
+.list-sala{
+  width: 45%;
+}
 table,th{
   text-align: center;
   color: #0E043D;

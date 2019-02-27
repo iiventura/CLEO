@@ -25,7 +25,7 @@ def nueva(request):
                 s = Sala(nombre=nomSala)
                 s.save()
 
-                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
+                return render(request, 'eindex.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
             else:
                 messages.error(request, 'La sala ya existe.')
                 messages.error(request, '')
@@ -48,7 +48,7 @@ def borrar(request):
 
             if Sala.objects.filter(nombre=nombre):
                 Sala.objects.get(nombre=nombre).delete()
-                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
+                return render(request, 'eindex.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
             else:
                 messages.error(request, "La sala no existe.")
     else:
@@ -79,7 +79,7 @@ def modificar(request):
                 antiSala.nombre = nomSala
                 antiSala.save()
 
-                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
+                return render(request, 'eindex.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
 
     # peticion GET
     formId = FormSalaDelete()

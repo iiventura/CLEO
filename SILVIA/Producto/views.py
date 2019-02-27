@@ -24,7 +24,7 @@ def nueva(request):
                 p = Producto(id=id,nombre=nombre,tipoproducto=instTipoProducto);
                 p.save()
 
-                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
+                return render(request, 'eindex.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
             else:
                 messages.error(request, 'El producto ya existe.')
                 messages.error(request, '')
@@ -47,7 +47,7 @@ def borrar(request):
 
             if Producto.objects.filter(id=id):
                 Producto.objects.get(id=id).delete()
-                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
+                return render(request, 'eindex.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
             else:
                 messages.error(request, "El producto no existe.")
     else:
@@ -78,7 +78,7 @@ def modificar(request):
             antiProd.tipoproducto = instTipoProducto
             antiProd.save()
 
-            return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
+            return render(request, 'eindex.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
 
     # peticion GET
     formId = FormProductoDelete()
