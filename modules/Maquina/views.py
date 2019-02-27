@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render
 
 from .forms import FormMaquinaInsert
@@ -30,3 +31,33 @@ def nuevo(request):
         form = FormMaquinaInsert()
 
     return render(request, 'mnuevo.html', {'form': form})
+
+
+
+def listar(request):
+    datos = Maquina.objects.all()
+    lista = []
+
+    for maquina in datos:
+        print(maquina.fechaingreso)
+        tipoMaquina = Tipomaquina.objects.get(id=maquina.tipomaquina.id)
+        data = {
+            "id": maquina.id,
+            "nom": maquina.nombre,
+            "date": maquina.fechaingreso,
+            "tipo": tipoMaquina.nombre.title(),
+        }
+        lista.append(data)
+
+    return render(request, 'mlista.html', {"lista": lista})
+
+
+
+def eliminar(request,pk ):
+    try:
+        maq = Maquina.objects.get(id=pk)
+        maq.delete()
+    except Maquina.DoesNotExist:
+        raise Http404("Sala no existe")
+
+    return HttpResponseRedirect("/maquina/lista")

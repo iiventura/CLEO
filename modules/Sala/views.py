@@ -50,6 +50,6 @@ def eliminar(request,pk ):
         sala = Sala.objects.get(id=pk)
         sala.delete()
     except Sala.DoesNotExist:
-        raise Http404("Empleado no existe")
+        raise Http404("Sala no existe")
 
     return HttpResponseRedirect("/sala/lista")

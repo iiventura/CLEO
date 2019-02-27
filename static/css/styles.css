@@ -118,7 +118,7 @@ footer strong{
 }
 
 /*TABLE*/
-.list-empleados{
+.list-empleados, .list-maquina{
   width: 85% 
 }
 
