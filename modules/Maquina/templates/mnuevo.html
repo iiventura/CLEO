@@ -8,12 +8,12 @@
             {% endfor %}
         </div>
     {% endif %}
-        <h1 class="subtitle">Añadir Sala</h1>
+        <h1 class="subtitle">Añadir Maquina</h1>
         <form class="create post-form" method="POST">
             {% csrf_token %}
             {{form.as_p}}
             <div class="row ">
-                <input type="submit" class="btn " value="Crear Sala">
+                <input type="submit" class="btn " value="Crear Maquina">
             </div>
         </form>
 

@@ -10,7 +10,6 @@ urlpatterns = [
 ]
 """
   path('cliente/',include('modules.Cliente.urls')), #cliente
-  path('maquina/',include('modules.Maquina.urls')), #maquina
   path('promocion/', include('modules.Promocion.urls')), #promocion
   path('producto/', include('modules.Producto.urls')), #promocion
   path('proveedor/', include('modules.Proveedor.urls')), #promocion

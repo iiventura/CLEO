@@ -7,9 +7,3 @@ urlpatterns = [
     path('<int:pk>/eliminar', views.eliminar, name='app_eliminar'),
     #path('<int:pk>/modificar', views.modificar, name='app_modificar'),
 ]
-
-"""
-     
-    path('modificarSala', views.modificar, name='app_modificarSala'),
-    
-    """

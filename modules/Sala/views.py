@@ -20,7 +20,7 @@ def nuevo(request):
                 s = Sala(nombre=nomSala)
                 s.save()
 
-                return render(request, 'nuevoP.html', {'form': form})
+                return render(request, 'snuevo.html', {'form': form})
             else:
                 messages.error(request, 'La sala ya existe.')
                 messages.error(request, '')
