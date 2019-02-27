@@ -1,8 +1,10 @@
+from django.shortcuts import render
+
 # Create your views here.
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .models import Promocion
-from SILVIA.Revisar.Empleado.views import comprobarSesion
+from ..Empleado.views import comprobarSesion
 from .forms import *
 from django.contrib import messages
 
@@ -25,7 +27,7 @@ def nueva(request):
                 s = Promocion(nombre=nomPro, observaciones=obs)
                 s.save()
 
-                return render(request, 'eindex.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
+                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
             else:
                 messages.error(request, 'La Promocion ya existe.')
                 messages.error(request, '')
@@ -48,7 +50,7 @@ def borrar(request):
 
             if Promocion.objects.filter(nombre=nombre):
                 Promocion.objects.get(nombre=nombre).delete()
-                return render(request, 'eindex.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
+                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
             else:
                 messages.error(request, "La promocion no existe.")
     else:
@@ -73,7 +75,7 @@ def modificar(request):
             antiPromo.observaciones = obs
             antiPromo.save()
 
-            return render(request, 'eindex.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
+            return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
 
     # peticion GET
     formId = FormPromocionDelete()

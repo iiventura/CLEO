@@ -1,0 +1,86 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'plantilla/stylePlantilla.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'plantilla/styleForm.css' %}">
+        <title>Modificar maquina</title>
+    {% endblock %}
+
+
+</head>
+<body>
+
+ {% block content %}
+
+    <div class="ext">
+
+        {% if not buscado %}
+            <form method="GET"> {% csrf_token %}
+
+                {% for field in formId %}
+                    <p> {{ field.label_tag }} {{ field }} </p>
+                {% endfor %}
+
+                <div>
+                    <input type="submit" value="Buscar">
+
+                    {% if messages %}
+
+                        {% for message in messages %}
+                            <li> {{ message }}</li>
+                        {% endfor %}
+
+                    {% endif %}
+
+                </div>
+
+            </form>
+        {% endif %}
+
+         {% if buscado %}
+
+            <form method="POST">{% csrf_token %}
+
+                 <p>
+                     <label for="id_Estado">Estado:</label>
+                     <select name="Estado" required id="id_Estado">
+                         <option value="{{datos.idEstEle}}" selected>{{datos.nomEstEle}}</option>
+
+                        {% for tipo in datosEstado %}
+                            <option value="{{ tipo.id }}">{{ tipo.nom }}</option>
+                        {% endfor %}
+                    </select>
+                 </p>
+
+                 <p>
+                     <label for="id_Usuario">Usuario:</label>
+                     <select name="Usuario" required id="id_Usuario">
+                         <option value="{{datos.idUsuEle}}" selected>{{datos.nomUsuEle}}</option>
+
+                        {% for tipo in datosUsuario %}
+                            <option value="{{ tipo.id }}">{{ tipo.nom }}</option>
+                        {% endfor %}
+                    </select>
+                 </p>
+
+                <p>
+                     <label for="id_mensaje">Mensaje:</label>
+                     <input type="text" name="mensaje" value="{{datos.sms}}" required id="id_mensaje">
+                 </p>
+
+                <div>
+                    <input type="submit" value="Actualizar">
+                </div>
+
+            </form>
+        {% endif %}
+
+    </div>
+
+ {% endblock %}
+
+</body>
+</html>

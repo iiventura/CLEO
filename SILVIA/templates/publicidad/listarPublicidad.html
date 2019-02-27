@@ -6,7 +6,7 @@
     {% block css %}
         <link rel="stylesheet" type="text/css" href="{% static 'plantilla/stylePlantilla.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'plantilla/styleForm.css' %}">
-        <title>Listar maquinas</title>
+        <title>Listar publicidad</title>
     {% endblock %}
 
 
@@ -17,18 +17,22 @@
 
     <div class="ext">
         <table>
-            <caption>Lista de maquinas </caption>
+            <caption>Lista de publicidad </caption>
 
             <tr>
-                <th> Nombre</th>
-                <th> Tipo</th>
-                <th> Fecha</th>
+                <th> Id</th>
+                <th> Inicio</th>
+                <th> Fin</th>
+                <th> Promocion</th>
+                <th> Ciente</th>
             </tr>
              {% for d in datos %}
                 <tr>
-                     <td> {{d.nom}} </td>
-                     <td> {{d.tipo}} </td>
-                     <td> {{d.fec}} </td>
+                     <td> {{d.id}} </td>
+                     <td> {{d.ini}} </td>
+                     <td> {{d.fin}} </td>
+                     <td> {{d.pro}} </td>
+                     <td> {{d.cli}} </td>
                 </tr>
              {% endfor %}
         </table>

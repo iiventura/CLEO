@@ -1,8 +1,10 @@
+from django.shortcuts import render
+
 # Create your views here.
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .models import Proveedor
-from SILVIA.Revisar.Empleado.views import comprobarSesion
+from ..Empleado.views import comprobarSesion
 from .forms import *
 from django.contrib import messages
 
@@ -26,7 +28,7 @@ def nuevo(request):
                 s = Proveedor(nombre=nomPro, contacto=con, descripcion=des)
                 s.save()
 
-                return render(request, 'eindex.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
+                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
             else:
                 messages.error(request, 'El proveedor ya existe.')
                 messages.error(request, '')
@@ -49,7 +51,7 @@ def borrar(request):
 
             if Proveedor.objects.filter(nombre=nombre):
                 Proveedor.objects.get(nombre=nombre).delete()
-                return render(request, 'eindex.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
+                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
             else:
                 messages.error(request, "El proveedor no existe.")
     else:
@@ -76,7 +78,7 @@ def modificar(request):
             antiProv.descripcion = desc
             antiProv.save()
 
-            return render(request, 'eindex.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
+            return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
 
     # peticion GET
     formId = FormProveedorDelete()

@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'plantilla/stylePlantilla.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'plantilla/styleForm.css' %}">
+        <title>Listar pedidos</title>
+    {% endblock %}
+
+
+</head>
+<body>
+
+ {% block content %}
+
+    <div class="ext">
+        <table>
+            <caption>Lista de pedidos </caption>
+
+            <tr>
+                <th> Id</th>
+                <th> Cantidad</th>
+                <th> Fecha</th>
+                <th> Estado</th>
+                <th> Producto</th>
+                <th> Proveedor</th>
+            </tr>
+             {% for d in datos %}
+                <tr>
+                     <td> {{d.id}} </td>
+                     <td> {{d.can}} </td>
+                     <td> {{d.fec}} </td>
+                     <td> {{d.estado}} </td>
+                     <td> {{d.prod}} </td>
+                     <td> {{d.prov}} </td>
+                </tr>
+             {% endfor %}
+        </table>
+    </div>
+
+ {% endblock %}
+
+</body>
+</html>

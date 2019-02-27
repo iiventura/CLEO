@@ -6,7 +6,7 @@
     {% block css %}
         <link rel="stylesheet" type="text/css" href="{% static 'plantilla/stylePlantilla.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'plantilla/styleForm.css' %}">
-        <title>Listar Salas</title>
+        <title>Listar notificaciones</title>
     {% endblock %}
 
 
@@ -17,14 +17,20 @@
 
     <div class="ext">
         <table>
-            <caption>Lista de Salas </caption>
+            <caption>Lista de notificaciones </caption>
 
             <tr>
-                <th> Nombre</th>
+                <th> Id</th>
+                <th> Estado</th>
+                <th> Usuario</th>
+                <th> Mensaje</th>
             </tr>
              {% for d in datos %}
                 <tr>
-                     <td> {{d.nom}} </td>
+                     <td> {{d.id}} </td>
+                     <td> {{d.est}} </td>
+                     <td> {{d.usu}} </td>
+                     <td> {{d.sms}} </td>
                 </tr>
              {% endfor %}
         </table>
