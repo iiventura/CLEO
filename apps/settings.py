@@ -39,13 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'modules.Main',
     'modules.Empleado',
-    #'modules.Index',
-    #'modules.Cliente',
-    #'modules.Maquina',
-    #'modules.Sala',
-    #'modules.Promocion',
-    #'modules.Producto',
-    #'modules.Proveedor',
+    'modules.Sala',
 ]
 
 MIDDLEWARE = [
@@ -66,13 +60,8 @@ TEMPLATES = [
         'DIRS': [
                 os.path.join(BASE_DIR, '/modules/Main/templates'),
                 os.path.join(BASE_DIR, '/modules/Empleado/templates'),
-                # BASE_DIR + "/templates/cliente",
-                # BASE_DIR + "/templates/empleado",
-                # BASE_DIR + "/templates/maquina",
-                # BASE_DIR + "/templates/sala",
-                  #BASE_DIR + "/templates/promocion",
-                 #BASE_DIR + "/templates/producto",
-                 #BASE_DIR + "/templates/proveedor"
+                os.path.join(BASE_DIR, '/modules/Sala/templates'),
+
         ],
         'APP_DIRS': True,
         'OPTIONS': {
