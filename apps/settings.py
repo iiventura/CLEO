@@ -60,11 +60,13 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
+
                 os.path.join(BASE_DIR, '/modules/Main/templates'),
                 os.path.join(BASE_DIR, '/modules/Empleado/templates'),
                 os.path.join(BASE_DIR, '/modules/Sala/templates'),
                 os.path.join(BASE_DIR, '/modules/Maquina/templates'),
                 os.path.join(BASE_DIR, '/modules/Tratamiento/templates'),
+
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -87,10 +89,10 @@ WSGI_APPLICATION = 'apps.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
-        'NAME': 'cleodb',
+        'NAME': 'CLEO',
         'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PASSWORD': 'root2018',
+        'HOST': 'localhost', #'db',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 }
@@ -126,7 +128,7 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 

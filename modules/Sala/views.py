@@ -30,7 +30,6 @@ def nuevo(request):
     return render(request, 'snuevo.html', {'form': form})
 
 
-
 def listar(request):
     datos = Sala.objects.all()
     lista = []

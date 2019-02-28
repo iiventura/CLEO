@@ -19,7 +19,7 @@ def nuevo(request):
             tipo = datos.get("Tipo")
 
             if not Maquina.objects.filter(nombre=nomMaq): #todavia se puede guardar una maquina mas
-                instTipoMaquina = Tipomaquina.objects.get(nombre=tipo)
+                instTipoMaquina = Tipomaquina.objects.get(id=tipo)
                 m = Maquina(nombre=nomMaq,fechaingreso=fecha,tipomaquina=instTipoMaquina);
                 m.save()
 

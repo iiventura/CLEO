@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from ..Empleado.views import comprobarSesion
+from modules.Empleado.views import comprobarSesion
 from .forms import *
 from .models import *
 from django.contrib import messages
+from django.utils.dateparse import parse_date
 from datetime import datetime
 
 # Create your views here.
@@ -21,14 +22,17 @@ def nueva(request):
          promocion = datos.get("promocion")
          cliente = datos.get("cliente")
 
+         if(inicio > fin):
+            messages.error(request, "Las fechas no son correctas.")
 
-         instPromocion = Promocion.objects.get(id=promocion)
-         instCliente = Cliente.objects.get(dni=cliente)
+         else:
+            instPromocion = Promocion.objects.get(id=promocion)
+            instCliente = Cliente.objects.get(dni=cliente)
 
-         p = Publicidad(fechainicio=inicio, fechafin=fin, promocion=instPromocion, cliente=instCliente );
-         p.save()
+            p = Publicidad(fechainicio=inicio, fechafin=fin, promocion=instPromocion, cliente=instCliente );
+            #p.save()
 
-         return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
+            return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
 
    else:
       form = FormPublicidadInsert()
@@ -52,18 +56,23 @@ def modificar(request):
          promocion = datos.get("promocion")
          cliente = datos.get("cliente")
 
-         antiPub = Publicidad.objects.get(id=id)
-         instPromocion = Promocion.objects.get(id=promocion)
-         instCliente = Cliente.objects.get(dni=cliente)
+         if (inicio > fin):
+            messages.error(request, "Las fechas no son correctas.")
+         else:
+            antiPub = Publicidad.objects.get(id=id)
+            instPromocion = Promocion.objects.get(id=promocion)
+            instCliente = Cliente.objects.get(dni=cliente)
 
-         # actualizamos datos
-         antiPub.fechainicio = inicio
-         antiPub.fechafin = fin
-         antiPub.promocion = instPromocion
-         antiPub.cliente = instCliente
-         antiPub.save()
 
-         return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
+
+            # actualizamos datos
+            antiPub.fechainicio = inicio
+            antiPub.fechafin = fin
+            antiPub.promocion = instPromocion
+            antiPub.cliente = instCliente
+            antiPub.save()
+
+            return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
 
    # peticion GET
    formId = FormPublicidadDelete()
@@ -81,7 +90,7 @@ def modificar(request):
             "nomProEle": pub.promocion.nombre,
             "idProEle": pub.promocion.id,
             "nomCliEle": pub.cliente.nombre,
-            "idCliEle": pub.cliente.id,
+            "dniCliEle": pub.cliente.dni,
          }
 
          datosPromocion = listaPromociones(data["nomProEle"])

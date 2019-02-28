@@ -20,7 +20,7 @@ def nuevo(request):
          tipo = datos.get("maquina")
 
          if not Tratamiento.objects.filter(nombre=nomTra):  # todavia se puede guardar una maquina mas
-            instMaquina = Maquina.objects.get(nombre=tipo)
+            instMaquina = Maquina.objects.get(id=tipo)
             t = Tratamiento(nombre=nomTra, descripcion=fecha, maquina=instMaquina);
             t.save()
             return render(request, 'tnuevo.html', {'form': form})
@@ -74,3 +74,4 @@ def detalle(request, pk):
       raise Http404("Tratamiento no existe")
 
    return render(request, 'tdetalle.html', {"datos": data})
+

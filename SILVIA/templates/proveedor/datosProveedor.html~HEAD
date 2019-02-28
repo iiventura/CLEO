@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 {% extends 'index.html' %}
 {% load staticfiles %}
 <html lang="en">
@@ -6,7 +7,7 @@
     {% block css %}
         <link rel="stylesheet" type="text/css" href="{% static 'plantilla/stylePlantilla.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'plantilla/styleForm.css' %}">
-        <title>Modificar maquina</title>
+        <title>Datos Proveedor</title>
     {% endblock %}
 
 
@@ -43,25 +44,23 @@
          {% if buscado %}
 
             <form method="POST">{% csrf_token %}
+
+                <h1> Datos de: {{datos.nombre}} </h1>
+
                 <p>
                     <label for="nombre">Nombre:</label>
-                    <input type="text" name="nombre" id="nombre" maxlength="45" value="{{datos.nombre}}">
+                    <input type="text" name="nombre" id="nombre" maxlength="45" value="{{datos.nombre}}" readonly>
                 </p>
+
                 <p>
-                   <label for="id_Tipo">Tipo:</label>
-
-                    <select name="Tipo" id="id_Tipo">
-                        <option value="{{datos.idTipoEle}}" selected>{{datos.nomTipoEle}}</option>
-
-                        {% for tipo in datosTipo %}
-                            <option value="{{ tipo.id }}">{{ tipo.nom }}</option>
-                        {% endfor %}
-                    </select>
+                    <label for="contacto">Contacto:</label>
+                    <input type="text" name="contacto" id="contacto" maxlength="45" value="{{datos.contacto}}" readonly>
                 </p>
 
-                <div>
-                    <input type="submit" value="Actualizar">
-                </div>
+                <p>
+                    <label for="descripcion">Descripcion:</label>
+                    <input type="text" name="descripcion" id="descripcion" maxlength="45" value="{{datos.desc}}" readonly>
+                </p>
 
             </form>
         {% endif %}
