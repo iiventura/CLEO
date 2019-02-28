@@ -20,7 +20,7 @@ def nueva(request):
             tipo = datos.get("Tipo")
 
             if not Producto.objects.filter(id=id): #todavia se puede guardar una maquina mas
-                instTipoProducto = Tipoproducto.objects.get(nombre=tipo)
+                instTipoProducto = Tipoproducto.objects.get(id=tipo)
                 p = Producto(id=id,nombre=nombre,tipoproducto=instTipoProducto);
                 p.save()
 
@@ -71,7 +71,7 @@ def modificar(request):
 
             #se ha modificado el nombre
             antiProd = Producto.objects.get(id=id)
-            instTipoProducto = Tipoproducto.objects.get(nombre=tipo)
+            instTipoProducto = Tipoproducto.objects.get(id=tipo)
 
             # actualizamos datos
             antiProd.nombre = nomProd
@@ -94,6 +94,7 @@ def modificar(request):
                 "id": prod.id,
                 "nombre": prod.nombre,
                 "nomTipoEle": str(prod.tipoproducto.nombre).title(),
+                "idTipoEle": prod.tipoproducto.id,
             }
 
             datosTipos = listaTiposProductos(data["nomTipoEle"])
@@ -147,7 +148,11 @@ def listaTiposProductos(nombre):
     for tipo in tipos:
         nom = str(tipo.nombre).title();
         if nom != nombre:
-            lista.append(nom)
+            data = {
+                "id": tipo.id,
+                "nom": str(tipo.nombre),
+            }
+            lista.append(data)
 
     return lista
 

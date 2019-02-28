@@ -42,16 +42,14 @@ def modificar(request):
    if request.method == "POST":
       form = FormTratamientoUpdate(request.POST)
       nomTra = request.GET.get("nombre")  # obtenemos el dni que hemos buscado
-      print("*************",nomTra)
-      print("*************", form)
+
       if form.is_valid():
          datos = form.cleaned_data
-         print("****************")
          des = datos.get("descripcion")
          maq = datos.get("maquina")
 
          antiTra = Tratamiento.objects.get(nombre=nomTra)
-         instMaquina = Maquina.objects.get(nombre=maq)
+         instMaquina = Maquina.objects.get(id=maq)
 
          # actualizamos datos
          antiTra.descripcion = des
@@ -73,6 +71,7 @@ def modificar(request):
          data = {
             "nombre": tra.nombre,
             "nomMaqEle": str(tra.maquina.nombre).title(),
+            "idMaqEle": tra.maquina.id,
             "des": tra.descripcion,
          }
 
@@ -147,6 +146,10 @@ def listaMaquinas(nombre):
    for tipo in tipos:
       nom = str(tipo.nombre).title();
       if nom != nombre:
-         lista.append(nom)
+         data = {
+            "id": tipo.id,
+            "nom": str(tipo.nombre),
+         }
+         lista.append(data)
 
    return lista

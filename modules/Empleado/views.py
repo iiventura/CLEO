@@ -77,7 +77,7 @@ def alta(request):
             elif not Empleado.objects.filter(dni=dni).exists():
                 if not Empleado.objects.filter(email=email).exists():  # comprobamos si ya existe ese empleado
 
-                    instTipoEmpleado = Tipoempleado.objects.get(nombre=tipo)
+                    instTipoEmpleado = Tipoempleado.objects.get(id=tipo)
 
                     e = Empleado(dni=dni, codigo=cod, nombre=nom, apellidos=ape,email=email,
                                  direccion=dir,telefono=tlf,tipoempleado=instTipoEmpleado, password=password)
@@ -144,7 +144,7 @@ def modificar(request):
             else:
 
                 antiEmple = Empleado.objects.get(email=email)
-                instTipoEmpleado = Tipoempleado.objects.get(nombre=tipo)
+                instTipoEmpleado = Tipoempleado.objects.get(id=tipo)
 
                 #actualizamos datos
                 antiEmple.nombre = nom
@@ -176,6 +176,7 @@ def modificar(request):
                 "dir": emp.direccion,
                 "tlf": emp.telefono,
                 "nomTipoEle": str(emp.tipoempleado.nombre).title(),#tipoEmpleadoId(datos.tipoempleado),
+                "idTipoEle": emp.tipoempleado.id,
                 "pass": emp.password,
             }
 
@@ -333,7 +334,11 @@ def listaTiposEmpleado(nombre):
     for tipo in tipos:
         nom = str(tipo.nombre).title();
         if nom != nombre:
-            lista.append(nom)
+            data = {
+                "id": tipo.id,
+                "nom": str(tipo.nombre),
+            }
+            lista.append(data)
 
     return lista
 

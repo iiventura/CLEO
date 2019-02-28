@@ -51,10 +51,10 @@
                    <label for="id_Tipo">Tipo:</label>
 
                     <select name="Tipo" id="id_Tipo">
-                        <option value="{{datos.nomTipoEle}}" selected>{{datos.nomTipoEle}}</option>
+                        <option value="{{datos.idTipoEle}}" selected>{{datos.nomTipoEle}}</option>
 
                         {% for tipo in datosTipo %}
-                            <option value="{{ tipo }}">{{ tipo }}</option>
+                            <option value="{{ tipo.id }}">{{ tipo.nom }}</option>
                         {% endfor %}
                     </select>
                 </p>

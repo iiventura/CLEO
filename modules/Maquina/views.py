@@ -74,7 +74,7 @@ def modificar(request):
             if nombreAnt == nomMaq: #no se modifica el nombre
 
                 antiMaq = Maquina.objects.get(nombre=nomMaq)
-                instTipoMaquina = Tipomaquina.objects.get(nombre=tipo)
+                instTipoMaquina = Tipomaquina.objects.get(id=tipo)
 
                 # actualizamos datos
                 antiMaq.tipomaquina = instTipoMaquina
@@ -106,6 +106,7 @@ def modificar(request):
             data = {
                 "nombre": maq.nombre,
                 "nomTipoEle": str(maq.tipomaquina.nombre).title(),
+                "idTipoEle": maq.tipomaquina.id,
                 "fecha": str(maq.fechaingreso),
             }
 
@@ -188,6 +189,10 @@ def listaTiposMaquina(nombre):
     for tipo in tipos:
         nom = str(tipo.nombre).title();
         if nom != nombre:
-            lista.append(nom)
+            data = {
+                "id": tipo.id,
+                "nom": str(tipo.nombre),
+            }
+            lista.append(data)
 
     return lista

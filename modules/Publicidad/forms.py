@@ -6,8 +6,6 @@ from ..Cliente.models import Cliente
 def promocionChoice():
 
     tipos = Promocion.objects.all();
-    lista = []
-
 
     resultado = []
     resultado.append(('', 'Selecciona'))
@@ -19,8 +17,6 @@ def promocionChoice():
 def clienteChoice():
 
     tipos = Cliente.objects.all();
-    lista = []
-
 
     resultado = []
     resultado.append(('', 'Selecciona'))

@@ -57,10 +57,10 @@
                    <label for="id_maquina">Maquina:</label>
 
                     <select id="id_maquina" name="maquina" >
-                        <option value="{{datos.nomMaqEle}}" selected>{{datos.nomMaqEle}}</option>
+                        <option value="{{datos.idMaqEle}}" selected>{{datos.nomMaqEle}}</option>
 
                         {% for maq in datosMaq %}
-                            <option value="{{ maq }}">{{ maq }}</option>
+                            <option value="{{ maq.id }}">{{ maq.nom }}</option>
                         {% endfor %}
                     </select>
                 </p>
