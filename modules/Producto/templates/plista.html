@@ -13,7 +13,8 @@
                 </tr>
             </thead>
             <tbody>
-                {% for d in lista %}
+            {% if lista|length > 0 %}
+             {% for d in lista %}
                 <tr>
                     <td>
                         <a href="/producto/{{d.id }}/detalle">
@@ -28,6 +29,8 @@
                     </td>
                 </tr>
                 {% endfor %}
+            {% endif %}
+
             </tbody>
         </table>
     </div>

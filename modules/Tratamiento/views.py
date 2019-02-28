@@ -37,7 +37,7 @@ def nuevo(request):
 def listar(request):
    datos = Tratamiento.objects.all()
    lista = []
-
+   data ={}
    for tratamiento in datos:
       instMaquina = Maquina.objects.get(id=tratamiento.maquina.id)
       data = {

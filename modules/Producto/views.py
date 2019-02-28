@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render
 
 from modules.Producto.models import Producto, Tipoproducto
@@ -34,6 +35,7 @@ def nuevo(request):
 def listar(request):
     datos = Producto.objects.all()
     lista = []
+    data={}
 
     for prod in datos:
         instTipoProducto = Tipoproducto.objects.get(id=prod.tipoproducto.id)
@@ -43,7 +45,34 @@ def listar(request):
             "nom": prod.nombre,
             "tipo": instTipoProducto.nombre.title(),
         }
+        lista.append(data)
 
-    lista.append(data)
+
 
     return render(request, 'plista.html', {"lista": lista})
+
+
+def eliminar(request, pk):
+   try:
+      producto = Producto.objects.get(id=pk)
+      producto.delete()
+   except Producto.DoesNotExist:
+      raise Http404("Producto no existe")
+
+   return HttpResponseRedirect("/producto/lista")
+
+
+def detalle(request, pk):
+   try:
+      producto = Producto.objects.get(id=pk)
+      tipo = Tipoproducto.objects.get(id=producto.tipoproducto.id)
+      data = {
+         "id":  producto.id,
+         "nom":  producto.nombre,
+         "tipo": tipo.nombre.title(),
+      }
+   except Producto.DoesNotExist:
+      raise Http404("Producto no existe")
+
+   return render(request, 'pdetalle.html', {"datos": data})
+
