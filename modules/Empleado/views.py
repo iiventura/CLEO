@@ -1,4 +1,3 @@
-from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse, Http404
 from .models import Empleado, Tipoempleado

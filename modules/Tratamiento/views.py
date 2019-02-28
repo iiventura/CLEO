@@ -31,3 +31,24 @@ def nuevo(request):
       form = FormTratamientoInsert()
 
    return render(request, 'tnuevo.html', {'form': form})
+
+
+def listar(request):
+   datos = Tratamiento.objects.all()
+   lista = []
+
+   for tratamiento in datos:
+      instMaquina = Maquina.objects.get(id=tratamiento.maquina.id)
+      data = {
+         "id": tratamiento.id,
+         "nom": tratamiento.nombre,
+         "des": tratamiento.descripcion,
+         "maq": instMaquina.nombre.title(),
+      }
+      lista.append(data)
+   return render(request, './tlista.html', {"lista": lista})
+
+
+
+
+
