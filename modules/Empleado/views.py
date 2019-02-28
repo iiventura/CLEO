@@ -1,47 +1,17 @@
-from django.shortcuts import render
-from django.http import HttpResponseRedirect,HttpResponse
-from .models import Empleado,Tipoempleado
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseRedirect, HttpResponse, Http404
+from .models import Empleado, Tipoempleado
 from .forms import *
 from django.contrib import messages
 from django.utils import timezone
 
-# Create your views here.
 
-def login(request):
+def main(request):
+    return render(request, 'eindex.html')
 
-    if request.method == "POST":
-        form = FormEmpleadoLogin(request.POST)
 
-        if form.is_valid():
-            datos = form.cleaned_data
-
-            # recogemos los datos
-            email = datos.get("email")
-            password = datos.get("password")
-
-        if Empleado.objects.filter(email=email):
-            emp = Empleado.objects.get(email=email)
-
-            if emp.password == password:
-                request.session["session_key"] = email
-                f = timezone.now().date()
-                request.session["expire_date"] = str(f)
-
-                encargado, basico = comprobarSesion(request)
-                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
-            else:
-                messages.error(request, "Usuario y contraseña no coinciden.")
-        else:
-            messages.error(request, "Usuario no coincide")
-
-    else:
-        form = FormEmpleadoLogin()
-
-    #lo que lanza si no hemso dado al boton y crea el evento post
-    return render(request, 'loginEmpleado.html', {'form': form})
-
-def alta(request):
-    encargado, basico = comprobarSesion(request)
+def nuevo(request):
+    #encargado, basico = comprobarSesion(request)
     if request.method == "POST":
         form = FormEmpleadoInsert(request.POST)
 
@@ -84,7 +54,7 @@ def alta(request):
                     e.save()
 
 
-                    return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
+                    return render(request, 'enuevo.html', {'form': form})
                 else:
                     messages.error(request, 'El empleado ya existe.')
             else:
@@ -93,254 +63,78 @@ def alta(request):
     else:
         form = FormEmpleadoInsert()
 
-    return render(request, 'alta.html', {'form': form, 'elem': "empleado", 'cliente': False,
-                'encargado': encargado, 'basico': basico})
+    return render(request, 'enuevo.html', {'form': form})
 
-def baja(request):
-    encargado, basico = comprobarSesion(request)
-    if request.method == "POST":
-        form = FormEmpleadoDelete(request.POST)
-
-        if form.is_valid():
-            datos = form.cleaned_data
-
-            # recogemos los datos
-            dni = datos.get("dni")
-
-            if Empleado.objects.filter(dni=dni).exists():
-                Empleado.objects.filter(dni=dni).delete()
-                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
-            else:
-                messages.error(request, "El empleado no existe.")
-        else:
-            form = FormEmpleadoDelete()
-    else:
-        form = FormEmpleadoDelete()
-
-    return render(request, 'borrar.html', {'form': form, 'elem':"empleado", 'cliente': False,
-                'encargado': encargado, 'basico': basico})
-
-def modificar(request):
-    encargado, basico = comprobarSesion(request)
-    if request.method == "POST":
-        form = FormEmpleadoUpdate(request.POST)
-        dni = request.GET.get("dni") #obtenemos el dni que hemos buscado
-
-        if form.is_valid():
-            emp = form.cleaned_data
-
-            # recogemos los datos
-            tipo = emp.get("Tipo")
-            nom = emp.get("nombre")
-            ape = emp.get("apellidos")
-            email = emp.get("email")
-            dir = emp.get("direccion")
-            tlf = emp.get("telefono")
-            password = emp.get("password")
-
-            # comprobamos el telefono
-            if not (len(tlf) == 9 and tlf.isdigit()):
-                messages.error(request, 'El telefono no es correcto.')
-            else:
-
-                antiEmple = Empleado.objects.get(email=email)
-                instTipoEmpleado = Tipoempleado.objects.get(id=tipo)
-
-                #actualizamos datos
-                antiEmple.nombre = nom
-                antiEmple.apellidos = ape
-                antiEmple.email = email
-                antiEmple.direccion = dir
-                antiEmple.telefono = tlf
-                antiEmple.tipoempleado = instTipoEmpleado
-                antiEmple.password = password
-                antiEmple.save()
-
-                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'basico': basico})
-
-    # peticion GET
-    formId = FormEmpleadoDelete()
-    if 'dni' in request.GET:
-        query = request.GET['dni']  # query tiene le valor del dni
-
-        dni = str(query)
-
-        if Empleado.objects.filter(dni=dni):
-
-            emp = Empleado.objects.get(dni=dni)
-
-            data = {
-                "nom": emp.nombre,
-                "ape": emp.apellidos,
-                "email": emp.email,
-                "dir": emp.direccion,
-                "tlf": emp.telefono,
-                "nomTipoEle": str(emp.tipoempleado.nombre).title(),#tipoEmpleadoId(datos.tipoempleado),
-                "idTipoEle": emp.tipoempleado.id,
-                "pass": emp.password,
-            }
-
-            datosTipos = listaTiposEmpleado(data["nomTipoEle"])
-
-            return render(request, 'modEmp.html', {"formId": formId, "buscado": True,"datos": data,
-                    "datosTipos": datosTipos,'cliente': False,'encargado': encargado, 'basico': basico})
-
-        else: #si es error vuelve a lanzar la pagina
-            messages.error(request, "El empleado no existe.")
-            return HttpResponseRedirect("/empleado/modificarEmpleado")
-
-    # primera vista
-    formDni = FormEmpleadoDelete()
-
-    return render(request, 'modEmp.html', {"formDni": formDni, "buscado": False,'cliente': False,
-                'encargado': encargado, 'basico': basico})
-
-def datosOtrosEmpleado(request):
-    encargado, basico = comprobarSesion(request)
-    # peticion GET
-    formId = FormEmpleadoDelete()
-    if 'dni' in request.GET:
-        query = request.GET['dni']  # query tiene le valor del dni
-
-        dni = str(query)
-
-        if Empleado.objects.filter(dni=dni):
-
-            emp = Empleado.objects.get(dni=dni)
-
-            data = {
-                "dni": emp.dni,
-                "nom": emp.nombre,
-                "ape": emp.apellidos,
-                "email": emp.email,
-                "dir": emp.direccion,
-                "tlf": emp.telefono,
-                "tipo": str(emp.tipoempleado.nombre).title(),#tipoEmpleadoId(datos.tipoempleado),
-                "pass": emp.password,
-            }
-
-            return render(request, 'inforOtroEmp.html', {"formId": formId, "buscado": True,"datos": data,
-                    'cliente': False,'encargado': encargado, 'basico': basico})
-
-        else: #si es error vuelve a lanzar la pagina
-            messages.error(request, "El empleado no existe.")
-            return HttpResponseRedirect("/empleado/datosOtrosEmpleado")
-
-    # primera vista
-    formDni = FormEmpleadoDelete()
-
-    return render(request, 'inforOtroEmp.html', {"formDni": formDni, "buscado": False,'cliente': False,
-                'encargado': encargado, 'basico': basico})
 
 def listar(request):
-
-  datosFinales = datosEmpleados()
-  encargado, basico = comprobarSesion(request)
-
-  return render(request, 'listarEmpleados.html',{"datos":datosFinales, 'cliente': False,
-        'encargado': encargado, 'basico': basico})
-
-def datosEmpleado(request):
-
-    email = request.session["session_key"]  # me da el email, lo que hemos guardado en la sesion
-    emp = Empleado.objects.get(email=email)
-
-    data = {
-        "dni": emp.dni,
-        "cod": emp.codigo,
-        "tipo": emp.tipoempleado.nombre,
-        "nom": emp.nombre,
-        "ape": emp.apellidos,
-        "email": emp.email,
-        "dir": emp.direccion,
-        "tlf": emp.telefono,
-        "cnt": emp.password,
-    }
-
-    encargado,basico = comprobarSesion(request)
-
-    return render(request, 'inforEmp.html', {"datos": data,'cliente': False,"buscado": True,
-        'encargado': encargado, 'basico': basico})
-
-
-def logout(request):
-
-    # print("*********",Session.objects.all())
-    # Session.objects.get(session_key='dsvlkup0w8w7ws7o1q35njxtfvhh6elg').delete()
-
-    try:
-
-        email = request.session["session_key"]
-        del request.session['session_key']
-
-        if not Empleado.objects.filter(email=email):
-            #return HttpResponseRedirect("/cliente/loginCliente")
-            return HttpResponseRedirect("/index/login")
-        else:
-            #return HttpResponseRedirect("/empleado/loginEmpleado")
-            return HttpResponseRedirect("/index/login")
-
-        # diferencias con la sesion si es cliente o empleado y lanzar loginCliente o loginEmpeado
-
-    except KeyError:
-        return HttpResponse("Error, no estás logeado.")
-
-"""
-    METODOS AUXILIARES
-"""
-
-def comprobarSesion(request):
-    email = request.session["session_key"]
-    emp = Empleado.objects.get(email=email)
-
-    if emp.tipoempleado.nombre == 'encargado':
-        encargado = True
-        basico = False
-    else:
-        encargado = False
-        basico = True
-
-    return encargado, basico;
-
-def datosEmpleados():
-
-    datos = Empleado.objects.all();
-    datosFinales = []
-
-    for emp in datos:
-
-        instTipoEmpleado = Tipoempleado.objects.get(id=emp.tipoempleado.id)
-
-        data = {
-            "dni": emp.dni,
-            "cod": emp.codigo,
-            "nom": emp.nombre,
-            "ape": emp.apellidos,
-            "email": emp.email,
-            "dir": emp.direccion,
-            "tlf": emp.telefono,
-            "tipo": instTipoEmpleado.nombre.title(),
-        }
-
-        datosFinales.append(data)
-
-    return datosFinales
-
-def listaTiposEmpleado(nombre):
-
-    tipos = Tipoempleado.objects.all();
+    datos = Empleado.objects.all()
     lista = []
 
-    for tipo in tipos:
-        nom = str(tipo.nombre).title();
-        if nom != nombre:
+    for empleado in datos:
+        tipoEmpleado = Tipoempleado.objects.get(id=empleado.tipoempleado.id)
+        data={
+           "id": empleado.id,
+            "nom": empleado.nombre,
+            "ape": empleado.apellidos,
+            "email": empleado.email,
+            "tipo": tipoEmpleado.nombre.title(),
+        }
+        lista.append(data)
+    return render(request,'elista.html',{"lista":lista})
+
+def perfil(request,pk ):
+    try:
+        empleado = Empleado.objects.get(id=pk)
+        tipo = Tipoempleado.objects.get(id=empleado.tipoempleado.id)
+        data = {
+            "id": empleado.id,
+            "dni": empleado.dni,
+            "cod": empleado.codigo,
+            "tipo": tipo.nombre.title(),
+            "nom": empleado.nombre,
+            "ape": empleado.apellidos,
+            "email": empleado.email,
+            "dir": empleado.direccion,
+            "tlf": empleado.telefono,
+        }
+    except Empleado.DoesNotExist:
+        raise Http404("Empleado no existe")
+
+    return render(request, 'eperfil.html', {"datos": data})
+
+def eliminar(request,pk ):
+    try:
+        empleado = Empleado.objects.get(id=pk)
+        Empleado.objects.filter(id=empleado.id).delete()
+
+    except Empleado.DoesNotExist:
+        raise Http404("Empleado no existe")
+
+    return HttpResponseRedirect("/empleado/lista")
+
+def modificar(request,pk ):
+    try:
+        empleado = Empleado.objects.get(id=pk)
+
+        if request.method == 'GET':
+            form = FormEmpleadoUpdate()
             data = {
-                "id": tipo.id,
-                "nom": str(tipo.nombre),
+                "nombre": empleado.nombre,
+                "apellidos": empleado.apellidos,
+                "email": empleado.email,
+                "direccion": empleado.direccion,
+                "tlf": empleado.telefono,
+                "tipo": str(empleado.tipoempleado.nombre).title()
             }
-            lista.append(data)
+            return render(request, 'empleado.html', {'form': form, 'data': data})
 
-    return lista
+        elif request.method == 'POST':
+            form = FormEmpleadoUpdate(request.POST)
+           # for elem in request.POST
+            print(form.is_valid())
+            return HttpResponseRedirect("/empleado/" + str(pk))
 
+    except Empleado.DoesNotExist:
+        raise Http404("Empleado no existe")
 
-
+    return HttpResponseRedirect("/empleado/"+str(pk))

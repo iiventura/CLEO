@@ -37,19 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'modules.Index',
-    'modules.Cliente',
+    'modules.Main',
     'modules.Empleado',
-    'modules.Maquina',
     'modules.Sala',
-    'modules.Promocion',
-    'modules.Producto',
-    'modules.Proveedor',
+    'modules.Maquina',
     'modules.Tratamiento',
-    'modules.HorarioEmpleado',
-    'modules.Pedido',
-    'modules.Publicidad',
-    'modules.Notificacion',
 ]
 
 MIDDLEWARE = [
@@ -68,19 +60,13 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-                 BASE_DIR + "/templates/plantilla",
-                 BASE_DIR + "/templates/cliente",
-                 BASE_DIR + "/templates/empleado",
-                 BASE_DIR + "/templates/maquina",
-                 BASE_DIR + "/templates/sala",
-                 BASE_DIR + "/templates/promocion",
-                 BASE_DIR + "/templates/producto",
-                 BASE_DIR + "/templates/proveedor",
-                 BASE_DIR + "/templates/tratamiento",
-                 BASE_DIR + "/templates/horario",
-                 BASE_DIR + "/templates/pedido",
-                 BASE_DIR + "/templates/publicidad",
-                 BASE_DIR + "/templates/notificacion"
+
+                os.path.join(BASE_DIR, '/modules/Main/templates'),
+                os.path.join(BASE_DIR, '/modules/Empleado/templates'),
+                os.path.join(BASE_DIR, '/modules/Sala/templates'),
+                os.path.join(BASE_DIR, '/modules/Maquina/templates'),
+                os.path.join(BASE_DIR, '/modules/Tratamiento/templates'),
+
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -108,16 +94,7 @@ DATABASES = {
         'PASSWORD': 'root2018',
         'HOST': 'localhost', #'db',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
-        
-        'OPTIONS': {
-            'sql_mode': 'TRADITIONAL',
-            'use_pure': True,
-            'use_unicode': True,
-            'charset': 'utf8mb4',
-            'collation': 'utf8mb4_general_ci',
-            'get_warnings':False
-    },
-}
+    }
 }
 
 

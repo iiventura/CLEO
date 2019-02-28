@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block css %}
+        <link rel="stylesheet" type="text/css" href="{% static 'plantilla/stylePlantilla.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'plantilla/styleForm.css' %}">
+        <title>Listar tratamientos</title>
+    {% endblock %}
+
+
+</head>
+<body>
+
+ {% block content %}
+
+    <div class="ext">
+        <table>
+            <caption>Lista de tratamientos </caption>
+
+            <tr>
+                <th> Nombre</th>
+                <th> Descripcion</th>
+                <th> Maquina</th>
+            </tr>
+             {% for d in datos %}
+                <tr>
+                     <td> {{d.nom}} </td>
+                     <td> {{d.des}} </td>
+                     <td> {{d.maq}} </td>
+                </tr>
+             {% endfor %}
+        </table>
+    </div>
+
+ {% endblock %}
+
+</body>
+</html>

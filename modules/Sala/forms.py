@@ -1,6 +1,5 @@
 from django import forms
 
-
 class FormSalaInsert(forms.Form):
 
     nombre = forms.CharField(max_length=45, label="Nombre ",
@@ -11,12 +10,3 @@ class FormSalaInsert(forms.Form):
 class FormSalaUpdate(forms.Form):
     nombre = forms.CharField(max_length=45, label="Nombre ",
          widget=(forms.TextInput(attrs={"id": "nombre"})))
-
-
-
-class FormSalaDelete(forms.Form):
-
-    nombre = forms.CharField(max_length=45, label="Nombre ",
-        widget=(forms.TextInput(attrs={"id": "nombre"})))
-
-

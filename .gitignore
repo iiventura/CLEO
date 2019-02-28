@@ -105,8 +105,7 @@ venv.bak/
 
 
 #setting
-setting.py 
 .idea/
-
+settings.py
 
 

@@ -1,14 +1,12 @@
-from django.shortcuts import render
-from django.http import HttpResponseRedirect
-from .models import Maquina
-from ..Empleado.views import comprobarSesion
-from .forms import *
 from django.contrib import messages
+from django.http import Http404, HttpResponseRedirect
+from django.shortcuts import render
+
+from .forms import FormMaquinaInsert
+from .models import Maquina, Tipomaquina
 
 
-# Create your views here.
-def nueva(request):
-    encargado, basico = comprobarSesion(request)
+def nuevo(request):
     if request.method == "POST":
         form = FormMaquinaInsert(request.POST)
 
@@ -25,174 +23,41 @@ def nueva(request):
                 m = Maquina(nombre=nomMaq,fechaingreso=fecha,tipomaquina=instTipoMaquina);
                 m.save()
 
-                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
+                return render(request, 'mnuevo.html', {'form': form})
             else:
                 messages.error(request, 'La maquina ya existe.')
                 messages.error(request, '')
     else:
         form = FormMaquinaInsert()
 
-    return render(request, 'alta.html', {'form': form, 'elem':"maquina",'cliente': False,
-        'encargado': encargado, 'Basico': basico})
+    return render(request, 'mnuevo.html', {'form': form})
 
-def borrar(request):
-    encargado, basico = comprobarSesion(request)
-    if request.method == "POST":
-        form = FormMaquinaDelete(request.POST)
 
-        if form.is_valid():
-            datos = form.cleaned_data
-
-            # recogemos los datos
-            nombre = datos.get("nombre")
-
-            if Maquina.objects.filter(nombre=nombre):
-                Maquina.objects.get(nombre=nombre).delete()
-                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
-            else:
-                messages.error(request, "La maquina no existe.")
-    else:
-        form = FormMaquinaDelete()
-    return render(request, 'borrar.html', {'form': form, 'elem': "maquina",'cliente': False,
-        'encargado': encargado, 'Basico': basico})
-
-def modificar(request):
-    encargado, basico = comprobarSesion(request)
-    # si es una peticion post
-    if request.method == "POST":
-        form = FormMaquinaUpdate(request.POST)
-        nombreAnt = request.GET.get("nombre")  # obtenemos el dni que hemos buscado
-
-        if form.is_valid():
-            datos = form.cleaned_data
-
-            # recogemos los datos
-            nomMaq = datos.get("nombre")
-            fecha = datos.get("fechaingreso")
-            tipo = datos.get("Tipo")
-
-            if nombreAnt == nomMaq: #no se modifica el nombre
-
-                antiMaq = Maquina.objects.get(nombre=nomMaq)
-                instTipoMaquina = Tipomaquina.objects.get(id=tipo)
-
-                # actualizamos datos
-                antiMaq.tipomaquina = instTipoMaquina
-                antiMaq.fechaingreso = fecha
-                antiMaq.save()
-
-            else: #se ha modificado el nombre
-                antiMaq = Maquina.objects.get(nombre=nombreAnt)
-                instTipoMaquina = Tipomaquina.objects.get(nombre=tipo)
-
-                # actualizamos datos
-                antiMaq.nombre = nomMaq
-                antiMaq.tipomaquina = instTipoMaquina
-                antiMaq.fechaingreso = fecha
-                antiMaq.save()
-
-            return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
-
-    # peticion GET
-    formId = FormMaquinaDelete()
-    if 'nombre' in request.GET:
-        query = request.GET['nombre']  # query tiene le valor del dni
-
-        nombre = str(query)
-
-        if Maquina.objects.filter(nombre=nombre):
-            maq = Maquina.objects.get(nombre=nombre)
-
-            data = {
-                "nombre": maq.nombre,
-                "nomTipoEle": str(maq.tipomaquina.nombre).title(),
-                "idTipoEle": maq.tipomaquina.id,
-                "fecha": str(maq.fechaingreso),
-            }
-
-            datosTipos = listaTiposMaquina(data["nomTipoEle"])
-
-            return render(request, 'modMaq.html', {"formId": formId, "buscado": True, "datos": data,
-                        "datosTipo":datosTipos, "nomAnt": data["nombre"],'cliente': False,
-                        'encargado': encargado, 'Basico': basico})
-        else:
-            messages.error(request, "La maquina no existe.")
-            return HttpResponseRedirect("/maquina/modificarMaquina")
-
-    # primera vista
-    formId = FormMaquinaDelete()
-    return render(request, 'modMaq.html', {"formId": formId, "buscado": False,
-        'cliente': False,'encargado': encargado, 'Basico': basico})
-
-def datos(request):
-    encargado, basico = comprobarSesion(request)
-    # peticion GET
-    formId = FormMaquinaDelete()
-    if 'nombre' in request.GET:
-        query = request.GET['nombre']  # query tiene le valor del dni
-
-        nombre = str(query)
-
-        if Maquina.objects.filter(nombre=nombre):
-            maq = Maquina.objects.get(nombre=nombre)
-
-            data = {
-                "nombre": maq.nombre,
-                "nomTipoEle": str(maq.tipomaquina.nombre).title(),
-                "fecha": str(maq.fechaingreso),
-            }
-            return render(request, 'datosMaq.html', {"formId": formId, "buscado": True, "datos": data,'cliente': False,
-                        'encargado': encargado, 'Basico': basico})
-        else:
-            messages.error(request, "La maquina no existe.")
-            return HttpResponseRedirect("/maquina/datosMaquina")
-
-    # primera vista
-    formId = FormMaquinaDelete()
-    return render(request, 'datosMaq.html', {"formId": formId, "buscado": False,
-        'cliente': False,'encargado': encargado, 'Basico': basico})
 
 def listar(request):
-
-    datosFinales = datosMaquinas()
-    encargado, basico = comprobarSesion(request)
-    return render(request, 'listarMaquinas.html', {"datos": datosFinales,'cliente': False,
-        'encargado': encargado, 'Basico': basico})
-
-"""
-        METODOS AUXILIARES
-"""
-def datosMaquinas():
-
-    datos = Maquina.objects.all();
-    datosFinales = []
-
-    for maq in datos:
-
-        instTipoMaquina = Tipomaquina.objects.get(id=maq.tipomaquina.id)
-
-        data = {
-            "nom": maq.nombre,
-            "fec": str(maq.fechaingreso),
-            "tipo": instTipoMaquina.nombre.title(),
-        }
-
-        datosFinales.append(data)
-
-    return datosFinales
-
-def listaTiposMaquina(nombre):
-
-    tipos = Tipomaquina.objects.all();
+    datos = Maquina.objects.all()
     lista = []
 
-    for tipo in tipos:
-        nom = str(tipo.nombre).title();
-        if nom != nombre:
-            data = {
-                "id": tipo.id,
-                "nom": str(tipo.nombre),
-            }
-            lista.append(data)
+    for maquina in datos:
+        print(maquina.fechaingreso)
+        tipoMaquina = Tipomaquina.objects.get(id=maquina.tipomaquina.id)
+        data = {
+            "id": maquina.id,
+            "nom": maquina.nombre,
+            "date": maquina.fechaingreso,
+            "tipo": tipoMaquina.nombre.title(),
+        }
+        lista.append(data)
 
-    return lista
+    return render(request, 'mlista.html', {"lista": lista})
+
+
+
+def eliminar(request,pk ):
+    try:
+        maq = Maquina.objects.get(id=pk)
+        maq.delete()
+    except Maquina.DoesNotExist:
+        raise Http404("Sala no existe")
+
+    return HttpResponseRedirect("/maquina/lista")

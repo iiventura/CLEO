@@ -1,14 +1,13 @@
-from django.shortcuts import render
-from django.http import HttpResponseRedirect
-from ..Empleado.views import comprobarSesion
-from .forms import *
-from .models import *
-from ..Maquina.models import *
 from django.contrib import messages
+from django.http import Http404, HttpResponseRedirect
+from django.shortcuts import render
 
-# Create your views here.
+from modules.Maquina.models import Maquina
+from .models import Tratamiento
+from .forms import FormTratamientoInsert
+
+
 def nuevo(request):
-   encargado, basico = comprobarSesion(request)
    if request.method == "POST":
       form = FormTratamientoInsert(request.POST)
 
@@ -24,132 +23,55 @@ def nuevo(request):
             instMaquina = Maquina.objects.get(id=tipo)
             t = Tratamiento(nombre=nomTra, descripcion=fecha, maquina=instMaquina);
             t.save()
+            return render(request, 'tnuevo.html', {'form': form})
 
-            return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
          else:
             messages.error(request, 'El tratamiento ya existe.')
             messages.error(request, '')
    else:
       form = FormTratamientoInsert()
 
-   return render(request, 'alta.html', {'form': form, 'elem': "tratamiento", 'cliente': False,
-          'encargado': encargado, 'Basico': basico})
+   return render(request, 'tnuevo.html', {'form': form})
 
-def modificar(request):
-   encargado, basico = comprobarSesion(request)
-
-   # si es una peticion post
-   if request.method == "POST":
-      form = FormTratamientoUpdate(request.POST)
-      nomTra = request.GET.get("nombre")  # obtenemos el dni que hemos buscado
-
-      if form.is_valid():
-         datos = form.cleaned_data
-         des = datos.get("descripcion")
-         maq = datos.get("maquina")
-
-         antiTra = Tratamiento.objects.get(nombre=nomTra)
-         instMaquina = Maquina.objects.get(id=maq)
-
-         # actualizamos datos
-         antiTra.descripcion = des
-         antiTra.maquina = instMaquina
-         antiTra.save()
-
-         return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
-
-   # peticion GET
-   formId = FormTratamientoDelete()
-   if 'nombre' in request.GET:
-      query = request.GET['nombre']  # query tiene le valor del dni
-
-      nombre = str(query)
-
-      if Tratamiento.objects.filter(nombre=nombre):
-         tra = Tratamiento.objects.get(nombre=nombre)
-
-         data = {
-            "nombre": tra.nombre,
-            "nomMaqEle": str(tra.maquina.nombre).title(),
-            "idMaqEle": tra.maquina.id,
-            "des": tra.descripcion,
-         }
-
-         datosMaq = listaMaquinas(data["nomMaqEle"])
-
-         return render(request, 'modTra.html', {"formId": formId, "buscado": True, "datos": data,
-                 "datosMaq": datosMaq, 'cliente': False,'encargado': encargado, 'Basico': basico})
-      else:
-         messages.error(request, "El tratamiento no existe.")
-         return HttpResponseRedirect("/tratamiento/modificarTratamiento")
-
-   # primera vista
-   formId = FormTratamientoDelete()
-   return render(request, 'modTra.html', {"formId": formId, "buscado": False,
-         'cliente': False, 'encargado': encargado, 'Basico': basico})
-
-def borrar(request):
-   encargado, basico = comprobarSesion(request)
-   if request.method == "POST":
-      form = FormTratamientoDelete(request.POST)
-
-      if form.is_valid():
-         datos = form.cleaned_data
-
-         # recogemos los datos
-         nombre = datos.get("nombre")
-
-         if Tratamiento.objects.filter(nombre=nombre):
-            Tratamiento.objects.get(nombre=nombre).delete()
-            return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
-         else:
-            messages.error(request, "El tratamiento no existe.")
-   else:
-      form = FormTratamientoDelete()
-   return render(request, 'borrar.html', {'form': form, 'elem': "maquina", 'cliente': False,
-         'encargado': encargado, 'Basico': basico})
 
 def listar(request):
-   datosFinales = datosTratamientos()
-   encargado, basico = comprobarSesion(request)
-   return render(request, 'listarTratamientos.html', {"datos": datosFinales, 'cliente': False,
-         'encargado': encargado, 'Basico': basico})
-
-
-"""
-        METODOS AUXILIARES
-"""
-def datosTratamientos():
-
-    datos = Tratamiento.objects.all();
-    datosFinales = []
-
-    for maq in datos:
-
-        instMaquina = Maquina.objects.get(id=maq.maquina.id)
-
-        data = {
-            "nom": maq.nombre,
-            "des": maq.descripcion,
-            "maq": instMaquina.nombre.title(),
-        }
-
-        datosFinales.append(data)
-
-    return datosFinales
-
-
-def listaMaquinas(nombre):
-   tipos = Maquina.objects.all();
+   datos = Tratamiento.objects.all()
    lista = []
 
-   for tipo in tipos:
-      nom = str(tipo.nombre).title();
-      if nom != nombre:
-         data = {
-            "id": tipo.id,
-            "nom": str(tipo.nombre),
-         }
-         lista.append(data)
+   for tratamiento in datos:
+      instMaquina = Maquina.objects.get(id=tratamiento.maquina.id)
+      data = {
+         "id": tratamiento.id,
+         "nom": tratamiento.nombre,
+         "des": tratamiento.descripcion,
+         "maq": instMaquina.nombre.title(),
+      }
+      lista.append(data)
+   return render(request, './tlista.html', {"lista": lista})
 
-   return lista
+
+def eliminar(request, pk):
+   try:
+      sala = Tratamiento.objects.get(id=pk)
+      sala.delete()
+   except Tratamiento.DoesNotExist:
+      raise Http404("Tratamiento no existe")
+
+   return HttpResponseRedirect("/tratamiento/lista")
+
+
+def detalle(request, pk):
+   try:
+      tratamiento = Tratamiento.objects.get(id=pk)
+      tipo = Maquina.objects.get(id=tratamiento.maquina.id)
+      data = {
+         "id": tratamiento.id,
+         "nom": tratamiento.nombre,
+         "des": tratamiento.descripcion,
+         "maq": tipo.nombre.title(),
+      }
+   except Tratamiento.DoesNotExist:
+      raise Http404("Tratamiento no existe")
+
+   return render(request, 'tdetalle.html', {"datos": data})
+

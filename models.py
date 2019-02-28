@@ -25,6 +25,10 @@ class Cita(models.Model):
         db_table = 'cita'
         unique_together = (('id', 'estadocita', 'sala', 'cliente', 'empleado', 'tratamiento', 'horarioentrada', 'horariosalida'),)
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0abc9e44661e59ce535fa70dd578c0fedace4efa
 class Estadocita(models.Model):
     nombre = models.CharField(max_length=45, blank=True, null=True)
 
@@ -32,13 +36,6 @@ class Estadocita(models.Model):
         managed = False
         db_table = 'estadocita'
 
-
-class Estadofactura(models.Model):
-    nombre = models.CharField(max_length=45, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'estadofactura'
 
 class Factura(models.Model):
     id = models.AutoField(primary_key=True)
@@ -52,6 +49,42 @@ class Factura(models.Model):
         managed = False
         db_table = 'factura'
         unique_together = (('id', 'estadofactura', 'cita'),)
+
+class Estadofactura(models.Model):
+    nombre = models.CharField(max_length=45, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'estadofactura'
+
+<<<<<<< HEAD
+class Factura(models.Model):
+    id = models.AutoField(primary_key=True)
+    costeporcobrar = models.FloatField(db_column='costePorCobrar', blank=True, null=True)  # Field name made lowercase.
+    total = models.FloatField(blank=True, null=True)
+    fecha = models.DateTimeField(blank=True, null=True)
+    estadofactura = models.ForeignKey(Estadofactura, models.DO_NOTHING, db_column='estadoFactura_id')  # Field name made lowercase.
+    cita = models.ForeignKey(Cita, models.DO_NOTHING, db_column='Cita_id')  # Field name made lowercase.
+=======
+
+class Estadomensaje(models.Model):
+    nombre = models.CharField(max_length=45, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'estadomensaje'
+
+
+class Estadopedido(models.Model):
+    nombre = models.CharField(max_length=45, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'estadopedido'
+
+
+>>>>>>> 0abc9e44661e59ce535fa70dd578c0fedace4efa
+
 
 
 class Inventario(models.Model):

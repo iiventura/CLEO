@@ -39,9 +39,6 @@ class FormMaquinaUpdate(forms.Form):
 
     Tipo = forms.ChoiceField(choices=tipoChoice())
 
-class FormMaquinaDelete(forms.Form):
 
-    nombre = forms.CharField(max_length=45, label="Nombre ",
-        widget=(forms.TextInput(attrs={"id": "nombre"})))
 
 
