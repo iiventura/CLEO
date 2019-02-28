@@ -32,8 +32,8 @@ class FormNotificacionInsert(forms.Form):
 
     Usuario = forms.ChoiceField(choices=tipoUsuarioChoice())
 
-    mensaje = forms.CharField(max_length=45, label="Nombre ",
-        widget=(forms.TextInput(attrs={"id": "nombre"})))
+    mensaje = forms.CharField(
+        widget=forms.Textarea(attrs={'cols': 28, 'rows': 2}))
 
 
 class FormNotificacionUpdate(forms.Form):
@@ -41,8 +41,8 @@ class FormNotificacionUpdate(forms.Form):
 
     Usuario = forms.ChoiceField(choices=tipoUsuarioChoice())
 
-    mensaje = forms.CharField(max_length=45, label="Nombre ",
-        widget=(forms.TextInput(attrs={"id": "nombre"})))
+    mensaje = forms.CharField(
+        widget=forms.Textarea(attrs={'cols': 28, 'rows': 2}))
 
 class FormNotificacionDelete(forms.Form):
 

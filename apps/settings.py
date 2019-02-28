@@ -96,7 +96,11 @@ DATABASES = {
         'PASSWORD': 'root2018',
         'HOST': 'localhost', #'db',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
+
+    'OPTIONS': {'sql_mode': 'TRADITIONAL', 'use_pure': True, 'use_unicode': True, 'charset': 'utf8mb4',
+            'collation': 'utf8mb4_general_ci','get_warnings':False},
     }
+
 }
 
 
