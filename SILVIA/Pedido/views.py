@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from ..Empleado.views import comprobarSesion
+from modules.Empleado.views import comprobarSesion
 from .forms import *
 from .models import Pedido,Estadopedido
-from ..Proveedor.models import Proveedor
+from SILVIA.Proveedor.models import Proveedor
 from ..Producto.models import Producto
 from django.contrib import messages
 

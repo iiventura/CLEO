@@ -47,7 +47,7 @@ def nuevo(request):
             elif not Empleado.objects.filter(dni=dni).exists():
                 if not Empleado.objects.filter(email=email).exists():  # comprobamos si ya existe ese empleado
 
-                    instTipoEmpleado = Tipoempleado.objects.get(nombre=tipo)
+                    instTipoEmpleado = Tipoempleado.objects.get(id=tipo)
 
                     e = Empleado(dni=dni, codigo=cod, nombre=nom, apellidos=ape,email=email,
                                  direccion=dir,telefono=tlf,tipoempleado=instTipoEmpleado, password=password)
@@ -64,6 +64,7 @@ def nuevo(request):
         form = FormEmpleadoInsert()
 
     return render(request, 'enuevo.html', {'form': form})
+
 
 def listar(request):
     datos = Empleado.objects.all()
@@ -127,14 +128,11 @@ def modificar(request,pk ):
             }
             return render(request, 'empleado.html', {'form': form, 'data': data})
 
-
         elif request.method == 'POST':
             form = FormEmpleadoUpdate(request.POST)
            # for elem in request.POST
             print(form.is_valid())
             return HttpResponseRedirect("/empleado/" + str(pk))
-
-
 
     except Empleado.DoesNotExist:
         raise Http404("Empleado no existe")

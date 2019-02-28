@@ -1,6 +1,6 @@
 from django.db import models
 from ..Producto.models import Producto
-from ..Proveedor.models import Proveedor
+from SILVIA.Proveedor.models import Proveedor
 
 
 # Create your models here.

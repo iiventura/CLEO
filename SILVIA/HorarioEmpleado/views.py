@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from ..Empleado.views import comprobarSesion
+from modules.Empleado.views import comprobarSesion
 from .forms import *
 from django.contrib import messages
 import re
