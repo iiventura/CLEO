@@ -30,3 +30,20 @@ def nuevo(request):
         form = FormProductoInsert()
 
     return render(request, 'pnuevo.html', {'form': form})
+
+def listar(request):
+    datos = Producto.objects.all()
+    lista = []
+
+    for prod in datos:
+        instTipoProducto = Tipoproducto.objects.get(id=prod.tipoproducto.id)
+
+        data = {
+            "id": prod.id,
+            "nom": prod.nombre,
+            "tipo": instTipoProducto.nombre.title(),
+        }
+
+    lista.append(data)
+
+    return render(request, 'plista.html', {"lista": lista})
