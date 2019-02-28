@@ -1,7 +1,7 @@
 from django import forms
 from django.utils import timezone
 from .models import Pedido,Estadopedido
-from SILVIA.Proveedor.models import Proveedor
+from ..Proveedor.models import Proveedor
 from ..Producto.models import Producto
 
 def estadoChoice():

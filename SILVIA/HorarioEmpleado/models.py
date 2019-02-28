@@ -1,5 +1,5 @@
 from django.db import models
-from modules.Empleado.models import Empleado
+from ..Empleado.models import Empleado
 
 # Create your models here.
 class Horario(models.Model):

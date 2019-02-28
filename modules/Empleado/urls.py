@@ -17,8 +17,6 @@ urlpatterns = [
 urlpatterns = [
     path('loginEmpleado', views.login, name='app_loginEmpleado'),
     path('', views.logout, name='app_logout'),
-    
-    path('bajaEmpleado', views.baja, name='app_bajaEmpleado'),
     path('modificarEmpleado', views.modificar, name='app_modificarEmpleado'),
     
     path('datosEmpleado', views.datosEmpleado, name='app_datosEmpleado'),
