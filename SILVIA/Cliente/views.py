@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .models import Cliente
-from SILVIA.Revisar.Empleado.views import comprobarSesion
+from ..Empleado.views import comprobarSesion
 from .forms import *
 from django.contrib import messages
 from django.utils import timezone
@@ -99,7 +99,7 @@ def modificarMisDatosCliente(request):
                 antiClie.save()
 
                 # si el evento post ha sido correcot
-                return render(request, 'eindex.html', {'cliente': True, 'encargado': False, 'Basico': False})
+                return render(request, 'index.html', {'cliente': True, 'encargado': False, 'Basico': False})
 
     # peticion GET
     else:
@@ -157,7 +157,7 @@ def alta(request):
                                 puntuacion=0, password=password)
                     c.save()
 
-                    return render(request, 'eindex.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
+                    return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
                 else:
                     messages.error(request, 'El cliente ya existe.')
             else:
@@ -192,7 +192,7 @@ def login(request):
 
                 #session_key = request.session["session_key"] #me da el email, lo que hemos guardado en la sesion
 
-                return render(request,'eindex.html',{'cliente':True, 'encargado':False, 'Basico':False})
+                return render(request,'index.html',{'cliente':True, 'encargado':False, 'Basico':False})
             else:
                 messages.error(request, "Usuario y contraseña no coinciden.")
         else:
@@ -223,7 +223,7 @@ def baja(request):
                 #del request.session['session_key']
                 #request.session.modified = True
 
-                return render(request, 'eindex.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
+                return render(request, 'index.html', {'cliente': False, 'encargado': encargado, 'Basico': basico})
             else:
                 messages.error(request, "El cliente no existe.")
     else:
@@ -267,7 +267,7 @@ def modificar(request):
                 antiClie.save()
 
                 # si el evento post ha sido correcot
-                return render(request, 'eindex.html', {'cliente': False,'encargado': encargado, 'Basico': basico})
+                return render(request, 'index.html', {'cliente': False,'encargado': encargado, 'Basico': basico})
 
     #peticion GET
     formDni = FormClienteDelete()
@@ -363,7 +363,7 @@ def datosCliente(request):
 
 
 def citasCliente(request):
-    return render(request, 'eindex.html', {'cliente': True, 'encargado': False, 'Basico': False})
+    return render(request, 'index.html', {'cliente': True, 'encargado': False, 'Basico': False})
 
 """
     METODOS AUXILIARES

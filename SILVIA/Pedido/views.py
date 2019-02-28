@@ -59,11 +59,11 @@ def modificar(request):
          instEstadoPedido = Estadopedido.objects.get(id=estado)
          instProducto = Producto.objects.get(id=prod)
          instProveedor = Proveedor.objects.get(id=prov)
-         
+
          # actualizamos datos
          antiPed.cantidad = cantidad
          antiPed.fecha = fecha
-         antiPed.estado = instEstadoPedido
+         antiPed.estadopedido = instEstadoPedido
          antiPed.producto = instProducto
          antiPed.proveedor = instProveedor
          antiPed.save()

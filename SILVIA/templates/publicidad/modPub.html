@@ -44,6 +44,14 @@
 
             <form method="POST">{% csrf_token %}
 
+                {% if messages %}
+
+                    {% for message in messages %}
+                        <li> {{ message }}</li>
+                    {% endfor %}
+
+                {% endif %}
+
                 <p>
                      <label for="id_fechainicio">Inicio:</label>
                      <input type="text" name="fechainicio" value="{{datos.ini}}" required id="id_fechainicio">
@@ -70,7 +78,7 @@
                          <option value="{{datos.idCliEle}}" selected>{{datos.nomCliEle}}</option>
 
                         {% for tipo in datosCliente %}
-                            <option value="{{ tipo.id }}">{{ tipo.nom }}</option>
+                            <option value="{{ tipo.dni }}">{{ tipo.nom }}</option>
                         {% endfor %}
                     </select>
                  </p>

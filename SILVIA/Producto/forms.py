@@ -4,16 +4,11 @@ from .models import Tipoproducto
 def tipoChoice():
 
     tipos = Tipoproducto.objects.all();
-    lista = []
-
-    for tipo in tipos:
-        nom = str(tipo.nombre).title();
-        lista.append(nom)
 
     resultado = []
     resultado.append(('', 'Selecciona'))
-    for i in lista:
-        resultado.append((str(i), str(i)))
+    for tipo in tipos:
+        resultado.append((str(tipo.id), str(tipo.nombre)))
 
     return tuple(resultado)
 
