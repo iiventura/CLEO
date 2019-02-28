@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from ..Empleado.views import comprobarSesion
+from modules.Empleado.views import comprobarSesion
 from .forms import *
 from .models import Pedido,Estadopedido
-from ..Proveedor.models import Proveedor
+from SILVIA.Proveedor.models import Proveedor
 from ..Producto.models import Producto
 from django.contrib import messages
 
@@ -59,11 +59,11 @@ def modificar(request):
          instEstadoPedido = Estadopedido.objects.get(id=estado)
          instProducto = Producto.objects.get(id=prod)
          instProveedor = Proveedor.objects.get(id=prov)
-         
+
          # actualizamos datos
          antiPed.cantidad = cantidad
          antiPed.fecha = fecha
-         antiPed.estado = instEstadoPedido
+         antiPed.estadopedido = instEstadoPedido
          antiPed.producto = instProducto
          antiPed.proveedor = instProveedor
          antiPed.save()

@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .models import Proveedor
-from ..Empleado.views import comprobarSesion
+from modules.Empleado.views import comprobarSesion
 from .forms import *
 from django.contrib import messages
 
