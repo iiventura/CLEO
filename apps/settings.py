@@ -91,9 +91,9 @@ WSGI_APPLICATION = 'apps.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
-        'NAME': 'cleodb',
+        'NAME': 'CLEO',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'root2018',
         'HOST': 'localhost', #'db',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }

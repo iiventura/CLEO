@@ -2,11 +2,10 @@
 
 {% block content %}
     <h1 class="subtitle">Modificar Producto</h1>
-        <form class="create  post-form" method="POST">
-            <input type="hidden" name="csrfmiddlewaretoken" value="AJV63ndk1RPUXaO4m0wKDmgEKM9raYP4uVhXhh5PpH5OdG4PhlzKJqUuqaocIPIV">
+        <form class="create  post-form" method="POST">{% csrf_token %}
             <p>
                 <label for="id">Id :</label>
-                    <input type="text" name="id" id="id" readonly value="{{datos.codigo}}">
+                    <input type="text" name="id" id="id" readonly value="{{datos.id}}">
             </p>
             <p>
                     <label for="nombre">Nombre:</label>

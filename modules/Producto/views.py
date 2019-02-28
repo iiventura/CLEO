@@ -54,7 +54,6 @@ def modificar(request,pk):
 
         if request.method == "POST":
             form = FormProductoUpdate(request.POST)
-             # obtenemos el dni que hemos buscado
 
             if form.is_valid():
                 datos = form.cleaned_data
@@ -75,22 +74,19 @@ def modificar(request,pk):
                 return HttpResponseRedirect('/producto/'+str(pk)+'/detalle')
 
             # peticion GET
-            elif request.method == "GET":
+        elif request.method == "GET":
 
-                    data = {
-                        "id": prod.id,
-                        #"codigo": prod.codigo,
-                        "nombre": prod.nombre,
-                        "nomTipoEle": str(prod.tipoproducto.nombre).title(),
-                        "idTipoEle": prod.tipoproducto.id,
-                    }
+            data = {
+                "id": prod.id,
+                #"codigo": prod.codigo,
+                "nombre": prod.nombre,
+                "nomTipoEle": str(prod.tipoproducto.nombre).title(),
+                "idTipoEle": prod.tipoproducto.id,
+            }
 
-                    datosTipos = listaTiposProductos(data["nomTipoEle"])
-                    print(data, datosTipos)
-                    return render(request, 'pmodificar.html', {"datos": data, "datosTipo":datosTipos})
-
-
-
+            datosTipos = listaTiposProductos(data["nomTipoEle"])
+            print(data, datosTipos)
+            return render(request, 'pmodificar.html', {"datos": data, "datosTipo":datosTipos})
 
     except Producto.DoesNotExist:
         raise Http404("Producto no existe")
