@@ -17,8 +17,8 @@ class FormTratamientoInsert(forms.Form):
     nombre = forms.CharField(max_length=45, label="Nombre ",
         widget=(forms.TextInput(attrs={"id": "nombre"})))
 
-    descripcion = forms.CharField(max_length=45, label="Descripcion ",
-        widget=(forms.TextInput(attrs={"id": "descripcion"})))
+    descripcion = forms.CharField(
+        widget=forms.Textarea(attrs={'cols': 28, 'rows': 2}))
 
     maquina = forms.ChoiceField(choices=tipoChoice())
 
@@ -27,8 +27,8 @@ class FormTratamientoUpdate(forms.Form):
     nombre = forms.CharField(max_length=45, label="Nombre ",
         widget=(forms.TextInput(attrs={"id": "nombre"})))
 
-    descripcion = forms.CharField(max_length=45, label="Descripcion ",
-        widget=(forms.TextInput(attrs={"id": "descripcion"})))
+    descripcion = forms.CharField(
+        widget=forms.Textarea(attrs={'cols': 28, 'rows': 2}))
 
     maquina = forms.ChoiceField(choices=tipoChoice())
 
