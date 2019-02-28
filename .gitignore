@@ -106,6 +106,7 @@ venv.bak/
 
 #setting
 .idea/
-
+setting.py
+SILVIA/
 
 
