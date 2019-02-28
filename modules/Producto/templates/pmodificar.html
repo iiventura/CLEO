@@ -1,0 +1,32 @@
+{% extends "ebase.html" %}
+
+{% block content %}
+    <h1 class="subtitle">Modificar Producto</h1>
+        <form class="create  post-form" method="POST">
+            <input type="hidden" name="csrfmiddlewaretoken" value="AJV63ndk1RPUXaO4m0wKDmgEKM9raYP4uVhXhh5PpH5OdG4PhlzKJqUuqaocIPIV">
+            <p>
+                <label for="id">Id :</label>
+                    <input type="text" name="id" id="id" readonly value="{{datos.codigo}}">
+            </p>
+            <p>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" name="nombre" id="nombre" maxlength="45" value="{{datos.nombre}}">
+                </p>
+                <p>
+                   <label for="id_Tipo">Tipo:</label>
+
+                    <select name="Tipo" id="id_Tipo">
+                        <option value="{{datos.idTipoEle}}" selected>{{datos.nomTipoEle}}</option>
+
+                        {% for tipo in datosTipo %}
+                            <option value="{{ tipo.id }}">{{ tipo.nom }}</option>
+                        {% endfor %}
+                    </select>
+                </p>
+
+
+            <div class="row ">
+                <input type="submit" class="btn " value="Modificar">
+            </div>
+        </form>
+{% endblock %}
