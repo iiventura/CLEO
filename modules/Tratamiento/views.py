@@ -60,4 +60,17 @@ def eliminar(request, pk):
    return HttpResponseRedirect("/tratamiento/lista")
 
 
+def detalle(request, pk):
+   try:
+      tratamiento = Tratamiento.objects.get(id=pk)
+      tipo = Maquina.objects.get(id=tratamiento.maquina.id)
+      data = {
+         "id": tratamiento.id,
+         "nom": tratamiento.nombre,
+         "des": tratamiento.descripcion,
+         "maq": tipo.nombre.title(),
+      }
+   except Tratamiento.DoesNotExist:
+      raise Http404("Tratamiento no existe")
 
+   return render(request, 'tdetalle.html', {"datos": data})
