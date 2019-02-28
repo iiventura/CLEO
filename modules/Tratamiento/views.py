@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render
 
 from modules.Maquina.models import Maquina
@@ -49,6 +50,14 @@ def listar(request):
    return render(request, './tlista.html', {"lista": lista})
 
 
+def eliminar(request, pk):
+   try:
+      sala = Tratamiento.objects.get(id=pk)
+      sala.delete()
+   except Tratamiento.DoesNotExist:
+      raise Http404("Tratamiento no existe")
+
+   return HttpResponseRedirect("/tratamiento/lista")
 
 
 
