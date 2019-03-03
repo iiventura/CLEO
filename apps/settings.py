@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'modules.Maquina',
     'modules.Tratamiento',
     'modules.Producto',
+    'modules.HorarioEmpleado',
+    'modules.Proveedor',
 ]
 
 MIDDLEWARE = [
@@ -68,7 +70,8 @@ TEMPLATES = [
                 os.path.join(BASE_DIR, '/modules/Maquina/templates'),
                 os.path.join(BASE_DIR, '/modules/Tratamiento/templates'),
                 os.path.join(BASE_DIR, '/modules/Producto/templates'),
-
+                os.path.join(BASE_DIR, '/modules/HorarioEmpleado/templates'),
+                os.path.join(BASE_DIR, '/modules/Proveedor/templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {

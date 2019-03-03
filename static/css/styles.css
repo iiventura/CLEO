@@ -92,7 +92,6 @@ body{
   margin-top: 5%;
   background-color: #DC9D00;
   color: #2B197C;
-  
 }
 
 /*ALERTS*/
@@ -109,9 +108,10 @@ footer{
   background-color: #0E043D;
   text-align: center;
   color: #DBD0BE;
-  position: absolute;
+  /*position: absolute;*/
   width: 100%;
   bottom: 0;
+  
 }
 
 footer strong{
