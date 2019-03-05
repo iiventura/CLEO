@@ -2,20 +2,24 @@
 
 {% block content %}
     <div class="container detalle">
-        <h1 class="subtitle">Producto</h1>
+        <h1 class="subtitle">Promocion</h1>
         <div class="row ">
             <div class="col-md-4"></div>
 
             <div class="col-md-4">
                 <div class="row">
                     <ul>
+                        <li>
+                           <strong>Codigo:</strong>
+                           {{datos.cod}}
+                       </li>
                        <li>
                            <strong>Nombre:</strong>
                            {{datos.nom}}
                        </li>
                        <li>
-                           <strong>Tipo:</strong>
-                           {{datos.tipo}}
+                           <strong>Observacion:</strong>
+                           {{datos.obs}}
                        </li>
                     </ul>
                 </div>

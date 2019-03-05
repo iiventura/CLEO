@@ -1,28 +1,22 @@
 {% extends "ebase.html" %}
 
 {% block content %}
-    <h1 class="subtitle">Modificar Producto</h1>
+    <h1 class="subtitle">Modificar Promocion</h1>
         <form class="create  post-form" method="POST">{% csrf_token %}
             <p>
-                <label for="id">Id :</label>
-                    <input type="text" name="id" id="id" readonly value="{{datos.id}}">
-            </p>
+                 <label for="codigo">Codigo :</label>
+                 <input type="text" name="codigo" id="codigo" maxlength="45" value="{{datos.cod}}" readonly>
+             </p>
+
             <p>
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" name="nombre" id="nombre" maxlength="45" value="{{datos.nombre}}">
-                </p>
-                <p>
-                   <label for="id_Tipo">Tipo:</label>
+                <label for="nombre">Nombre :</label>
+                <input type="text" name="nombre" id="nombre" maxlength="45" value="{{datos.nom}}" required>
+            </p>
 
-                    <select name="Tipo" id="id_Tipo">
-                        <option value="{{datos.idTipoEle}}" selected>{{datos.nomTipoEle}}</option>
-
-                        {% for tipo in datosTipo %}
-                            <option value="{{ tipo.id }}">{{ tipo.nom }}</option>
-                        {% endfor %}
-                    </select>
-                </p>
-
+            <p>
+                <label for="id_observaciones">Observaciones:</label>
+                <textarea name="observaciones" cols="28" rows="2" required id="id_observaciones"> {{datos.obs}} </textarea>
+            </p>
 
             <div class="row ">
                 <input type="submit" class="btn " value="Modificar">

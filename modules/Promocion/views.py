@@ -14,12 +14,13 @@ def nueva(request):
             datos = form.cleaned_data
 
             # recogemos los datos
+            codigo = datos.get("codigo")
             nomPro = datos.get("nombre")
             obs = datos.get("observaciones")
 
             if not Promocion.objects.filter(nombre=nomPro):  # todavia se puede guardar una maquina mas
 
-                s = Promocion(nombre=nomPro, observaciones=obs)
+                s = Promocion(codigo=codigo, nombre=nomPro, observaciones=obs)
                 s.save()
                 return render(request, 'pmnuevo.html', {'form': form})
             else:
@@ -37,6 +38,7 @@ def listar(request):
    for promocion in datos:
 
       data = {
+         "id": promocion.id,
          "cod": promocion.codigo,
          "nom": promocion.nombre,
          "obs": promocion.observaciones,
@@ -60,6 +62,7 @@ def detalle(request, pk):
        promocion = Promocion.objects.get(id=pk)
 
        data = {
+          "id": promocion.id,
           "cod": promocion.codigo,
           "nom": promocion.nombre,
           "obs": promocion.observaciones,
@@ -69,3 +72,40 @@ def detalle(request, pk):
       raise Http404("Promocion no existe")
 
    return render(request, 'pmdetalle.html', {"datos": data})
+
+def modificar(request,pk):
+
+    try:
+        prom = Promocion.objects.get(id=pk)
+
+        if request.method == "POST":
+            form = FormPromocionUpdate(request.POST)
+
+            if form.is_valid():
+                datos = form.cleaned_data
+
+                # recogemos los datos
+                nom = datos.get("nombre")
+                obs = datos.get("observaciones")
+
+                antiPromo = Promocion.objects.get(id=pk)
+                antiPromo.nombre = nom
+                antiPromo.observaciones = obs
+                antiPromo.save()
+
+                return HttpResponseRedirect('/promocion/' + str(pk) + '/detalle')
+
+        elif request.method == "GET":
+
+            data = {
+                "cod": prom.codigo,
+                "nom": prom.nombre,
+                "obs": prom.observaciones,
+            }
+
+            return render(request, 'pmmodificar.html', {"datos": data})
+
+    except Promocion.DoesNotExist:
+        raise Http404("Promocion no existe")
+
+    return render(request, 'pmodificar.html', {"datos": {}, "datosTipo": {}})
