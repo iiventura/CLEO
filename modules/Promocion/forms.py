@@ -3,6 +3,9 @@ from django import forms
 
 class FormPromocionInsert(forms.Form):
 
+    codigo = forms.CharField(max_length=45, label="Codigo ",
+            widget=(forms.TextInput(attrs={"id": "codigo"})))
+
     nombre = forms.CharField(max_length=45, label="Nombre ",
         widget=(forms.TextInput(attrs={"id": "nombre"})))
 
