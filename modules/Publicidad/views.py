@@ -112,7 +112,7 @@ def modificar(request,pk):
                 antiPub.cliente = instCliente
                 antiPub.save()
 
-                return HttpResponseRedirect('/publicidad/' + str(pk) + '/detalle')
+                return HttpResponseRedirect("/publicacion/lista")
 
             else:
                 messages.error(request, "La fechas no son validas.")

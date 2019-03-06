@@ -138,7 +138,7 @@ def modificar(request,pk ):
                     antiClie.telefono = tlf
                     antiClie.save()
 
-                    return HttpResponseRedirect('/cliente/' + str(pk))
+                    return HttpResponseRedirect("/cliente/lista")
 
         elif request.method == "GET":
 

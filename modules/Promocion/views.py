@@ -94,7 +94,7 @@ def modificar(request,pk):
                 antiPromo.observaciones = obs
                 antiPromo.save()
 
-                return HttpResponseRedirect('/promocion/' + str(pk) + '/detalle')
+                return HttpResponseRedirect("/promocion/lista")
 
         elif request.method == "GET":
 

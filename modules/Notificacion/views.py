@@ -2,6 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, Http404
 from .forms import *
 from .models import *
+from ..Cliente.models import Cliente
+from ..Empleado.models import Empleado
+
+from django.core.mail import EmailMessage
+
 from django.contrib import messages
 
 # Create your views here.
@@ -22,6 +27,12 @@ def nueva(request):
 
          n = Notificacion(estadomensaje=instEstado, tipousuario=instUsuario, mensaje=mensaje);
          n.save()
+
+         #enviar mensajes
+         if instUsuario.nombre == 'cliente':
+            enviarCorreo('cliente',mensaje)
+         else:
+            enviarCorreo('encargado',mensaje)
 
          return HttpResponseRedirect("/notificacion/lista")
 
@@ -106,7 +117,7 @@ def modificar(request,pk):
             antiNoti.mensaje = mensaje
             antiNoti.save()
 
-            return HttpResponseRedirect('/notificacion/' + str(pk) + '/detalle')
+            return HttpResponseRedirect("/notificacion/lista")
 
       elif request.method == "GET":
 
@@ -161,3 +172,26 @@ def listaUsuarios(nombre):
          lista.append(data)
 
    return lista
+
+def enviarCorreo(destinarario,texto):
+
+   lista = []
+
+   if destinarario == 'cliente':
+      datos = Cliente.objects.all();
+
+      for dato in datos:
+         lista.append(dato.email)
+
+   else:
+      datos = Empleado.objects.all();
+
+      for dato in datos:
+         if dato.tipoempleado.id == 1:
+            lista.append(dato.email)
+
+   for e in lista:
+      email = EmailMessage('Notificacion Cleo', texto, to=[e])
+      email.send()
+
+

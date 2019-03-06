@@ -146,7 +146,13 @@ USE_L10N = False
 
 USE_TZ = True
 
-DEBUG = False
+DEBUG = True
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'cleo.tfg2019@gmail.com'
+EMAIL_HOST_PASSWORD = 'cleo2019'
+EMAIL_PORT = 587
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
