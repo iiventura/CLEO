@@ -4,7 +4,7 @@ from .forms import *
 from .models import *
 from django.contrib import messages
 from django.utils.dateparse import parse_date
-from datetime import datetime
+import datetime
 
 
 def nueva(request):
@@ -20,17 +20,23 @@ def nueva(request):
             promocion = datos.get("promocion")
             cliente = datos.get("cliente")
 
-            if inicio > fin:
-                messages.error(request, "Las fechas no son correctas.")
+            instPromocion = Promocion.objects.get(id=promocion)
+            instCliente = Cliente.objects.get(dni=cliente)
 
-            else:
-                instPromocion = Promocion.objects.get(id=promocion)
-                instCliente = Cliente.objects.get(dni=cliente)
+            try:
+                fIni = formatoDate(inicio)
+                fFin = formatoDate(fin)
 
-                p = Publicidad(fechainicio=inicio, fechafin=fin, promocion=instPromocion, cliente=instCliente);
-                p.save()
+                if fIni > fFin:
+                    messages.error(request, "Las fechas no son correctas.")
+                else:
+                    p = Publicidad(fechainicio=fIni, fechafin=fFin, promocion=instPromocion, cliente=instCliente);
+                    p.save()
 
-                return HttpResponseRedirect("/publicidad/lista")
+                    return HttpResponseRedirect("/publicidad/lista")
+            except:
+                messages.error(request, "El formato de las fechas no es correcto (dd-mm-yyyy) ")
+
     else:
         form = FormPublicidadInsert()
 
@@ -45,8 +51,8 @@ def listar(request):
 
       data = {
          "id": publicidad.id,
-         "ini": str(publicidad.fechainicio),
-         "fin": str(publicidad.fechafin),
+         "ini": formatoDateString(str(publicidad.fechainicio)),
+         "fin": formatoDateString(str(publicidad.fechafin)),
          "prom": publicidad.promocion.codigo,
          "cli": publicidad.cliente.nombre,
       }
@@ -70,8 +76,8 @@ def detalle(request, pk):
 
        data = {
            "id": publicidad.id,
-           "ini": str(publicidad.fechainicio),
-           "fin": str(publicidad.fechafin),
+           "ini": formatoDateString(str(publicidad.fechainicio)),
+           "fin": formatoDateString(str(publicidad.fechafin)),
            "prom": publicidad.promocion.codigo,
            "cli": publicidad.cliente.nombre,
        }
@@ -98,35 +104,40 @@ def modificar(request,pk):
                 promocion = datos.get("promocion")
                 cliente = datos.get("cliente")
 
-                if inicio > fin:
-                    messages.error(request, "Las fechas no son correctas.")
+                try:
 
-                antiPub = Publicidad.objects.get(id=pk)
-                instPromocion = Promocion.objects.get(id=promocion)
-                instCliente = Cliente.objects.get(dni=cliente)
+                    fIni = formatoDate(inicio)
+                    fFin = formatoDate(fin)
 
-                # actualizamos datos
-                antiPub.fechainicio = inicio
-                antiPub.fechafin = fin
-                antiPub.promocion = instPromocion
-                antiPub.cliente = instCliente
-                antiPub.save()
+                    if fIni > fFin:
+                        messages.error(request, "Las fechas no son correctas.")
+                    else:
 
-                return HttpResponseRedirect("/publicacion/lista")
+                        antiPub = Publicidad.objects.get(id=pk)
+                        instPromocion = Promocion.objects.get(id=promocion)
+                        instCliente = Cliente.objects.get(dni=cliente)
 
-            else:
-                messages.error(request, "La fechas no son validas.")
+                        # actualizamos datos
+                        antiPub.fechainicio = fIni
+                        antiPub.fechafin = fFin
+                        antiPub.promocion = instPromocion
+                        antiPub.cliente = instCliente
+                        antiPub.save()
+
+                        return HttpResponseRedirect("/publicidad/lista")
+                except:
+                    messages.error(request, "El formato de las fechas no es correcto (dd-mm-yyyy)")
 
         elif request.method == "GET":
 
             data = {
                 "id": publicidad.id,
-                "ini": str(publicidad.fechainicio),
-                "fin": str(publicidad.fechafin),
+                "ini": formatoDateString(str(publicidad.fechainicio)),
+                "fin": formatoDateString(str(publicidad.fechafin)),
                 "nomProEle": publicidad.promocion.nombre,
                 "idProEle": publicidad.promocion.id,
                 "nomCliEle": publicidad.cliente.nombre,
-                "idCliEle": publicidad.cliente.id,
+                "idCliEle": publicidad.cliente.dni,
             }
 
             datosPromocion = listaPromociones(data["nomProEle"])
@@ -167,3 +178,19 @@ def listaClientes(nombre):
          lista.append(data)
 
    return lista
+
+def formatoDate(fecha):
+
+    d = datetime.datetime.strptime(fecha, '%d-%m-%Y').day
+    m = datetime.datetime.strptime(fecha, '%d-%m-%Y').month
+    y = datetime.datetime.strptime(fecha, '%d-%m-%Y').year
+
+    return datetime.datetime(y, m, d).date()
+
+def formatoDateString(fecha):
+
+    #en la bbdd se guarda yyyy-mm-dd cambiamso para que sea dd-mm-yyy
+    cad = fecha.split('-')
+    cad = cad[2] + '-' + cad[1] + '-' + cad[0]
+
+    return cad
