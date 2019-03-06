@@ -57,7 +57,8 @@ def nuevo(request):
     else:
         form = FormClienteInsert()
 
-    return render(request, 'cnuevo.html', {'form': form})
+    #return render(request, 'cnuevo.html', {'form': form})
+    return render(request, 'nuevoGeneral.html', {'form': form, 'elem': 'Cliente'})
 
 def listar(request):
     datos = Cliente.objects.all()

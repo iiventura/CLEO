@@ -34,7 +34,8 @@ def nueva(request):
     else:
         form = FormPublicidadInsert()
 
-        return render(request, 'punuevo.html', {'form': form})
+    #return render(request, 'punuevo.html', {'form': form})
+    return render(request, 'nuevoGeneral.html', {'form': form, 'elem': 'Publicidad'})
 
 def listar(request):
    datos = Publicidad.objects.all()
@@ -58,7 +59,7 @@ def eliminar(request, pk):
    try:
       promo = Publicidad.objects.get(id=pk)
       promo.delete()
-   except Promocion.DoesNotExist:
+   except Publicidad.DoesNotExist:
       raise Http404("Publicidad no existe")
 
    return HttpResponseRedirect("/publicidad/lista")

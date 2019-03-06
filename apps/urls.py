@@ -12,6 +12,7 @@ urlpatterns = [
     path('promocion/',include('modules.Promocion.urls')),
     path('publicidad/',include('modules.Publicidad.urls')),
     path('cliente/',include('modules.Cliente.urls')),
+    path('notificacion/',include('modules.Notificacion.urls')),
 ]
 """
   path('cliente/',include('modules.Cliente.urls')), #cliente

@@ -29,7 +29,8 @@ def nueva(request):
     else:
         form = FormPromocionInsert()
 
-        return render(request, 'pmnuevo.html', {'form': form})
+    #return render(request, 'pmnuevo.html', {'form': form})
+    return render(request, 'nuevoGeneral.html', {'form': form, 'elem': 'Promocion'})
 
 def listar(request):
    datos = Promocion.objects.all()
