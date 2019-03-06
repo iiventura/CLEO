@@ -136,7 +136,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-es'
 
-DATE_INPUT_FORMATS = ('%d-%m-%Y', '%Y-%m-%d')
+DATE_INPUT_FORMATS = ('%d-%m-%Y')
 
 TIME_ZONE = 'UTC'
 

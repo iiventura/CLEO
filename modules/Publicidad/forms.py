@@ -29,16 +29,22 @@ def clienteChoice():
 
 class FormPublicidadInsert(forms.Form):
 
+    fechainicio = forms.CharField(max_length=10, label="Inicio ",
+        widget=(forms.TextInput(attrs={"id": "fechainicio"})))
+
+    fechafin = forms.CharField(max_length=10, label="Fin ",
+         widget=(forms.TextInput(attrs={"id": "fechafin"})))
+    """
     fechainicio = forms.DateField(label=("Inicio"),
         initial=timezone.now().date(),
-        input_formats=['%Y-%m-%d'],
-        widget=forms.DateInput(format='%Y-%m-%d'))
+        input_formats=['%d-%m-%Y'],
+        widget=forms.DateInput(format='%d-%m-%Y'))
 
     fechafin = forms.DateField(label=("Fin"),
         initial=timezone.now().date(),
-        input_formats=['%Y-%m-%d'],
-        widget=forms.DateInput(format='%Y-%m-%d'))
-
+        input_formats=['%d-%m-%Y'],
+        widget=forms.DateInput(format='%d-%m-%Y'))
+    """
     promocion = forms.ChoiceField(choices=promocionChoice())
 
     cliente = forms.ChoiceField(choices=clienteChoice())
@@ -46,15 +52,20 @@ class FormPublicidadInsert(forms.Form):
 
 class FormPublicidadUpdate(forms.Form):
 
+    fechainicio = forms.CharField(max_length=10, label="Inicio ",
+        widget=(forms.TextInput(attrs={"id": "fechainicio"})))
+
+    fechafin = forms.CharField(max_length=10, label="Fin ",
+        widget=(forms.TextInput(attrs={"id": "fechafin"})))
+    f"""
     fechainicio = forms.DateField(label=("Inicio"),
-      initial=timezone.now().date(),
-      input_formats=['%Y-%m-%d'],
-      widget=forms.DateInput(format='%Y-%m-%d'))
+        input_formats=['%d-%m-%Y'],
+        widget=forms.DateInput(format='%d-%m-%Y'))
 
     fechafin = forms.DateField(label=("Fin"),
-       initial=timezone.now().date(),
-       input_formats=['%Y-%m-%d'],
-       widget=forms.DateInput(format='%Y-%m-%d'))
+        input_formats=['%d-%m-%Y'],
+        widget=forms.DateInput(format='%d-%m-%Y'))
+    """
 
     promocion = forms.ChoiceField(choices=promocionChoice())
 

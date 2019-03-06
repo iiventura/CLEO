@@ -1,27 +1,24 @@
 {% extends "ebase.html" %}
 
 {% block content %}
+{% if messages %}
+        <div class="alert alert-warning" role="alert">
+            {% for message in messages %}
+                <li> {{ message }}</li>
+            {% endfor %}
+        </div>
+    {% endif %}
+
     <h1 class="subtitle">Modificar Publicidad</h1>
         <form class="create  post-form" method="POST">{% csrf_token %}
-
-                <div style="margin-left:5%">
-                    {% if messages %}
-
-                        {% for message in messages %}
-                            <li> {{ message }}</li>
-                        {% endfor %}
-
-                    {% endif %}
-                </div>
-
                 <p>
-                     <label for="id_fechainicio">Inicio:</label>
-                     <input type="text" name="fechainicio" value="{{datos.ini}}" required id="id_fechainicio">
+                     <label for="fechainicio">Inicio:</label>
+                     <input type="text" name="fechainicio" value="{{datos.ini}}" maxlength="10" required id="fechainicio">
                 </p>
 
                 <p>
-                     <label for="id_fechafin">Fin:</label>
-                     <input type="text" name="fechafin" value="{{datos.fin}}" required id="id_fechafin">
+                     <label for="fechafin">Fin:</label>
+                     <input type="text" name="fechafin" value="{{datos.fin}}" maxlength="10" required id="fechafin">
                  </p>
                 <p>
                      <label for="id_promocion">Promocion:</label>
