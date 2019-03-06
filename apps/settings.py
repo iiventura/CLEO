@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'modules.Tratamiento',
     'modules.Producto',
     'modules.Promocion',
+    'modules.Publicidad',
+    'modules.Cliente',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +72,8 @@ TEMPLATES = [
                 os.path.join(BASE_DIR, '/modules/Tratamiento/templates'),
                 os.path.join(BASE_DIR, '/modules/Producto/templates'),
                 os.path.join(BASE_DIR, '/modules/Promocion/templates'),
+                os.path.join(BASE_DIR, '/modules/Publicidad/templates'),
+                os.path.join(BASE_DIR, '/modules/Cliente/templates'),
 
         ],
         'APP_DIRS': True,

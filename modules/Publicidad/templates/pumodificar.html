@@ -1,0 +1,53 @@
+{% extends "ebase.html" %}
+
+{% block content %}
+    <h1 class="subtitle">Modificar Publicidad</h1>
+        <form class="create  post-form" method="POST">{% csrf_token %}
+
+                <div style="margin-left:5%">
+                    {% if messages %}
+
+                        {% for message in messages %}
+                            <li> {{ message }}</li>
+                        {% endfor %}
+
+                    {% endif %}
+                </div>
+
+                <p>
+                     <label for="id_fechainicio">Inicio:</label>
+                     <input type="text" name="fechainicio" value="{{datos.ini}}" required id="id_fechainicio">
+                </p>
+
+                <p>
+                     <label for="id_fechafin">Fin:</label>
+                     <input type="text" name="fechafin" value="{{datos.fin}}" required id="id_fechafin">
+                 </p>
+                <p>
+                     <label for="id_promocion">Promocion:</label>
+                     <select name="promocion" required id="id_promocion">
+                         <option value="{{datos.idProEle}}" selected>{{datos.nomProEle}}</option>
+
+                        {% for tipo in datosPromocion %}
+                            <option value="{{ tipo.id }}">{{ tipo.nom }}</option>
+                        {% endfor %}
+                    </select>
+                 </p>
+
+                 <p>
+                     <label for="id_cliente">Cliente:</label>
+                     <select name="cliente" required id="id_cliente">
+                         <option value="{{datos.idCliEle}}" selected>{{datos.nomCliEle}}</option>
+
+                        {% for tipo in datosCliente %}
+                            <option value="{{ tipo.dni }}">{{ tipo.nom }}</option>
+                        {% endfor %}
+                    </select>
+                 </p>
+
+                <div>
+                    <input type="submit" class="btn" value="Actualizar">
+                </div>
+
+            </form>
+{% endblock %}

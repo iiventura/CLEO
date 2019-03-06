@@ -108,4 +108,4 @@ def modificar(request,pk):
     except Promocion.DoesNotExist:
         raise Http404("Promocion no existe")
 
-    return render(request, 'pmodificar.html', {"datos": {}, "datosTipo": {}})
+    return HttpResponseRedirect('/promocion/' + str(pk) + '/modificar')

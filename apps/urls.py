@@ -10,6 +10,8 @@ urlpatterns = [
     path('tratamiento/',include('modules.Tratamiento.urls')),
     path('producto/',include('modules.Producto.urls')),
     path('promocion/',include('modules.Promocion.urls')),
+    path('publicidad/',include('modules.Publicidad.urls')),
+    path('cliente/',include('modules.Cliente.urls')),
 ]
 """
   path('cliente/',include('modules.Cliente.urls')), #cliente

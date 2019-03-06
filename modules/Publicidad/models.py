@@ -1,6 +1,6 @@
 from django.db import models
 from ..Promocion.models import Promocion
-from ..Cliente.models import Cliente
+from  ..Cliente.models import Cliente
 
 # Create your models here.
 class Publicidad(models.Model):
@@ -13,4 +13,4 @@ class Publicidad(models.Model):
     class Meta:
         managed = False
         db_table = 'publicidad'
-        unique_together = (('id', 'promocion', 'cliente'),)
+        unique_together = (('id', 'promocion'),)# , 'cliente'),)

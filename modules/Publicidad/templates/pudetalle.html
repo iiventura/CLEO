@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="container detalle">
-        <h1 class="subtitle">Promocion</h1>
+        <h1 class="subtitle">Publicidad</h1>
         <div class="row ">
             <div class="col-md-4"></div>
 
@@ -10,16 +10,20 @@
                 <div class="row">
                     <ul>
                         <li>
-                           <strong>Codigo:</strong>
-                           {{datos.cod}}
+                           <strong>Inicio:</strong>
+                           {{datos.ini}}
                        </li>
                        <li>
-                           <strong>Nombre:</strong>
-                           {{datos.nom}}
+                           <strong>Fin:</strong>
+                           {{datos.fin}}
                        </li>
                        <li>
-                           <strong>Observacion:</strong>
-                           {{datos.obs}}
+                           <strong>Promocion:</strong>
+                           {{datos.prom}}
+                       </li>
+                        <li>
+                           <strong>Cliente:</strong>
+                           {{datos.cli}}
                        </li>
                     </ul>
                 </div>
@@ -31,12 +35,12 @@
 
             <form>
                 <div class="col-md-6 edit">
-                    <button  type="submit" formmethod="get" formaction="/promocion/{{datos.id }}/modificar" class="btn ">Editar
+                    <button  type="submit" formmethod="get" formaction="/publicidad/{{datos.id }}/modificar" class="btn ">Editar
                         <span class="glyphicon glyphicon-edit"></span>
                     </button>
                 </div>
                 <div class="col-md-6 del">
-                    <button  type="submit" formmethod="get" formaction="/promocion/{{datos.id }}/eliminar"class="btn ">Eliminar
+                    <button  type="submit" formmethod="get" formaction="/publicidad/{{datos.id }}/eliminar"class="btn ">Eliminar
                         <span class="glyphicon glyphicon-remove"></span>
                     </button>
                 </div>

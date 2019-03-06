@@ -1,42 +1,44 @@
 {% extends "ebase.html" %}
 
 {% block content %}
-    <h1 class="subtitle">Promociones</h1>
-    <div class="container list-producto">
+    <h1 class="subtitle">Clientes</h1>
+    <div class="container list-empleados">
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>Codigo</th>
+                    <th>Dni</th>
                     <th>Nombre</th>
-                    <th>Observacion</th>
+                    <th>Apellidos</th>
+                    <th>Email</th>
                     <th></th>
-
                 </tr>
             </thead>
             <tbody>
-            {% if lista|length > 0 %}
-             {% for d in lista %}
+                {% for d in lista %}
                 <tr>
-
-                    <td> {{d.cod}} </td>
+                    <td> {{d.dni}} </td>
                     <td> {{d.nom}} </td>
-                    <td> {{d.obs}} </td>
+                    <td> {{d.ape}} </td>
 
                     <td>
-                        <a href="/promocion/{{d.id }}/modificar">
+                        <a href="/cliente/{{d.id }}">
+                            {{d.email}}
+                        </a>
+                    </td>
+
+                    <td>
+                        <a href="/cliente/{{d.id }}/modificar">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
                     </td>
 
                     <td>
-                        <a href="/promocion/{{d.id }}/eliminar">
+                        <a href="/cliente/{{d.id }}/eliminar">
                             <span class="glyphicon glyphicon-trash"></span>
                         </a>
                     </td>
                 </tr>
                 {% endfor %}
-            {% endif %}
-
             </tbody>
         </table>
     </div>
