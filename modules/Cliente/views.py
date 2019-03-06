@@ -116,7 +116,7 @@ def modificar(request,pk ):
 
             if form.is_valid():
                 datos = form.cleaned_data
-                print("****2****")
+
                 #recogemos los datos
                 nom = datos.get("nombre")
                 ape = datos.get("apellidos")
@@ -128,8 +128,7 @@ def modificar(request,pk ):
                 if not (len(tlf) == 9 and tlf.isdigit()):
                     messages.error(request, 'El telefono no es correcto.')
                 else:
-
-                    antiClie = Cliente.objects.get(email=email)
+                    antiClie = Cliente.objects.get(id=pk)
 
                     # actualizamos datos
                     antiClie.nombre = nom

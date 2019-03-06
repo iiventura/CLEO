@@ -146,6 +146,8 @@ USE_L10N = False
 
 USE_TZ = True
 
+DEBUG = False
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
