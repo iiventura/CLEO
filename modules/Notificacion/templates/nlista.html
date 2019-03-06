@@ -1,0 +1,43 @@
+{% extends "ebase.html" %}
+
+{% block content %}
+    <h1 class="subtitle">Notificaciones</h1>
+    <div class="container list-producto">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Estado</th>
+                    <th>Tipo</th>
+                    <th>Mensaje</th>
+                    <th></th>
+
+                </tr>
+            </thead>
+            <tbody>
+            {% if lista|length > 0 %}
+             {% for d in lista %}
+                <tr>
+
+                    <td> {{d.est}} </td>
+                    <td> {{d.usu}} </td>
+                    <td> {{d.sms}} </td>
+
+                    <td>
+                        <a href="/notificacion/{{d.id }}/modificar">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                    </td>
+
+                    <td>
+                        <a href="/notificacion/{{d.id }}/eliminar">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% endif %}
+
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

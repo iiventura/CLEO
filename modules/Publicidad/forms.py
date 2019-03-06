@@ -14,6 +14,7 @@ def promocionChoice():
 
     return tuple(resultado)
 
+
 def clienteChoice():
 
     tipos = Cliente.objects.all();
