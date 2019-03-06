@@ -54,9 +54,6 @@ class FormHorarioEmpleadoInsert(forms.Form):
 
     horariosalida = forms.ChoiceField(choices=horaChoice())
 
-class FormHorarioEmpleadoDelete(forms.Form):
-
-    empleado = forms.ChoiceField(choices=empHorarioChoice())
 
 class FormHorarioEmpleadoUpdate(forms.Form):
 

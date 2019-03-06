@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'modules.Publicidad',
     'modules.Cliente',
     'modules.Notificacion'
+    'modules.HorarioEmpleado',
+    'modules.Proveedor',
 ]
 
 MIDDLEWARE = [
@@ -76,7 +78,8 @@ TEMPLATES = [
                 os.path.join(BASE_DIR, '/modules/Publicidad/templates'),
                 os.path.join(BASE_DIR, '/modules/Cliente/templates'),
                 os.path.join(BASE_DIR, '/modules/Notificacion/templates'),
-
+                os.path.join(BASE_DIR, '/modules/HorarioEmpleado/templates'),
+                os.path.join(BASE_DIR, '/modules/Proveedor/templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -99,9 +102,9 @@ WSGI_APPLICATION = 'apps.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
-        'NAME': 'CLEO',
+        'NAME': 'cleodb',
         'USER': 'root',
-        'PASSWORD': 'root2018',
+        'PASSWORD': '',
         'HOST': 'localhost', #'db',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
 
