@@ -13,11 +13,7 @@ urlpatterns = [
     path('publicidad/',include('modules.Publicidad.urls')),
     path('cliente/',include('modules.Cliente.urls')),
     path('notificacion/',include('modules.Notificacion.urls')),
+    #PRUEBA
+    path('horario/', include('modules.HorarioEmpleado.urls')),
+    path('proveedor/', include('modules.Proveedor.urls')),
 ]
-"""
-  path('cliente/',include('modules.Cliente.urls')), #cliente
-  path('promocion/', include('modules.Promocion.urls')), #promocion
-  path('producto/', include('modules.Producto.urls')), #promocion
-  path('proveedor/', include('modules.Proveedor.urls')), #promocion
-
-"""

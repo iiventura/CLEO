@@ -1,7 +1,7 @@
 from django import forms
 from django.utils import timezone
 from modules.Empleado.models import *
-from .models import Horarioempleado,Horario
+from .models import HorarioEmpleado,Horario
 
 def empChoice():
 
