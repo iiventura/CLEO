@@ -22,7 +22,7 @@ def nueva(request):
 
                 s = Promocion(codigo=codigo, nombre=nomPro, observaciones=obs)
                 s.save()
-                return HttpResponseRedirect("/promocion/lista")
+                return render(request, 'pmnuevo.html', {'form': form})
             else:
                 messages.error(request, 'La Promocion ya existe.')
                 messages.error(request, '')
