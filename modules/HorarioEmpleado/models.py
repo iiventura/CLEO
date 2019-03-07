@@ -9,7 +9,7 @@ class Horario(models.Model):
         managed = False
         db_table = 'Horario'
 
-class Horarioempleado(models.Model):
+class HorarioEmpleado(models.Model):
     id = models.AutoField(primary_key=True)
     fecha = models.DateField(blank=True, null=True)
     empleado = models.ForeignKey(Empleado, models.DO_NOTHING, db_column='Empleado_id')  # Field name made lowercase.
