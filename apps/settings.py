@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'modules.Producto',
     'modules.HorarioEmpleado',
     'modules.Proveedor',
+    'modules.Pedido',
 ]
 
 MIDDLEWARE = [
@@ -72,6 +73,7 @@ TEMPLATES = [
                 os.path.join(BASE_DIR, '/modules/Producto/templates'),
                 os.path.join(BASE_DIR, '/modules/HorarioEmpleado/templates'),
                 os.path.join(BASE_DIR, '/modules/Proveedor/templates'),
+                os.path.join(BASE_DIR, '/modules/Pedidogit /templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
