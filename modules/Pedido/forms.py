@@ -6,7 +6,7 @@ from ..Producto.models import Producto
 
 def estadoChoice():
 
-    tipos = Estadopedido.objects.all();
+    tipos = EstadoPedido.objects.all();
 
     resultado = []
     resultado.append(('', 'Selecciona'))
