@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render
 
 from .models import Proveedor
@@ -47,3 +48,28 @@ def listar(request):
       }
       lista.append(data)
    return render(request, 'prlista.html', {"lista": lista})
+
+
+def eliminar(request, pk):
+   try:
+      sala = Proveedor.objects.get(id=pk)
+      sala.delete()
+   except Proveedor.DoesNotExist:
+      raise Http404("Proveedor no existe")
+
+   return HttpResponseRedirect("/proveedor/lista")
+
+
+def detalle(request, pk):
+   try:
+      proveedor = Proveedor.objects.get(id=pk)
+      data = {
+         "id": proveedor.id,
+         "nombre": proveedor.nombre,
+         "descripcion": proveedor.descripcion,
+         "contacto": proveedor.contacto,
+      }
+   except Proveedor.DoesNotExist:
+      raise Http404("Proveedor no existe")
+
+   return render(request, 'prdetalle.html', {"datos": data})
