@@ -9,6 +9,6 @@ urlpatterns = [
     #path('<int:pk>/modificar', views.modificar, name='app_modificar'),
 ]
 """
- path('nuevoProveedor', views.nuevo, name='app_nuevoProveedor'),
+path('nuevoProveedor', views.nuevo, name='app_nuevoProveedor'),
 path('modificarProveedor', views.modificar, name='app_modificarProveedor'),
 """
