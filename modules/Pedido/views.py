@@ -1,3 +1,4 @@
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render
 
 from .models import EstadoPedido, Proveedor, Producto, Pedido
@@ -48,4 +49,28 @@ def listar(request):
         lista.append(data)
     return render(request, 'pelista.html', {"lista": lista})
 
+def eliminar(request, pk):
+   try:
+      pedido = Pedido.objects.get(id=pk)
+      pedido.delete()
+   except Pedido.DoesNotExist:
+      raise Http404("Pedido no existe")
 
+   return HttpResponseRedirect("/pedido/lista")
+
+
+def detalle(request, pk):
+   try:
+      pedido = Pedido.objects.get(id=pk)
+      data = {
+          "id": pedido.id,
+          "fecha": str(pedido.fecha),
+          "proveedor": pedido.proveedor.nombre,
+          "producto": pedido.producto.nombre,
+          "cantidad": pedido.cantidad,
+          #"estado":
+      }
+   except Producto.DoesNotExist:
+      raise Http404("Pedido no existe")
+
+   return render(request, 'pedetalle.html', {"datos": data})
