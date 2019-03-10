@@ -129,11 +129,11 @@ footer strong{
 }
 
 /*TABLE*/
-.list-empleados, .list-maquina, .list-pedidos{
-  width: 85% 
+.list-empleados, .list-pedidos{
+  width: 85%; 
 }
 
-.list-sala, .list-tratamiento{
+.list-sala, .list-maquina, .list-tratamiento{
   width: 45%;
 }
 table,th{
@@ -188,4 +188,15 @@ tbody td a:hover{
 
 .edit button{
   margin-left: 50%;
+}
+
+
+/*h4 Empty*/
+.empty-sms{
+  background-color: #E8B12A;
+  text-align: center;
+  color: #20135C;
+  width: 60%;
+  margin: auto;
+  padding: 10px;
 }

@@ -1,8 +1,9 @@
 {% extends "ebase.html" %}
 
 {% block content %}
-    <h1 class="subtitle">Salas</h1>
+    <h1 class="subtitle">Maquinas</h1>
     <div class="container list-maquina">
+        {% if lista %}
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -33,5 +34,8 @@
                 {% endfor %}
             </tbody>
         </table>
+        {% elif not lista %}
+        <h3 class="empty-sms"> No hay Maquinas registradas en el Sistema. </h3>
+        {% endif %}
     </div>
 {% endblock %}

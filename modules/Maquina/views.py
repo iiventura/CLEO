@@ -23,7 +23,8 @@ def nuevo(request):
                 m = Maquina(nombre=nomMaq,fechaingreso=fecha,tipomaquina=instTipoMaquina);
                 m.save()
 
-                return render(request, 'mnuevo.html', {'form': form})
+                return HttpResponseRedirect("/maquina/lista")
+
             else:
                 messages.error(request, 'La maquina ya existe.')
                 messages.error(request, '')
@@ -33,13 +34,14 @@ def nuevo(request):
     return render(request, 'mnuevo.html', {'form': form})
 
 
-
 def listar(request):
     datos = Maquina.objects.all()
     lista = []
+    #print(lista.count()==0)
 
     for maquina in datos:
-        print(maquina.fechaingreso)
+
+
         tipoMaquina = Tipomaquina.objects.get(id=maquina.tipomaquina.id)
         data = {
             "id": maquina.id,
@@ -58,6 +60,6 @@ def eliminar(request,pk ):
         maq = Maquina.objects.get(id=pk)
         maq.delete()
     except Maquina.DoesNotExist:
-        raise Http404("Sala no existe")
+        raise Http404("Maquina no existe")
 
     return HttpResponseRedirect("/maquina/lista")
