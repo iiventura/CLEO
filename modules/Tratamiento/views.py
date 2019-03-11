@@ -23,7 +23,7 @@ def nuevo(request):
             instMaquina = Maquina.objects.get(id=tipo)
             t = Tratamiento(nombre=nomTra, descripcion=fecha, maquina=instMaquina);
             t.save()
-            return render(request, 'tnuevo.html', {'form': form})
+            return HttpResponseRedirect("/tratamiento/lista")
 
          else:
             messages.error(request, 'El tratamiento ya existe.')

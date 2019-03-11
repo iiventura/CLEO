@@ -73,7 +73,7 @@ body{
   padding-top: 4%;
 }
 
-.create input, select{
+.create input, select, textarea{
   width: 40%;
   color: #0E043D;
    
@@ -131,14 +131,22 @@ footer strong{
 /*TABLE*/
 .list-empleados, .list-pedidos{
   width: 85%; 
+  margin: auto;
 }
 
-.list-sala, .list-maquina, .list-tratamiento{
+.list-maquina, .list-tratamiento{
   width: 45%;
+  margin: auto;
+}
+
+.list-sala{
+  width: 35%;
+  margin: auto;
 }
 table,th{
   text-align: center;
   color: #0E043D;
+  
 }
 
 tbody tr{
@@ -199,4 +207,34 @@ tbody td a:hover{
   width: 60%;
   margin: auto;
   padding: 10px;
+}
+
+/* Detalle */
+.detalle{
+  background-color: #0E043D;
+  padding-top: 3%;
+  padding-bottom: 2%;
+  padding-left: 4%;
+  padding-right: 4%;
+  margin-bottom: 3%;
+}
+
+.detalle ul{
+  list-style:none;
+}
+.detalle li{
+  margin: auto;
+  width: 60%;
+}
+
+.detalle li, .detalle em{
+  color: #DBD0BE;
+}
+.detalle strong{
+   color: #DC9D00;
+}
+
+.d2botones button, .d2botones button .glyphicon{
+  background-color: #E8B12A;
+  color: #0E043D !important;
 }

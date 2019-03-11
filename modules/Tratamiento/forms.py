@@ -9,6 +9,7 @@ def tipoChoice():
     resultado.append(('', 'Selecciona'))
     for tipo in tipos:
         resultado.append((str(tipo.id), str(tipo.nombre)))
+
     return tuple(resultado)
 
 
