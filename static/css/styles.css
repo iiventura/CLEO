@@ -1,0 +1,242 @@
+body{
+  background-color: #DBD0BE; 
+}
+.head-img {
+ 
+}
+
+textarea{
+    color: black;
+}
+
+/*NAV*/
+.home{
+  background-color: #20135C;
+}
+.navbar {
+  background-color: #0E043D;
+  border: 1px solid #20135C;
+}
+
+.navbar .navbar-brand, .glyphicon-home, .glyphicon-log-out, .glyphicon-user{
+    color: #E8B12A;
+}
+
+.navbar .navbar-brand:hover, .glyphicon-home:hover, .glyphicon-log-out:hover, .glyphicon-user:hover{
+   color: #DC9D00;
+}
+
+.navbar .navbar-nav li a{
+    color: #DBD0BE !important;
+}
+
+.navbar .navbar-nav  a:hover{
+  color: #E8B12A !important;
+}
+
+/*NAVBAR DROPDOWN */
+.navbar-nav .dropdown-menu{
+  background-color: #20135C !important;
+
+}
+.navbar-nav .dropdown-menu li a{
+    color: #E8B12A !important;
+}
+
+.navbar-nav .dropdown-menu li a:hover{
+    color: #20135C !important;
+    background-color: #DBD0BE;
+}
+
+
+
+/*FORMS CREATE*/
+.create {
+  background-color: #0E043D;
+  color: #E8B12A;
+  margin: auto;
+  width: 40%;
+  align-items: center;
+}
+
+.create-longer{
+  background-color: #0E043D;
+  color: #E8B12A;
+  margin: auto;
+  width: 45%;
+  align-items: center;
+}
+.create label{
+ margin-left:  20%;
+  width: 20%
+}
+
+.create p {
+  padding-top: 4%;
+}
+
+.create input, select, textarea{
+  width: 40%;
+  color: #0E043D;
+   
+}
+
+.create .row {
+  margin: auto;
+  width:40%;
+  
+}
+
+.create input[type="submit"]{
+  width: 70%;
+  margin-left: 20%;
+  margin-bottom: 10%;
+  margin-top: 5%;
+  background-color: #DC9D00;
+  color: #2B197C;
+}
+
+/*ALERTS*/
+* .alert{
+  margin: auto;
+  margin-bottom: 2%;
+  width: 60%;
+  text-align: center;
+}
+
+/*FOOTER*/
+footer{
+  margin-top: 5%;
+  background-color: #0E043D;
+  text-align: center;
+  color: #DBD0BE;
+  /*position: absolute;*/
+  width: 100%;
+  bottom: 0;
+  
+}
+
+footer strong{
+  color:#DC9D00;
+}
+
+/*SUBTITLE*/
+* .subtitle{
+  color: #20135C;
+  margin: auto;
+  width: 60%;
+  text-align: center;
+  margin-bottom: 2%;
+  
+}
+
+/*TABLE*/
+.list-empleados, .list-pedidos{
+  width: 85%; 
+  margin: auto;
+}
+
+.list-maquina, .list-tratamiento{
+  width: 45%;
+  margin: auto;
+}
+
+.list-sala{
+  width: 35%;
+  margin: auto;
+}
+table,th{
+  text-align: center;
+  color: #0E043D;
+  
+}
+
+tbody tr{
+  color: #20135C;
+}
+
+tbody tr:hover, tbody tr:hover a {
+  color: #DBD0BE !important;
+  background-color: #0E043D !important;
+  
+}
+
+tbody .glyphicon-trash:hover{
+  color:  #DC9D00;
+}
+
+tbody td a{
+  color: #0E043D;
+}
+tbody td a:hover{
+  text-decoration: none;
+   color:  #DC9D00 !important;
+}
+
+
+/*PERFILES*/
+.perfil li{
+  list-style-type: none;
+  padding: 2%;
+  color: #20135C;
+  font-style:italic;
+}
+
+.perfil strong {
+  color: #0E043D;
+  font-style:normal;
+}
+.edit button, .del button {
+  width: 30%;
+  background-color:  #0E043D;
+  color:  #DBD0BE !important;
+}
+
+.edit .glyphicon-edit, .del .glyphicon-remove {
+  color: #E8B12A;
+}
+
+.edit button{
+  margin-left: 65%;
+}
+
+
+/*h4 Empty*/
+.empty-sms{
+  background-color: #E8B12A;
+  text-align: center;
+  color: #20135C;
+  width: 60%;
+  margin: auto;
+  padding: 10px;
+}
+
+/* Detalle */
+.detalle{
+  background-color: #0E043D;
+  padding-top: 3%;
+  padding-bottom: 2%;
+  padding-left: 4%;
+  padding-right: 4%;
+  margin-bottom: 3%;
+}
+
+.detalle ul{
+  list-style:none;
+}
+.detalle li{
+  margin: auto;
+  width: 60%;
+}
+
+.detalle li, .detalle em{
+  color: #DBD0BE;
+}
+.detalle strong{
+   color: #DC9D00;
+}
+
+.d2botones button, .d2botones button .glyphicon{
+  background-color: #E8B12A;
+  color: #0E043D !important;
+}
