@@ -14,8 +14,8 @@ def tipoChoice():
 
 
 class FormProductoInsert(forms.Form):
-    id = forms.IntegerField(label="Id ",
-            widget=(forms.TextInput(attrs={"id": "id"})))
+    codigo = forms.CharField(max_length=45, label="Codigo ",
+            widget=(forms.TextInput(attrs={"id": "codigo"})))
 
     nombre = forms.CharField(max_length=45, label="Nombre ",
         widget=(forms.TextInput(attrs={"id": "nombre"})))
@@ -23,6 +23,9 @@ class FormProductoInsert(forms.Form):
     Tipo = forms.ChoiceField(choices=tipoChoice())
 
 class FormProductoUpdate(forms.Form):
+    codigo = forms.CharField(max_length=45, label="Codigo ",
+        widget=(forms.TextInput(attrs={"id": "codigo"})))
+
     nombre = forms.CharField(max_length=45, label="Nombre ",
          widget=(forms.TextInput(attrs={"id": "nombre"})))
 

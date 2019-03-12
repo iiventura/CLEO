@@ -1,0 +1,51 @@
+{% extends "ebase.html" %}
+
+{% block content %}
+    <h1 class="subtitle">Modificar Producto</h1>
+        <form class="create  post-form" method="POST">{% csrf_token %}
+
+            <p>
+                 <label for="id_Tipo">Tipo:</label>
+                    <select name="Tipo" id="id_Tipo">
+                     <option value="{{datos.idTipoEle}}" selected>{{datos.nomTipoEle}}</option>
+
+                    {% for tipo in datosTipo %}
+                        <option value="{{ tipo.id }}">{{ tipo.nom }}</option>
+                    {% endfor %}
+                </select>
+             </p>
+
+            <p>
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" id="nombre" maxlength="45"  value="{{datos.nom}}" required>
+            </p>
+            <p>
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" name="apellidos" id="apellidos" maxlength="45" value="{{datos.ape}}" required>
+            </p>
+
+            <p>
+                <label for="email">Email:</label>
+                <input type="text" name="email" id="email" maxlength="45" value="{{datos.email}}" required>
+            </p>
+
+            <p>
+                <label for="direccion">Direccion:</label>
+                <input type="text" name="direccion" id="direccion" maxlength="45" value="{{datos.dir}}" required>
+            </p>
+            <p>
+                <label for="telefono">Telefono:</label>
+                <input type="text" name="telefono" id="telefono" maxlength="45" value="{{datos.tlf}}" required>
+            </p>
+
+            <!--
+            <p>
+                <label for="password">Contraseña:</label>
+                <input type="text" name="password" id="password" maxlength="45" value="{{datos.pass}}" required>
+            </p>
+            -->
+            <div class="row ">
+                <input type="submit" class="btn " value="Modificar">
+            </div>
+        </form>
+{% endblock %}

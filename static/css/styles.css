@@ -5,7 +5,9 @@ body{
  
 }
 
-
+textarea{
+    color: black;
+}
 
 /*NAV*/
 .home{

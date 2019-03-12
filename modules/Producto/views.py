@@ -14,39 +14,39 @@ def nuevo(request):
             datos = form.cleaned_data
 
             # recogemos los datos
-            id = datos.get("id")
+            codigo = datos.get("codigo")
             nombre = datos.get("nombre")
             tipo = datos.get("Tipo")
 
-            if not Producto.objects.filter(id=id):  # todavia se puede guardar una maquina mas
+            if not Producto.objects.filter(codigo=codigo):
                 instTipoProducto = Tipoproducto.objects.get(id=tipo)
-                p = Producto(id=id, nombre=nombre, tipoproducto=instTipoProducto);
+                p = Producto(codigo=codigo, nombre=nombre, tipoproducto=instTipoProducto)
                 p.save()
 
-                return render(request, 'pnuevo.html', {'form': form})
+                return HttpResponseRedirect("/producto/lista")
             else:
                 messages.error(request, 'El producto ya existe.')
                 messages.error(request, '')
     else:
         form = FormProductoInsert()
 
-    return render(request, 'pnuevo.html', {'form': form})
+    return render(request, 'nuevoGeneral.html', {'form': form,'elem': 'Añadir','titulo':'Añadir Producto'})
 
 def listar(request):
     datos = Producto.objects.all()
     lista = []
-    data={}
 
     for prod in datos:
         instTipoProducto = Tipoproducto.objects.get(id=prod.tipoproducto.id)
 
         data = {
             "id": prod.id,
+            "cod": prod.codigo,
             "nom": prod.nombre,
             "tipo": instTipoProducto.nombre.title(),
         }
         lista.append(data)
-    return render(request, 'plista.html', {"lista": lista})
+    return render(request, 'prdlista.html', {"lista": lista})
 
 def modificar(request,pk):
     try:
@@ -59,6 +59,7 @@ def modificar(request,pk):
                 datos = form.cleaned_data
 
                 # recogemos los datos
+                codigo = datos.get("codigo")
                 nomProd = datos.get("nombre")
                 tipo = datos.get("Tipo")
 
@@ -77,28 +78,20 @@ def modificar(request,pk):
         elif request.method == "GET":
 
             data = {
-                "id": prod.id,
-                #"codigo": prod.codigo,
-                "nombre": prod.nombre,
+                "cod": prod.codigo,
+                "nom": prod.nombre,
                 "nomTipoEle": str(prod.tipoproducto.nombre).title(),
                 "idTipoEle": prod.tipoproducto.id,
             }
 
             datosTipos = listaTiposProductos(data["nomTipoEle"])
             print(data, datosTipos)
-            return render(request, 'pmodificar.html', {"datos": data, "datosTipo":datosTipos})
+            return render(request, 'prdmodificar.html', {"datos": data, "datosTipo":datosTipos})
 
     except Producto.DoesNotExist:
         raise Http404("Producto no existe")
 
-    return render(request, 'pmodificar.html', {"datos": {},"datosTipo": {}})
-
-
-
-
-
-
-
+    return render(request, 'prdmodificar.html', {"datos": {},"datosTipo": {}})
 
 def eliminar(request, pk):
    try:
@@ -115,14 +108,15 @@ def detalle(request, pk):
       producto = Producto.objects.get(id=pk)
       tipo = Tipoproducto.objects.get(id=producto.tipoproducto.id)
       data = {
-         "id":  producto.id,
+         "id": producto.id,
+         "cod":  producto.codigo,
          "nom":  producto.nombre,
          "tipo": tipo.nombre.title(),
       }
    except Producto.DoesNotExist:
       raise Http404("Producto no existe")
 
-   return render(request, 'pdetalle.html', {"datos": data})
+   return render(request, 'prddetalle.html', {"datos": data})
 
 
 

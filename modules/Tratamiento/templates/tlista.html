@@ -8,7 +8,9 @@
             <thead>
                 <tr>
                     <th>Nombre</th>
+                    <th>Descripcion</th>
                     <th>Maquina</th>
+                    <th>Producto</th>
                     <th></th>
 
                 </tr>
@@ -21,7 +23,9 @@
                             {{d.nom}}
                         </a>
                     </td>
+                    <td> {{d.des}} </td>
                     <td> {{d.maq}} </td>
+                    <td> {{d.pro}} </td>
                      <td>
                         <a href="/tratamiento/{{d.id }}/eliminar">
                             <span class="glyphicon glyphicon-trash"></span>

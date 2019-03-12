@@ -1,9 +1,21 @@
 from django import forms
 from modules.Maquina.models import Maquina
+from ..Producto.models import Producto
 
-def tipoChoice():
+def maquinaChoice():
 
     tipos = Maquina.objects.all();
+
+    resultado = []
+    resultado.append(('', 'Selecciona'))
+    for tipo in tipos:
+        resultado.append((str(tipo.id), str(tipo.nombre)))
+
+    return tuple(resultado)
+
+def productoChoice():
+
+    tipos = Producto.objects.all();
 
     resultado = []
     resultado.append(('', 'Selecciona'))
@@ -21,7 +33,9 @@ class FormTratamientoInsert(forms.Form):
     descripcion = forms.CharField(
         widget=forms.Textarea(attrs={'cols': 28, 'rows': 2}))
 
-    maquina = forms.ChoiceField(choices=tipoChoice())
+    maquina = forms.ChoiceField(choices=maquinaChoice())
+
+    producto = forms.ChoiceField(choices=productoChoice())
 
 
 class FormTratamientoUpdate(forms.Form):
@@ -31,5 +45,7 @@ class FormTratamientoUpdate(forms.Form):
     descripcion = forms.CharField(
         widget=forms.Textarea(attrs={'cols': 28, 'rows': 2}))
 
-    maquina = forms.ChoiceField(choices=tipoChoice())
+    maquina = forms.ChoiceField(choices=maquinaChoice())
+
+    producto = forms.ChoiceField(choices=productoChoice())
 

@@ -9,11 +9,9 @@ urlpatterns = [
     path('maquina/',include('modules.Maquina.urls')),
     path('tratamiento/',include('modules.Tratamiento.urls')),
     path('producto/',include('modules.Producto.urls')),
+    path('proveedor/',include('modules.Proveedor.urls')),
+    path('promocion/',include('modules.Promocion.urls')),
+    path('publicidad/',include('modules.Publicidad.urls')),
+    path('cliente/',include('modules.Cliente.urls')),
+    path('notificacion/',include('modules.Notificacion.urls')),
 ]
-"""
-  path('cliente/',include('modules.Cliente.urls')), #cliente
-  path('promocion/', include('modules.Promocion.urls')), #promocion
-  path('producto/', include('modules.Producto.urls')), #promocion
-  path('proveedor/', include('modules.Proveedor.urls')), #promocion
-
-"""

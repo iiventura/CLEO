@@ -24,14 +24,14 @@ def nuevo(request):
                 s = Proveedor(nombre=nomPro, contacto=con, descripcion=des)
                 s.save()
 
-                return render(request, 'prnuevo.html', {'form': form})
+                return HttpResponseRedirect("/proveedor/lista")
             else:
                 messages.error(request, 'El proveedor ya existe.')
                 messages.error(request, '')
     else:
         form = FormProveedorInsert()
 
-    return render(request, 'prnuevo.html', {'form': form})
+    return render(request, 'nuevoGeneral.html', {'form': form, 'elem': 'Añadir', 'titulo':'Añadir Proveedor'})
 
 
 def listar(request):
@@ -47,7 +47,7 @@ def listar(request):
 
       }
       lista.append(data)
-   return render(request, 'prlista.html', {"lista": lista})
+   return render(request, 'prvlista.html', {"lista": lista})
 
 
 def eliminar(request, pk):
@@ -72,4 +72,4 @@ def detalle(request, pk):
    except Proveedor.DoesNotExist:
       raise Http404("Proveedor no existe")
 
-   return render(request, 'prdetalle.html', {"datos": data})
+   return render(request, 'prvdetalle.html', {"datos": data})

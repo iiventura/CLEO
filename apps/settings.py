@@ -43,6 +43,10 @@ INSTALLED_APPS = [
     'modules.Maquina',
     'modules.Tratamiento',
     'modules.Producto',
+    'modules.Promocion',
+    'modules.Publicidad',
+    'modules.Cliente',
+    'modules.Notificacion',
     'modules.HorarioEmpleado',
     'modules.Proveedor',
     'modules.Pedido',
@@ -71,6 +75,10 @@ TEMPLATES = [
                 os.path.join(BASE_DIR, '/modules/Maquina/templates'),
                 os.path.join(BASE_DIR, '/modules/Tratamiento/templates'),
                 os.path.join(BASE_DIR, '/modules/Producto/templates'),
+                os.path.join(BASE_DIR, '/modules/Promocion/templates'),
+                os.path.join(BASE_DIR, '/modules/Publicidad/templates'),
+                os.path.join(BASE_DIR, '/modules/Cliente/templates'),
+                os.path.join(BASE_DIR, '/modules/Notificacion/templates'),
                 os.path.join(BASE_DIR, '/modules/HorarioEmpleado/templates'),
                 os.path.join(BASE_DIR, '/modules/Proveedor/templates'),
                 os.path.join(BASE_DIR, '/modules/Pedidogit /templates'),
@@ -96,14 +104,19 @@ WSGI_APPLICATION = 'apps.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
-        'NAME': 'cleodb',
+        'NAME': 'CLEO',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': 'root2018',
         'HOST': 'localhost', #'db',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
 
-    'OPTIONS': {'sql_mode': 'TRADITIONAL', 'use_pure': True, 'use_unicode': True, 'charset': 'utf8mb4',
-            'collation': 'utf8mb4_general_ci','get_warnings':False},
+    'OPTIONS': {
+        'sql_mode': 'TRADITIONAL',
+        'use_pure': True,
+        'use_unicode': True,
+        'charset': 'utf8mb4',
+        'collation': 'utf8mb4_general_ci',
+        'get_warnings':False},
     }
 
 }
@@ -133,7 +146,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-es'
 
-DATE_INPUT_FORMATS = ('%d-%m-%Y', '%Y-%m-%d')
+DATE_INPUT_FORMATS = ('%d-%m-%Y')
 
 TIME_ZONE = 'UTC'
 
@@ -142,6 +155,14 @@ USE_I18N = True
 USE_L10N = False
 
 USE_TZ = True
+
+DEBUG = True
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'cleo.tfg2019@gmail.com'
+EMAIL_HOST_PASSWORD = 'cleo2019'
+EMAIL_PORT = 587
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/

@@ -1,0 +1,46 @@
+{% extends "ebase.html" %}
+
+{% block content %}
+    <h1 class="subtitle">Publicidades</h1>
+    <div class="container list-producto">
+        {% if lista %}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Inicio</th>
+                    <th>Fin</th>
+                    <th>Promocion</th>
+                    <th>Cliente</th>
+                    <th></th>
+
+                </tr>
+            </thead>
+            <tbody>
+             {% for d in lista %}
+                <tr>
+
+                    <td> {{d.ini}} </td>
+                    <td> {{d.fin}} </td>
+                    <td> {{d.prom}} </td>
+                    <td> {{d.cli}} </td>
+
+                    <td>
+                        <a href="/publicidad/{{d.id }}/modificar">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                    </td>
+
+                    <td>
+                        <a href="/publicidad/{{d.id }}/eliminar">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% elif not lista %}
+        <h3 class="empty-sms "> No hay ninguna publicidad registrada en el Sistema. </h3>
+        {% endif %}
+    </div>
+{% endblock %}

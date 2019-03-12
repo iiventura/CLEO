@@ -1,5 +1,5 @@
 from django.contrib import admin
 
-from .models import HorarioEmpleado
+from .models import Horarioempleado
 
-admin.site.register(HorarioEmpleado)
+admin.site.register(Horarioempleado)
