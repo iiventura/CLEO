@@ -1,0 +1,41 @@
+{% extends "ebase.html" %}
+
+{% block content %}
+    <h1 class="subtitle">Empleados</h1>
+    <div class="container list-empleados">
+        {% if lista %}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Email</th>
+                    <th>Tipo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for d in lista %}
+                <tr>
+                    <td> {{d.nom}} </td>
+                    <td> {{d.ape}} </td>
+                    <td>
+                        <a href="/empleado/{{d.id }}">
+                            {{d.email}}
+                        </a>
+                    </td>
+                    <td> {{d.tipo}} </td>
+                    <td>
+                        <a href="/empleado/{{d.id }}/eliminar">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% elif not lista %}
+        <h3 class="empty-sms "> No hay Empleados registrados en el Sistema. </h3>
+        {% endif %}
+    </div>
+{% endblock %}
