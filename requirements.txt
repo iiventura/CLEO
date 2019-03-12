@@ -1,3 +1,0 @@
-Django
-mysql-connector-python
-mysqlclient
