@@ -81,7 +81,7 @@ TEMPLATES = [
                 os.path.join(BASE_DIR, '/modules/Notificacion/templates'),
                 os.path.join(BASE_DIR, '/modules/HorarioEmpleado/templates'),
                 os.path.join(BASE_DIR, '/modules/Proveedor/templates'),
-                os.path.join(BASE_DIR, '/modules/Pedidogit /templates'),
+                os.path.join(BASE_DIR, '/modules/Pedido /templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -104,9 +104,9 @@ WSGI_APPLICATION = 'apps.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
-        'NAME': 'CLEO',
+        'NAME': 'cleodb',
         'USER': 'root',
-        'PASSWORD': 'root2018',
+        'PASSWORD': ' ',
         'HOST': 'localhost', #'db',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
 
