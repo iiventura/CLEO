@@ -1,0 +1,10 @@
+///Irene///
+'default': {
+        'ENGINE': 'mysql.connector.django',
+        'NAME': 'cleodb',
+        'USER':'root',
+        'PASSWORD':'',
+        'HOST': 'localhost',
+        'PORT':'3306',
+    }
+///Silvia///
