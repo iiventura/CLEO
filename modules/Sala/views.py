@@ -16,11 +16,10 @@ def nuevo(request):
             nomSala = datos.get("nombre")
 
             if not Sala.objects.filter(nombre=nomSala):  # todavia se puede guardar una maquina mas
-
                 s = Sala(nombre=nomSala)
                 s.save()
 
-                return render(request, 'snuevo.html', {'form': form})
+                return HttpResponseRedirect("/sala/lista")
             else:
                 messages.error(request, 'La sala ya existe.')
                 messages.error(request, '')

@@ -40,8 +40,7 @@ def nueva(request):
     else:
         form = FormPublicidadInsert()
 
-    #return render(request, 'punuevo.html', {'form': form})
-    return render(request, 'nuevoGeneral.html', {'form': form, 'elem': 'Publicidad'})
+    return render(request, 'nuevoGeneral.html', {'form': form, 'elem': 'Añadir','titulo':'Añadir Publicidad'})
 
 def listar(request):
    datos = Publicidad.objects.all()

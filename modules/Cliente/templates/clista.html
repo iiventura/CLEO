@@ -3,6 +3,7 @@
 {% block content %}
     <h1 class="subtitle">Clientes</h1>
     <div class="container list-empleados">
+        {% if lista %}
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -41,5 +42,8 @@
                 {% endfor %}
             </tbody>
         </table>
+        {% elif not lista %}
+        <h3 class="empty-sms "> No hay clientes registrados en el Sistema. </h3>
+        {% endif %}
     </div>
 {% endblock %}

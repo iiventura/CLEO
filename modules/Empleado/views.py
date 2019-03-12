@@ -53,8 +53,7 @@ def nuevo(request):
                                  direccion=dir,telefono=tlf,tipoempleado=instTipoEmpleado, password=password)
                     e.save()
 
-
-                    return render(request, 'enuevo.html', {'form': form})
+                    return HttpResponseRedirect("/empleado/lista")
                 else:
                     messages.error(request, 'El empleado ya existe.')
             else:
@@ -63,7 +62,7 @@ def nuevo(request):
     else:
         form = FormEmpleadoInsert()
 
-    return render(request, 'enuevo.html', {'form': form})
+    return render(request, 'nuevoGeneral.html', {'form': form,'elem': 'Alta','titulo':'Alta Empleado'})
 
 
 def listar(request):
@@ -116,25 +115,68 @@ def modificar(request,pk ):
     try:
         empleado = Empleado.objects.get(id=pk)
 
-        if request.method == 'GET':
-            form = FormEmpleadoUpdate()
-            data = {
-                "nombre": empleado.nombre,
-                "apellidos": empleado.apellidos,
-                "email": empleado.email,
-                "direccion": empleado.direccion,
-                "tlf": empleado.telefono,
-                "tipo": str(empleado.tipoempleado.nombre).title()
-            }
-            return render(request, 'empleado.html', {'form': form, 'data': data})
-
-        elif request.method == 'POST':
+        if request.method == "POST":
             form = FormEmpleadoUpdate(request.POST)
-           # for elem in request.POST
-            print(form.is_valid())
-            return HttpResponseRedirect("/empleado/" + str(pk))
+
+            if form.is_valid():
+                datos = form.cleaned_data
+
+                # recogemos los datos
+                cod = datos.get("codigo")
+                nom = datos.get("nombre")
+                ape = datos.get("apellidos")
+                email = datos.get("email")
+                dir = datos.get("direccion")
+                tlf = datos.get("telefono")
+                tipo = datos.get("Tipo")
+
+                antiEmp = Empleado.objects.get(id=pk)
+                instTipoEmpleado = Tipoempleado.objects.get(id=tipo)
+
+                # actualizamos datos
+                antiEmp.codigo = cod
+                antiEmp.nombre = nom
+                antiEmp.apellidos = ape
+                antiEmp.email = email
+                antiEmp.direccion = dir
+                antiEmp.telefono = tlf
+                antiEmp.tipoempleado = instTipoEmpleado
+                antiEmp.save()
+
+                return HttpResponseRedirect("/empleado/lista")
+
+        elif request.method == "GET":
+
+            data = {
+                "cod": empleado.codigo,
+                "nomTipoEle": empleado.tipoempleado.nombre,
+                "idTipoEle": empleado.tipoempleado.id,
+                "nom": empleado.nombre,
+                "ape": empleado.apellidos,
+                "email": empleado.email,
+                "dir": empleado.direccion,
+                "tlf": empleado.telefono,
+            }
+
+            datosTipo= listaTipos(data["nomTipoEle"])
+
+            return render(request, 'emodificar.html', {"datos": data, "datosTipo": datosTipo})
 
     except Empleado.DoesNotExist:
         raise Http404("Empleado no existe")
 
-    return HttpResponseRedirect("/empleado/"+str(pk))
+    return HttpResponseRedirect('/empleado/' + str(pk) + '/modificar')
+
+def listaTipos(nombre):
+   tipos = Tipoempleado.objects.all();
+   lista = []
+
+   for tipo in tipos:
+      if nombre != tipo.nombre:
+         data = {
+            "id": tipo.id,
+            "nom": tipo.nombre,
+         }
+         lista.append(data)
+
+   return lista

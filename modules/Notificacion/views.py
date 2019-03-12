@@ -4,10 +4,8 @@ from .forms import *
 from .models import *
 from ..Cliente.models import Cliente
 from ..Empleado.models import Empleado
-
 from django.core.mail import EmailMessage
 
-from django.contrib import messages
 
 # Create your views here.
 def nueva(request):
@@ -39,8 +37,7 @@ def nueva(request):
    else:
       form = FormNotificacionInsert()
 
-   #return render(request, 'nnuevo.html', {'form': form})
-   return render(request, 'nuevoGeneral.html', {'form': form, 'elem': 'Notificacion'})
+   return render(request, 'nuevoGeneral.html', {'form': form, 'elem': 'Crear','titulo':'Crear Notificacion'})
 
 def eliminar(request,pk):
 

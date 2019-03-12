@@ -126,6 +126,7 @@ class Inventario(models.Model):
     id = models.AutoField()
     coste = models.FloatField(blank=True, null=True)
     cantidad = models.IntegerField(blank=True, null=True)
+    canProvisional = models.IntegerField(blank=True, null=True)
     fechaentrada = models.DateField(db_column='fechaEntrada', blank=True, null=True)  # Field name made lowercase.
     fechafin = models.DateField(db_column='fechaFin', blank=True, null=True)  # Field name made lowercase.
     proveedor = models.ForeignKey('Proveedor', models.DO_NOTHING, db_column='Proveedor_id')  # Field name made lowercase.

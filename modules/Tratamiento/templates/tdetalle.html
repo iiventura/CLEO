@@ -1,12 +1,12 @@
 {% extends "ebase.html" %}
 
 {% block content %}
-    <div class="container detalle">
+    <div class="container ">
         <h1 class="subtitle">Tratamiento</h1>
         <div class="row ">
             <div class="col-md-4"></div>
 
-            <div class="col-md-4">
+            <div class="col-md-4 detalle">
                 <div class="row">
                     <ul>
                        <li>
@@ -19,33 +19,36 @@
                        </li>
 
                         <li>
-                           <strong>Descripcion:</strong>
-                           {{datos.des}}
+                           <strong>Producto:</strong>
+                           {{datos.pro}}
                        </li>
 
                     </ul>
                 </div>
-                <!--
+
                 <div class="row descripcion">
+                    <h4>
+                        <strong>Descripcion:</strong>
+                    </h4>
                     <em>
                         {{datos.des}}
                     </em>
                 </div>
-                -->
+
 
             </div>
             <div class="col-md-4"></div>
         </div>
-        <div class="row dbotones">
+        <div class="row d2botones">
 
             <form>
                 <div class="col-md-6 edit">
-                    <button  type="submit" formmethod="get" formaction="/empleado/{{datos.id }}/modificar" class="btn ">Editar
+                    <button  type="submit" formmethod="get" formaction="/tratamiento/{{datos.id }}/modificar" class="btn ">Editar
                         <span class="glyphicon glyphicon-edit"></span>
                     </button>
                 </div>
                 <div class="col-md-6 del">
-                    <button  type="submit" formmethod="get" formaction="/empleado/{{datos.id }}/eliminar"class="btn ">Eliminar
+                    <button  type="submit" formmethod="get" formaction="/tratamiento/{{datos.id }}/eliminar"class="btn ">Eliminar
                         <span class="glyphicon glyphicon-remove"></span>
                     </button>
                 </div>

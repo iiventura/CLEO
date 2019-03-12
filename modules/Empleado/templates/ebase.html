@@ -71,10 +71,20 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li class="dropdown-header">Producto</li>
-                    <li><a href="/producto/nuevo">Nueva Producto</a></li>
+                    <li><a href="/producto/nuevo">Nuevo Producto</a></li>
                     <li><a href="/producto/lista">Ver Productos</a></li>
                     <li role="separator" class="divider"></li>
+                    <li class="dropdown-header">Proveedor</li>
+                    <li><a href="/proveedor/nuevo">Nuevo Proveedor</a></li>
+                    <li><a href="/proveedor/lista">Ver Proveedores</a></li>
+                    <li role="separator" class="divider"></li>
+                   <!-- <li class="dropdown-header">Pedido</li>
+                    <li><a href="/pedido/nuevo">Nueva Pedido</a></li>
+                    <li><a href="/pedido/lista">Ver Pedidos</a></li>
+                    <li role="separator" class="divider"></li>
+                    -->
                 </ul>
+
             </li>
 
             <li class=" dropdown">
@@ -102,11 +112,7 @@
                     <li><a href="/notificacion/lista">Ver Notificaciones</a></li>
                 </ul>
             </li>
-            <!--
-    <li><a>Cliente</a></li>
-            <li><a>Producto</a></li>
-            <li><a>Proveedor</a></li>
-            <li><a>Promocion</a></li> -->
+
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
@@ -130,6 +136,9 @@
    {% block content %}<!-- default content text (typically empty) -->{% endblock %}
  </div>
 
-  <footer> Created by <strong>Silvia Martin</strong> & <strong>Irene Ventura</strong></footer>
+
+    <footer class="footer">
+       Created by <strong>Silvia Martin</strong> & <strong>Irene Ventura</strong>
+    </footer>
 </body>
 </html>

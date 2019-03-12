@@ -46,7 +46,10 @@ INSTALLED_APPS = [
     'modules.Promocion',
     'modules.Publicidad',
     'modules.Cliente',
-    'modules.Notificacion'
+    'modules.Notificacion',
+    'modules.HorarioEmpleado',
+    'modules.Proveedor',
+    'modules.Pedido',
 ]
 
 MIDDLEWARE = [
@@ -76,7 +79,9 @@ TEMPLATES = [
                 os.path.join(BASE_DIR, '/modules/Publicidad/templates'),
                 os.path.join(BASE_DIR, '/modules/Cliente/templates'),
                 os.path.join(BASE_DIR, '/modules/Notificacion/templates'),
-
+                os.path.join(BASE_DIR, '/modules/HorarioEmpleado/templates'),
+                os.path.join(BASE_DIR, '/modules/Proveedor/templates'),
+                os.path.join(BASE_DIR, '/modules/Pedidogit /templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -105,8 +110,13 @@ DATABASES = {
         'HOST': 'localhost', #'db',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
 
-    'OPTIONS': {'sql_mode': 'TRADITIONAL', 'use_pure': True, 'use_unicode': True, 'charset': 'utf8mb4',
-            'collation': 'utf8mb4_general_ci','get_warnings':False},
+    'OPTIONS': {
+        'sql_mode': 'TRADITIONAL',
+        'use_pure': True,
+        'use_unicode': True,
+        'charset': 'utf8mb4',
+        'collation': 'utf8mb4_general_ci',
+        'get_warnings':False},
     }
 
 }

@@ -29,8 +29,7 @@ def nueva(request):
     else:
         form = FormPromocionInsert()
 
-    #return render(request, 'pmnuevo.html', {'form': form})
-    return render(request, 'nuevoGeneral.html', {'form': form, 'elem': 'Promocion'})
+    return render(request, 'nuevoGeneral.html', {'form': form, 'elem': 'Añadir', 'titulo':'Añadir Promocion'})
 
 def listar(request):
    datos = Promocion.objects.all()
@@ -47,7 +46,7 @@ def listar(request):
 
       lista.append(data)
 
-   return render(request, './pmlista.html', {"lista": lista})
+   return render(request, './prmlista.html', {"lista": lista})
 
 def eliminar(request, pk):
    try:
@@ -72,7 +71,7 @@ def detalle(request, pk):
    except Promocion.DoesNotExist:
       raise Http404("Promocion no existe")
 
-   return render(request, 'pmdetalle.html', {"datos": data})
+   return render(request, 'prmdetalle.html', {"datos": data})
 
 def modificar(request,pk):
 
@@ -104,7 +103,7 @@ def modificar(request,pk):
                 "obs": prom.observaciones,
             }
 
-            return render(request, 'pmmodificar.html', {"datos": data})
+            return render(request, 'prmmodificar.html', {"datos": data})
 
     except Promocion.DoesNotExist:
         raise Http404("Promocion no existe")

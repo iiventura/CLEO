@@ -2,12 +2,15 @@
 
 {% block content %}
     <h1 class="subtitle">Tratamientos</h1>
-    <div class="container list-tratamiento">
-        <table class="table table-hover">
+    <div class="container ">
+        {% if lista %}
+        <table class="table table-hover list-tratamiento">
             <thead>
                 <tr>
                     <th>Nombre</th>
+                    <th>Descripcion</th>
                     <th>Maquina</th>
+                    <th>Producto</th>
                     <th></th>
 
                 </tr>
@@ -20,7 +23,9 @@
                             {{d.nom}}
                         </a>
                     </td>
+                    <td> {{d.des}} </td>
                     <td> {{d.maq}} </td>
+                    <td> {{d.pro}} </td>
                      <td>
                         <a href="/tratamiento/{{d.id }}/eliminar">
                             <span class="glyphicon glyphicon-trash"></span>
@@ -30,5 +35,8 @@
                 {% endfor %}
             </tbody>
         </table>
+        {% elif not lista %}
+        <h3 class="empty-sms "> No hay Tratamientos registrados en el Sistema. </h3>
+        {% endif %}
     </div>
 {% endblock %}
