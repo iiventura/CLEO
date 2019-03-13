@@ -114,6 +114,7 @@ def eliminar(request,pk ):
 
     return HttpResponseRedirect("/empleado/lista")
 
+
 def modificar(request,pk ):
     try:
         empleado = Empleado.objects.get(id=pk)
@@ -168,6 +169,7 @@ def modificar(request,pk ):
         raise Http404("Empleado no existe")
 
     return HttpResponseRedirect('/empleado/' + str(pk) + '/modificar')
+
 
 def listaTipos(nombre):
    tipos = Tipoempleado.objects.all();
