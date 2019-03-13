@@ -1,7 +1,7 @@
 {% extends "ebase.html" %}
 
 {% block content %}
-    <h1 class="subtitle">Modificar Producto</h1>
+    <h1 class="subtitle">Modificar Empleado</h1>
         <form class="create  post-form" method="POST">{% csrf_token %}
 
             <p>
@@ -38,12 +38,6 @@
                 <input type="text" name="telefono" id="telefono" maxlength="45" value="{{datos.tlf}}" required>
             </p>
 
-            <!--
-            <p>
-                <label for="password">Contraseña:</label>
-                <input type="text" name="password" id="password" maxlength="45" value="{{datos.pass}}" required>
-            </p>
-            -->
             <div class="row ">
                 <input type="submit" class="btn " value="Modificar">
             </div>

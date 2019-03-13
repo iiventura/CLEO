@@ -62,7 +62,7 @@ def nuevo(request):
     else:
         form = FormEmpleadoInsert()
 
-    return render(request, 'eindex.html', {'form': form,'elem': 'Alta','titulo':'Alta Empleado'})
+    return render(request, 'enuevo.html', {'form': form,'elem': 'Alta','titulo':'Alta Empleado'})
 
 
 def listar(request):
@@ -80,6 +80,7 @@ def listar(request):
         }
         lista.append(data)
     return render(request,'elista.html',{"lista":lista})
+
 
 def perfil(request,pk ):
     try:
@@ -101,6 +102,7 @@ def perfil(request,pk ):
         raise Http404("Empleado no existe")
 
     return render(request, 'eperfil.html', {"datos": data})
+
 
 def eliminar(request,pk ):
     try:
