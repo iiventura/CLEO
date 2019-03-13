@@ -1,6 +1,6 @@
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render
-from .forms import FormSalaInsert
+from .forms import FormSalaInsert, FormSalaUpdate
 from .models import Sala
 from django.contrib import messages
 
@@ -58,14 +58,13 @@ def modificar(request,pk ):
         sala = Sala.objects.get(id=pk)
 
         if request.method == "POST":
-            form = FormSalaInsert(request.POST)
+            form = FormSalaUpdate(request.POST)
 
             if form.is_valid():
                 datos = form.cleaned_data
 
                 # recogemos los datos
                 nom = datos.get("nombre")
-
 
                 # actualizamos datos
                 sala.nombre = nom
@@ -78,8 +77,6 @@ def modificar(request,pk ):
             data = {
                 "nom": sala.nombre,
             }
-
-            #datosTipo= listaTipos(data["nomTipoEle"])
 
             return render(request, 'smodificar.html', {"datos": data,})
 
