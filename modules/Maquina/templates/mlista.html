@@ -1,0 +1,41 @@
+{% extends "ebase.html" %}
+
+{% block content %}
+    <h1 class="subtitle">Maquinas</h1>
+    <div class="container ">
+        {% if lista %}
+        <table class="table table-hover list-maquina">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha</th>
+                    <th>Tipo</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for d in lista %}
+                <tr>
+                    <td> {{d.nom}} </td>
+                    <td> {{d.date}} </td>
+                    <td> {{d.tipo}} </td>
+                    <td>
+                        <a href="/maquina/{{d.id }}/eliminar">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/maquina/{{d.id }}/modificar">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% elif not lista %}
+        <h3 class="empty-sms"> No hay Maquinas registradas en el Sistema. </h3>
+        {% endif %}
+    </div>
+{% endblock %}
