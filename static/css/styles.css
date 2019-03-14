@@ -214,29 +214,35 @@ tbody td a:hover{
 /* Detalle */
 .detalle{
   background-color: #0E043D;
-  padding-top: 3%;
-  padding-bottom: 2%;
-  padding-left: 4%;
-  padding-right: 4%;
-  margin-bottom: 3%;
+  padding-top: 4%;
+  padding-bottom: 3%;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-bottom: 2%;
 }
 
-.detalle ul{
-  list-style:none;
-}
-.detalle li{
-  margin: auto;
-  width: 60%;
-}
 
-.detalle li, .detalle em{
+
+.detalle {
   color: #DBD0BE;
 }
-.detalle strong{
+.detalle .titulo strong{
    color: #DC9D00;
 }
 
 .d2botones button, .d2botones button .glyphicon{
   background-color: #E8B12A;
   color: #0E043D !important;
+}
+
+.d2botones {
+  margin: auto;
+  width: 15%;
+  
+}
+
+.d2botones button{
+  margin: auto;
+  width: 100%;
+  padding: 6%;
 }
