@@ -11,7 +11,7 @@ class Maquina(models.Model):
         db_table = 'Maquina'
         unique_together = (('tipomaquina'),)
 
-class Tipomaquina(models.Model):
+class TipoMaquina(models.Model):
     nombre = models.CharField(max_length=45, blank=True, null=True)
 
     class Meta:

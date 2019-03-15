@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Maquina,Tipomaquina
+from .models import Maquina,TipoMaquina
 
 admin.site.register(Maquina)
-admin.site.register(Tipomaquina)
+admin.site.register(TipoMaquina)
 

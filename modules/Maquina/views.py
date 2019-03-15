@@ -3,7 +3,7 @@ from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render
 
 from .forms import FormMaquinaInsert, FormMaquinaUpdate
-from .models import Maquina, Tipomaquina
+from .models import Maquina, TipoMaquina
 
 
 def nuevo(request):
@@ -19,7 +19,7 @@ def nuevo(request):
             tipo = datos.get("Tipo")
 
             if not Maquina.objects.filter(nombre=nomMaq): #todavia se puede guardar una maquina mas
-                instTipoMaquina = Tipomaquina.objects.get(id=tipo)
+                instTipoMaquina = TipoMaquina.objects.get(id=tipo)
                 m = Maquina(nombre=nomMaq,fechaingreso=fecha,tipomaquina=instTipoMaquina);
                 m.save()
 
@@ -42,7 +42,7 @@ def listar(request):
     for maquina in datos:
 
 
-        tipoMaquina = Tipomaquina.objects.get(id=maquina.tipomaquina.id)
+        tipoMaquina = TipoMaquina.objects.get(id=maquina.tipomaquina.id)
         data = {
             "id": maquina.id,
             "nom": maquina.nombre,
@@ -79,7 +79,7 @@ def modificar(request,pk ):
                 nom = datos.get("nombre")
                 fecha= datos.get("fechaingreso")
                 tipo = datos.get("Tipo")
-                instTipoMaquina = Tipomaquina.objects.get(id=tipo)
+                instTipoMaquina = TipoMaquina.objects.get(id=tipo)
 
                 # actualizamos datos
                 maquina.nombre = nom
@@ -111,7 +111,7 @@ def modificar(request,pk ):
 
 
 def listaTipos(nombre):
-   tipos = Tipomaquina.objects.all();
+   tipos = TipoMaquina.objects.all();
    lista = []
 
    for tipo in tipos:
