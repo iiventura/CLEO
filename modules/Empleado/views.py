@@ -1,9 +1,8 @@
-from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect, HttpResponse, Http404
-from .models import Empleado, TipoEmpleado
+from django.shortcuts import render
+from django.http import HttpResponseRedirect, Http404
+from .models import Empleado
 from .forms import *
 from django.contrib import messages
-from django.utils import timezone
 
 
 def main(request):
@@ -47,7 +46,7 @@ def nuevo(request):
             elif not Empleado.objects.filter(dni=dni).exists():
                 if not Empleado.objects.filter(email=email).exists():  # comprobamos si ya existe ese empleado
 
-                    instTipoEmpleado = Tipoempleado.objects.get(id=tipo)
+                    instTipoEmpleado = TipoEmpleado.objects.get(id=tipo)
 
                     e = Empleado(dni=dni, codigo=cod, nombre=nom, apellidos=ape,email=email,
                                  direccion=dir,telefono=tlf,tipoempleado=instTipoEmpleado, password=password)
@@ -70,7 +69,7 @@ def listar(request):
     lista = []
 
     for empleado in datos:
-        tipoEmpleado = Tipoempleado.objects.get(id=empleado.tipoempleado.id)
+        tipoEmpleado = TipoEmpleado.objects.get(id=empleado.tipoempleado.id)
         data={
            "id": empleado.id,
             "nom": empleado.nombre,
@@ -85,7 +84,7 @@ def listar(request):
 def perfil(request,pk ):
     try:
         empleado = Empleado.objects.get(id=pk)
-        tipo = Tipoempleado.objects.get(id=empleado.tipoempleado.id)
+        tipo = TipoEmpleado.objects.get(id=empleado.tipoempleado.id)
         data = {
             "id": empleado.id,
             "dni": empleado.dni,
@@ -97,7 +96,7 @@ def perfil(request,pk ):
             "dir": empleado.direccion,
             "tlf": empleado.telefono,
         }
-        print(empleado.codigo)
+
     except Empleado.DoesNotExist:
         raise Http404("Empleado no existe")
 
@@ -134,7 +133,7 @@ def modificar(request,pk ):
                 tipo = datos.get("Tipo")
 
                 antiEmp = Empleado.objects.get(id=pk)
-                instTipoEmpleado = Tipoempleado.objects.get(id=tipo)
+                instTipoEmpleado = TipoEmpleado.objects.get(id=tipo)
 
                 # actualizamos datos
                 antiEmp.codigo = empleado.codigo
@@ -172,7 +171,7 @@ def modificar(request,pk ):
 
 
 def listaTipos(nombre):
-   tipos = Tipoempleado.objects.all();
+   tipos = TipoEmpleado.objects.all();
    lista = []
 
    for tipo in tipos:
