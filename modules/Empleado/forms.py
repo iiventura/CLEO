@@ -1,9 +1,9 @@
 from django import forms
-from .models import Tipoempleado
+from .models import TipoEmpleado
 
 
 def tipoChoice():
-    tipos = Tipoempleado.objects.all();
+    tipos = TipoEmpleado.objects.all();
 
     resultado = []
     resultado.append(('', 'Selecciona'))

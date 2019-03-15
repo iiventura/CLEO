@@ -1,6 +1,6 @@
 from django.db import models
 
-class Tipoempleado(models.Model):
+class TipoEmpleado(models.Model):
     nombre = models.CharField(max_length=45, blank=True, null=True)
 
     class Meta:
@@ -16,7 +16,7 @@ class Empleado(models.Model):
     email = models.EmailField(max_length=45, unique=True, blank=True, null=False)
     direccion = models.CharField(max_length=45, blank=True, null=True)
     telefono = models.CharField(max_length=9, blank=True, null=True)
-    tipoempleado = models.ForeignKey(Tipoempleado, models.DO_NOTHING, db_column='tipoEmpleado_id')  # Field name made lowercase.
+    tipoempleado = models.ForeignKey(TipoEmpleado, models.DO_NOTHING, db_column='tipoEmpleado_id')  # Field name made lowercase.
     password = models.CharField(max_length=45, blank=True, null=False)
 
     class Meta:

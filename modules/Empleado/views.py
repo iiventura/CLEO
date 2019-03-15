@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse, Http404
-from .models import Empleado, Tipoempleado
+from .models import Empleado, TipoEmpleado
 from .forms import *
 from django.contrib import messages
 from django.utils import timezone
