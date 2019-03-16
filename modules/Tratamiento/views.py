@@ -30,6 +30,7 @@ def nuevo(request):
             messages.error(request, 'El tratamiento ya existe.')
             messages.error(request, '')
    else:
+      form = FormTratamientoInsert()
       datosMaquina = listaMaquinas("Selecciona")
       datosProducto = listaProducto(" ")
 
