@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render
 
-from modules.Producto.models import Producto, Tipoproducto
+from modules.Producto.models import Producto, TipoProducto
 from .forms import FormProductoInsert, FormProductoUpdate
 
 
@@ -19,7 +19,7 @@ def nuevo(request):
             tipo = datos.get("Tipo")
 
             if not Producto.objects.filter(codigo=codigo):
-                instTipoProducto = Tipoproducto.objects.get(id=tipo)
+                instTipoProducto = TipoProducto.objects.get(id=tipo)
                 p = Producto(codigo=codigo, nombre=nombre, tipoproducto=instTipoProducto)
                 p.save()
 
@@ -38,7 +38,7 @@ def listar(request):
     lista = []
 
     for prod in datos:
-        instTipoProducto = Tipoproducto.objects.get(id=prod.tipoproducto.id)
+        instTipoProducto = TipoProducto.objects.get(id=prod.tipoproducto.id)
 
         data = {
             "id": prod.id,
@@ -66,7 +66,7 @@ def modificar(request,pk):
 
                 # se ha modificado el nombre
                 antiProd = Producto.objects.get(id=pk)
-                instTipoProducto = Tipoproducto.objects.get(id=tipo)
+                instTipoProducto = TipoProducto.objects.get(id=tipo)
 
                 # actualizamos datos
                 antiProd.nombre = nomProd
@@ -107,7 +107,7 @@ def eliminar(request, pk):
 def detalle(request, pk):
    try:
       producto = Producto.objects.get(id=pk)
-      tipo = Tipoproducto.objects.get(id=producto.tipoproducto.id)
+      tipo = TipoProducto.objects.get(id=producto.tipoproducto.id)
       data = {
          "id": producto.id,
          "cod":  producto.codigo,
@@ -123,7 +123,7 @@ def detalle(request, pk):
 
 def listaTiposProductos(nombre):
 
-    tipos = Tipoproducto.objects.all();
+    tipos = TipoProducto.objects.all();
     lista = []
 
     for tipo in tipos:
