@@ -57,6 +57,7 @@ textarea{
   margin: auto;
   width: 40%;
   align-items: center;
+ margin-bottom: 5%;
 }
 
 .create-longer{
@@ -106,14 +107,12 @@ textarea{
 
 /*FOOTER*/
 footer{
-  margin-top: 5%;
   background-color: #0E043D;
   text-align: center;
   color: #DBD0BE;
-  /*position: absolute;*/
+  position: fixed;
   width: 100%;
   bottom: 0;
-  
 }
 
 footer strong{
@@ -121,7 +120,7 @@ footer strong{
 }
 
 /*SUBTITLE*/
-* .subtitle{
+.subtitle{
   color: #20135C;
   margin: auto;
   width: 60%;
@@ -136,7 +135,12 @@ footer strong{
   margin: auto;
 }
 
-.list-maquina, .list-tratamiento{
+.list-producto{
+   width: 65%; 
+  margin: auto;
+}
+
+.list-maquina, .list-tratamiento {
   width: 45%;
   margin: auto;
 }
