@@ -230,8 +230,9 @@ tbody td a:hover{
 .detalle {
   color: #DBD0BE;
 }
-.detalle .titulo strong{
-   color: #DC9D00;
+
+.detalle .titulo strong, .detalle h4{
+   color: #DC9D00; 
 }
 
 .d2botones button, .d2botones button .glyphicon{
