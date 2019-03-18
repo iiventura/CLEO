@@ -1,0 +1,30 @@
+{% extends "ebase.html" %}
+
+{% block content %}
+    {% if messages %}
+        <div class="alert alert-warning" role="alert">
+            {% for message in messages %}
+                <li> {{ message }}</li>
+            {% endfor %}
+        </div>
+    {% endif %}
+        <h1 class="subtitle">{{ titulo }}</h1>
+        <form class="create post-form create-longer" method="POST">{% csrf_token %}
+            <p>
+                <label for="nombre">Nombre :</label>
+                <input type="text" name="nombre" id="nombre" maxlength="45" value="{{datos.nom}}"required>
+            </p>
+            <p>
+                <label for="contacto">Contacto :</label>
+                <input type="text" name="contacto" id="contacto" maxlength="45" value="{{datos.cont}}"required>
+            </p>
+            <p>
+                <label for="id_descripcion">Descripcion:</label>
+                <textarea name="descripcion" cols="28" rows="2" required id="id_descripcion">{{datos.des}}</textarea>
+            </p>
+            <div class="row ">
+                <input type="submit" class="btn " value={{ elem }}>
+            </div>
+        </form>
+
+{% endblock %}
