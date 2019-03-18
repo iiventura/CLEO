@@ -147,7 +147,7 @@ def nuevo(request):
                                           'datosMaquina':listaMaquinas(" "), 'datosProducto':listaProducto(" ")})
 
 
-#CORRECCIONES
+
 def listar(request):
    datos = Tratamiento.objects.all()
    lista = []
@@ -161,6 +161,7 @@ def listar(request):
          "nom": tratamiento.nombre,
          "des": tratamiento.descripcion,
          "maq": instMaquina.nombre.title(),
+         "idP":tratamiento.producto.id,
          "pro": instProducto.nombre.title(),
       }
       lista.append(data)
@@ -211,7 +212,7 @@ def modificar(request, pk):
          datosMaquina = listaMaquinas(data["nomMaqEle"])
          datosProducto= listaProducto(data["nomProEle"])
 
-         return render(request, 'tmodificar.html', {"datos": data, "datosMaquina": datosMaquina,
+         return render(request, 'tnuevo.html', {"datos": data, "datosMaquina": datosMaquina,
                'datosProducto': datosProducto})
 
    except Tratamiento.DoesNotExist:
