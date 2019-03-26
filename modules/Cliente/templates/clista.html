@@ -1,0 +1,49 @@
+{% extends "ebase.html" %}
+
+{% block content %}
+    <h1 class="subtitle">Clientes</h1>
+    <div class="container list-empleados">
+        {% if lista %}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Dni</th>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Email</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for d in lista %}
+                <tr>
+                    <td> {{d.dni}} </td>
+                    <td> {{d.nom}} </td>
+                    <td> {{d.ape}} </td>
+
+                    <td>
+                        <a href="/cliente/{{d.id }}">
+                            {{d.email}}
+                        </a>
+                    </td>
+
+                    <td>
+                        <a href="/cliente/{{d.id }}/modificar">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                    </td>
+
+                    <td>
+                        <a href="/cliente/{{d.id }}/eliminar">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% elif not lista %}
+        <h3 class="empty-sms "> No hay clientes registrados en el Sistema. </h3>
+        {% endif %}
+    </div>
+{% endblock %}

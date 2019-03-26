@@ -1,0 +1,44 @@
+{% extends "ebase.html" %}
+
+{% block content %}
+    <h1 class="subtitle">Promociones</h1>
+    <div class="container list-producto">
+        {% if lista %}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Nombre</th>
+                    <th>Observacion</th>
+                    <th></th>
+
+                </tr>
+            </thead>
+            <tbody>
+             {% for d in lista %}
+                <tr>
+
+                    <td> {{d.cod}} </td>
+                    <td> {{d.nom}} </td>
+                    <td> {{d.obs}} </td>
+
+                    <td>
+                        <a href="/promocion/{{d.id }}/modificar">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                        </a>
+                    </td>
+
+                    <td>
+                        <a href="/promocion/{{d.id }}/eliminar">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% elif not lista %}
+        <h3 class="empty-sms "> No hay Promociones registradas en el Sistema. </h3>
+        {% endif %}
+    </div>
+{% endblock %}
