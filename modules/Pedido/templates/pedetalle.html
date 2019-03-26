@@ -1,49 +1,84 @@
 {% extends "ebase.html" %}
 
 {% block content %}
-    <div class="container detalle">
+    <div class="container ">
         <h1 class="subtitle">Pedido</h1>
         <div class="row ">
             <div class="col-md-4"></div>
 
-            <div class="col-md-4">
+            <div class="col-md-4 detalle2">
                 <div class="row">
-                    <ul>
-                       <li>
-                           <strong>Fecha:</strong>
-                           {{datos.fecha}}
-                       </li>
-                       <li>
-                           <strong>Proveedor</strong>
-                           {{datos.proveedor}}
-                       </li>
-                        <li>
-                           <strong>Producto</strong>
-                           {{datos.producto}}
-                       </li>
-                        <li>
-                           <strong> Cantidad:</strong>
-                           {{datos.cantidad}}
-                       </li>
-                        <li>
-                           <strong>Estado</strong>
-                           {{datos.estado}}
-                       </li>
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Fecha:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.fecha}}</em>
+                            </strong>
+                        </div>
+                    </div>
+                     <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Proveedor:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.proveedor}}</em>
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Producto:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.producto}}</em>
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Cantidad:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.cantidad}}</em>
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Estado:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.estado}}</em>
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 titulo"></div>
+                        <div class="col-md-8 estado">
+                            <form>
+                                {% for tipo in estados %}
+                                    <button type="submit" class="btn btn-xs" formmethod="get"
+                                            formaction="/pedido/{{tipo.idPedido }}/{{tipo.id }}/estado" >
+                                        {{ tipo.nom }}
+                                    </button>
+                                {% endfor %}
+                            </form>
+                        </div>
+                    </div>
 
-                    </ul>
+
                 </div>
-                <!--
-                <div class="row descripcion">
-                    <em>
-                        {{datos.des}}
-                    </em>
-                </div>
-                -->
 
             </div>
             <div class="col-md-4"></div>
         </div>
-        <div class="row dbotones">
+        <div class="row d2botones">
 
             <form>
                 <div class="col-md-6 edit">

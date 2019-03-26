@@ -130,12 +130,12 @@ footer strong{
 }
 
 /*TABLE*/
-.list-empleados, .list-pedidos{
+.list-empleados{
   width: 85%; 
   margin: auto;
 }
 
-.list-producto{
+.list-producto, .list-pedidos{
    width: 65%; 
   margin: auto;
 }
@@ -225,16 +225,29 @@ tbody td a:hover{
   margin-bottom: 2%;
 }
 
-
-
-.detalle {
-  color: #DBD0BE;
+.detalle2{
+  background-color: #0E043D;
+  padding-top: 4%;
+  padding-bottom: 3%;
+  padding-left: 6%;
+  padding-right: 6%;
+  margin-bottom: 2%;
 }
 
-.detalle .titulo strong, .detalle h4{
+.detalle, .detalle2 {
+  color: #DBD0BE;
+}
+.detalle2 button:hover{
+  background-color: #E8B12A;
+}
+
+.detalle .titulo strong, .detalle h4, .detalle2 .titulo strong{
    color: #DC9D00; 
 }
 
+.detalle2 .estado button{
+  color: #20135C !important;
+}
 .d2botones button, .d2botones button .glyphicon{
   background-color: #E8B12A;
   color: #0E043D !important;

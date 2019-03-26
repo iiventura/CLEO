@@ -6,6 +6,7 @@ from ..Proveedor.models import Proveedor
 # Create your models here.
 
 class EstadoPedido(models.Model):
+    id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=45, blank=True, null=True)
 
     class Meta:

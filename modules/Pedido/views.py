@@ -68,9 +68,45 @@ def detalle(request, pk):
           "proveedor": pedido.proveedor.nombre,
           "producto": pedido.producto.nombre,
           "cantidad": pedido.cantidad,
-          #"estado":
+          "estado": pedido.estadopedido.nombre
       }
-   except Producto.DoesNotExist:
+      estados=listarEstados(data["id"], data["estado"])
+
+   except Pedido.DoesNotExist:
       raise Http404("Pedido no existe")
 
-   return render(request, 'pedetalle.html', {"datos": data})git 
+   return render(request, 'pedetalle.html', {"datos": data, "estados":estados})
+
+
+def estado(request, pk,sk):
+    #print(pk, sk)
+    try:
+        pedido = Pedido.objects.get(id=pk)
+        estado = EstadoPedido.objects.get(id=sk)
+        pedido.estadopedido = estado
+        pedido.save()
+
+    except Pedido.DoesNotExist:
+        raise Http404("Pedido no existe")
+    except EstadoPedido.DoesNotExist:
+        raise Http404("Estado no existe")
+
+    return HttpResponseRedirect("/pedido/"+str(pk)+"/detalle")
+
+def listarEstados(idPedido, nombre):
+    estados = EstadoPedido.objects.all()
+
+    lista = []
+
+    for tipo in estados:
+        nom = str(tipo.nombre).title().lower()
+
+        if nom != nombre:
+            data = {
+                "idPedido": idPedido,
+                "id": tipo.id,
+                "nom": str(tipo.nombre),
+            }
+            lista.append(data)
+
+    return lista
