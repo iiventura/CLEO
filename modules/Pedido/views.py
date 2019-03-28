@@ -2,7 +2,7 @@ from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render
 
 from .models import EstadoPedido, Proveedor, Producto, Pedido
-from .forms import FormPedidoInsert
+from .forms import FormPedidoInsert, FormPedidoUpdate
 
 
 def nuevo(request):
@@ -58,7 +58,6 @@ def eliminar(request, pk):
 
    return HttpResponseRedirect("/pedido/lista")
 
-
 def detalle(request, pk):
    try:
       pedido = Pedido.objects.get(id=pk)
@@ -77,7 +76,6 @@ def detalle(request, pk):
 
    return render(request, 'pedetalle.html', {"datos": data, "estados":estados})
 
-
 def estado(request, pk,sk):
     #print(pk, sk)
     try:
@@ -92,6 +90,9 @@ def estado(request, pk,sk):
         raise Http404("Estado no existe")
 
     return HttpResponseRedirect("/pedido/"+str(pk)+"/detalle")
+
+
+
 
 def listarEstados(idPedido, nombre):
     estados = EstadoPedido.objects.all()
@@ -110,3 +111,10 @@ def listarEstados(idPedido, nombre):
             lista.append(data)
 
     return lista
+
+
+
+
+
+
+
