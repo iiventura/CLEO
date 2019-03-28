@@ -86,7 +86,7 @@ def modificar(request,pk):
             }
 
             datosTipos = listaTiposProductos(data["nomTipoEle"])
-            print(data, datosTipos)
+
             return render(request, 'prdmodificar.html', {"datos": data, "datosTipo":datosTipos})
 
     except Producto.DoesNotExist:
