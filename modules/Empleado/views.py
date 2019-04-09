@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, Http404
-from .models import Empleado
+from .models import Empleado, TipoEmpleado
 from .forms import *
 from django.contrib import messages
 
