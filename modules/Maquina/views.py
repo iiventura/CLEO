@@ -3,7 +3,7 @@ from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render
 
 from .forms import FormMaquinaInsert, FormMaquinaUpdate
-from .models import Maquina, TipoMaquina
+from .models import Maquina, TipoZona
 
 
 def nuevo(request):
@@ -19,8 +19,8 @@ def nuevo(request):
             tipo = datos.get("Tipo")
 
             if not Maquina.objects.filter(nombre=nomMaq): #todavia se puede guardar una maquina mas
-                instTipoMaquina = TipoMaquina.objects.get(id=tipo)
-                m = Maquina(nombre=nomMaq,fechaingreso=fecha,tipomaquina=instTipoMaquina);
+                instTipoZona = TipoZona.objects.get(id=tipo)
+                m = Maquina(nombre=nomMaq,fechaingreso=fecha,tipozona=instTipoZona);
                 m.save()
 
                 return HttpResponseRedirect("/maquina/lista")
@@ -42,17 +42,16 @@ def listar(request):
     for maquina in datos:
 
 
-        tipoMaquina = TipoMaquina.objects.get(id=maquina.tipomaquina.id)
+        tipoZona = TipoZona.objects.get(id=maquina.tipozona.id)
         data = {
             "id": maquina.id,
             "nom": maquina.nombre,
             "date": maquina.fechaingreso,
-            "tipo": tipoMaquina.nombre.title(),
+            "tipo": tipoZona.nombre.title(),
         }
         lista.append(data)
 
     return render(request, 'mlista.html', {"lista": lista})
-
 
 
 def eliminar(request,pk ):
@@ -79,12 +78,12 @@ def modificar(request,pk ):
                 nom = datos.get("nombre")
                 fecha= datos.get("fechaingreso")
                 tipo = datos.get("Tipo")
-                instTipoMaquina = TipoMaquina.objects.get(id=tipo)
+                instTipoZona = TipoZona.objects.get(id=tipo)
 
                 # actualizamos datos
                 maquina.nombre = nom
                 maquina.fechaingreso=fecha
-                maquina.tipomaquina = instTipoMaquina
+                maquina.tipozona = instTipoZona
                 maquina.save()
 
                 return HttpResponseRedirect("/maquina/lista")
@@ -95,9 +94,8 @@ def modificar(request,pk ):
 
                 "nom": maquina.nombre,
                 "fecha": maquina.fechaingreso,
-                "tipo": maquina.tipomaquina.id,
-                "idTipoEle": maquina.tipomaquina.id,
-                "nomTipoEle": maquina.tipomaquina.nombre,
+                "tipo":  maquina.tipozona.id,
+                "nomTipoEle": maquina.tipozona.nombre,
             }
 
             datosTipo= listaTipos(data["nomTipoEle"])
@@ -111,7 +109,7 @@ def modificar(request,pk ):
 
 
 def listaTipos(nombre):
-   tipos = TipoMaquina.objects.all();
+   tipos = TipoZona.objects.all();
    lista = []
 
    for tipo in tipos:

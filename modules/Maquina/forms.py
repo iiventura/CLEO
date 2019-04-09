@@ -1,9 +1,9 @@
 from django import forms
 from django.utils import timezone
-from .models import TipoMaquina
+from .models import TipoZona
 
 def tipoChoice():
-    tipos = TipoMaquina.objects.all();
+    tipos = TipoZona.objects.all();
 
     resultado = []
     resultado.append(('', 'Selecciona'))
