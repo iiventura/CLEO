@@ -109,5 +109,5 @@ venv.bak/
 settings.py
 venv/
 migrations/
-_init_.py
+__init__.py
 
