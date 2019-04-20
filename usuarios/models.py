@@ -13,6 +13,7 @@ class TipoEmpleado(models.Model):
     class Meta:
         db_table = 'tipoempleado'
 
+
 class Empleado(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True)
     dni = models.CharField(unique=True, max_length=9)
@@ -25,7 +26,7 @@ class Empleado(models.Model):
 
     class Meta:
         db_table = 'empleado'
-        unique_together = (('tipoempleado'),)
+        unique_together = (('tipoempleado', 'dni'),)
 
 
 class Cliente(models.Model):
@@ -38,3 +39,14 @@ class Cliente(models.Model):
 
     class Meta:
        db_table = 'cliente'
+
+
+
+def cargar():
+    if TipoEmpleado.objects.count()==0:
+        TipoEmpleado(nombre='Encargado').save()
+        TipoEmpleado(nombre='Basico').save()
+
+
+
+cargar()
