@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -15,13 +16,13 @@ def about(request):
 def register(request):
     if request.method == 'POST':
         form = ClienteRegistrationForm(request.POST)
-
-
         if form.is_valid():
             form.save()
-            username=form.cleaned_data.get('username')
             messages.success(request,'Se ha registrado correctamente, por favor entre')
             return redirect('base-home')
+        else:
+            messages.error(request,form.error_messages)
+            return redirect('login')
     else:
         form = ClienteRegistrationForm()
     return render(request,'cliente/register.html',{'color':3,'form':form})
@@ -32,19 +33,23 @@ def register_empleado(request):
 
         if form.is_valid():
             form.save()
-            username=form.cleaned_data.get('username')
+            tipo = form.cleaned_data.get('tipo')
             messages.success(request,'Se ha registrado correctamente, por favor entre')
             return redirect('login')
     else:
         form = EmpleadoRegistrationForm()
     return render(request, 'empleado/register.html', {'color':2,'form': form})
 
+
 @login_required
 def perfil (request):
 
-    if request.user.is_staff:
-        empleado=Empleado.objects.get(user_id=request.user.id)
-        return render(request, 'empleado/perfil.html',{'tipo_e':empleado.tipoempleado.nombre})
+    if request.user.is_staff and (not request.user.is_superuser):
+            empleado=Empleado.objects.get(user_id=request.user.id)
+            return render(request, 'empleado/perfil.html',{'tipo_e':empleado.tipoempleado.nombre})
+
+    elif request.user.is_staff and  request.user.is_superuser:
+        return HttpResponseRedirect('/admin')
 
     elif request.user.is_client:
             return render(request, 'cliente/perfil.html')
