@@ -1,0 +1,52 @@
+/*
+oscuro:#005935
+medio:#21B176
+gris:#DEE1DF
+notas:#26CB6C
+*/
+
+/*NAV*/
+.home{
+  background-color: #21B176;
+}
+.navbar {
+  background-color: #005935;
+  border: 1px solid #21B176;
+}
+
+/*FOOTER*/
+footer{
+  background-color: #005935;
+  text-align: center;
+  color: #DEE1DF;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+footer strong{
+  color:#26CB6C;
+}
+
+/*REGISTER*/
+.form-register .row{
+   background-color: #005935;
+}
+.form-register h3{
+  color:#005935;
+  font-weight: bold;
+}
+
+.form-register .row .helptext, .form-register .row form ul{
+ color: #26CB6C; 
+}
+
+.form-register .row form div button{
+  background-color: #21B176;
+  color: #005935;
+}
+
+.form-register .text-muted a{
+    text-decoration: none;
+    color: #26CB6C;
+}

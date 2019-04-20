@@ -1,0 +1,54 @@
+/*
+oscuro:#0E043D
+medio:#254B9A
+gris:#DEE1EF
+notas:#9BE9D6
+
+*/
+/*NAV*/
+.home{
+  background-color: #254B9A;
+}
+.navbar {
+  background-color: #0E043D;
+  border: 1px solid #254B9A;
+}
+
+
+/*FOOTER*/
+footer{
+  background-color: #0E043D;
+  text-align: center;
+  color: #DEE1DF;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+footer strong{
+  color:#6CE5D2;
+}
+
+
+/*REGISTER*/
+.form-register .row{
+   background-color: #0E043D;
+}
+.form-register h3{
+  color:#0E043D;
+  font-weight: bold;
+}
+
+.form-register .row .helptext, .form-register .row form ul{
+ color: #6CE5D2; 
+}
+
+.form-register .row form div button{
+  background-color: #254B9A;
+  color: #0E043D;
+}
+
+.form-register .text-muted a{
+    text-decoration: none;
+    color: #26CB6C;
+}

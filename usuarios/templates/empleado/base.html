@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+    {% if title %}
+        <title>CLEO - {{title}}</title>
+    {% else %}
+        <title>CLEO</title>
+    {% endif %}
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles_gral.css' %}">
+    {% if user.is_staff %}
+        <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    {% else %}
+        <link rel="stylesheet" href="{% static 'css/style3.css' %}">
+    {% endif %}
+
+    <script src="{% static 'js/jquery-3.4.0.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+</head>
+<body class="empleado">
+    <header>
+        <div class="head-img row">
+
+        </div>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">CLEO</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li  class="home">
+                        <a href="/"><span class="glyphicon glyphicon-home"></span></a>
+                    </li>
+
+                    {% if user.is_authenticated and  user.is_staff %}
+                    <li class=" dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-haspopup="true" aria-expanded="false">Usuarios</a>
+                        <ul class="dropdown-menu">
+                            <!-- EMPLEADO -->
+                            <li class="dropdown-header">Empleado</li>
+                            {% if tipo_e == 'Encargado' %}
+                            <li><a href="/registrar/empleado">Nuevo Empleado</a></li>
+                            {% endif %}
+                            <li><a href="/empleado/lista">Ver Empleados</a></li>
+                            <li role="separator" class="divider"></li>
+                            <!-- CLIENTE -->
+                            <li class="dropdown-header">Cliente</li>
+                            <li><a href="/cliente/nuevo">Nuevo Cliente</a></li>
+                            <li><a href="/cliente/lista">Ver Clientes</a></li>
+                            <li role="separator" class="divider"></li>
+                        </ul>
+                    </li>
+                    <li class=" dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-haspopup="true" aria-expanded="false">Centro</a>
+                        <ul class="dropdown-menu">
+                            <!-- SALA -->
+                            <li class="dropdown-header">Sala</li>
+                            {% if tipo_e == 'Encargado' %}
+                            <li><a href="/sala/nuevo">Nueva Sala</a></li>
+                            {% endif %}
+                            <li><a href="/sala/lista">Ver Salas</a></li>
+                            <li role="separator" class="divider"></li>
+                            <!-- MAQUINA -->
+                            <li class="dropdown-header">Maquina</li>
+                            {% if tipo_e == 'Encargado' %}
+                            <li><a href="/maquina/nuevo">Nueva Maquina</a></li>
+                            {% endif %}
+                            <li><a href="/maquina/lista">Ver Maquinas</a></li>
+                            <li role="separator" class="divider"></li>
+                            <!-- TRATAMIENTO -->
+                            <li class="dropdown-header">Tratamiento</li>
+                            {% if tipo_e == 'Encargado' %}
+                            <li><a href="/tratamiento/nuevo">Nuevo Tratamiento</a></li>
+                            {% endif %}
+                            <li><a href="/tratamiento/lista">Ver Tratamientos</a></li>
+                        </ul>
+                    </li>
+                    <li class=" dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-haspopup="true" aria-expanded="false">Almacen</a>
+                        <ul class="dropdown-menu">
+                            <!-- INVENTARIO -->
+                            <li class="dropdown-header">Inventario</li>
+                            {% if tipo_e == 'Encargado' %}
+                            <li><a href="/inventario/nuevo">Nueva Inventario</a></li>
+                            {% endif %}
+                            <li><a href="/inventario/lista">Ver Inventario</a></li>
+                            <li role="separator" class="divider"></li>
+                            <!-- PRODUCTO -->
+                            <li class="dropdown-header">Producto</li>
+                            {% if tipo_e == 'Encargado' %}
+                            <li><a href="/producto/nuevo">Nuevo Producto</a></li>
+                            {% endif %}
+                            <li><a href="/producto/lista">Ver Productos</a></li>
+                            <li role="separator" class="divider"></li>
+                            <!-- PROVEEDOR -->
+                            <li class="dropdown-header">Proveedor</li>
+                            {% if tipo_e == 'Encargado' %}
+                            <li><a href="/proveedor/nuevo">Nuevo Proveedor</a></li>
+                            {% endif %}
+                            <li><a href="/proveedor/lista">Ver Proveedores</a></li>
+                            <li role="separator" class="divider"></li>
+                            <!-- PEDIDO -->
+                            <li class="dropdown-header">Pedido</li>
+                            {% if tipo_e == 'Encargado' %}
+                            <li><a href="/pedido/nuevo">Nuevo Pedido</a></li>
+                            {% endif %}
+                            <li><a href="/pedido/lista">Ver Pedidos</a></li>
+                        </ul>
+                    </li>
+                    <li class=" dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-haspopup="true" aria-expanded="false">
+                        Ofertas
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">Promocion</li>
+                            <li><a href="/promocion/nueva">Nueva Promocion</a></li>
+                            <li><a href="/promocion/lista">Ver Promociones</a></li>
+                            <li class="dropdown-header">Publicidad</li>
+                            <li><a href="/publicidad/nueva">Nueva Publicidad</a></li>
+                            <li><a href="/publicidad/lista">Ver Publicidades</a></li>
+                        </ul>
+                    </li>
+
+                    <li class=" dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-haspopup="true" aria-expanded="false">Alertas</a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">Notificacion</li>
+                            <li><a href="/notificacion/nueva">Nueva Notificacion</a></li>
+                            <li><a href="/notificacion/lista">Ver Notificaciones</a></li>
+                        </ul>
+                    </li>
+                    {% endif %}
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a href="/perfil"> <span class="glyphicon glyphicon-user"></span> Mi Perfil </a>
+                    </li>
+                    <li>
+                        <a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Salir </a>
+                    </li>
+                    {% else %}
+                    <li>
+                    <a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                   </li>
+                   <li>
+                    <a href="/registrar"><span class="glyphicon glyphicon-user"></span> Register</a>
+                   </li>
+                    {% endif %}
+
+                </ul>
+            </div>
+        </nav>
+
+
+    </header>
+    <div class="container">
+        {% if messages %}
+            {% for sms in messages  %}
+                <div class="alert alert-{{sms.tags}}">
+                    {{ sms }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% block content %}<!-- default content text (typically empty) -->{% endblock %}
+
+    </div>
+
+
+    <footer class="footer ">
+       Created by <strong>Silvia Martin</strong> & <strong>Irene Ventura</strong>
+    </footer>
+</body>
+</html>

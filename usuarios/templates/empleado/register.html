@@ -1,0 +1,16 @@
+{% extends "empleado/base.html" %}
+
+{% block content %}
+    <div class="container form-register">
+        <h3>Nuevo Empleado</h3>
+        <div class="row">
+            <form method="post">
+               {% csrf_token %}
+               {{ form.as_p }}
+               <div>
+                   <button class="btn col-md-12 " type="submit">Alta</button>
+               </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

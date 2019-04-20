@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+    {% if title %}
+        <title>CLEO - {{title}}</title>
+    {% else %}
+        <title>CLEO</title>
+    {% endif %}
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles_gral.css' %}">
+    {% if user.is_staff %}
+        <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    {% else %}
+        <link rel="stylesheet" href="{% static 'css/style3.css' %}">
+    {% endif %}
+
+    <script src="{% static 'js/jquery-3.4.0.min.js' %}"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+
+</head>
+<body class="empleado">
+    <header>
+        <div class="head-img row">
+
+        </div>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">CLEO</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li  class="home">
+                        <a href="/"><span class="glyphicon glyphicon-home"></span></a>
+                    </li>
+
+
+                     <!--
+                    { if user is_authenticated }
+                    { endif } -->
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a href="/perfil"> <span class="glyphicon glyphicon-user"></span> Mi Perfil </a>
+                    </li>
+                    <li>
+                        <a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Salir </a>
+                    </li>
+                    {% else %}
+                    <li>
+                    <a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                   </li>
+                   <li>
+                    <a href="/registrar"><span class="glyphicon glyphicon-user"></span> Register</a>
+                   </li>
+                    {% endif %}
+
+                </ul>
+            </div>
+        </nav>
+
+
+    </header>
+    <div class="container">
+        {% if messages %}
+            {% for sms in messages  %}
+                <div class="alert alert-{{sms.tags}}">
+                    {{ sms }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% block content %}<!-- default content text (typically empty) -->{% endblock %}
+
+    </div>
+
+
+    <footer class="footer ">
+       Created by <strong>Silvia Martin</strong> & <strong>Irene Ventura</strong>
+    </footer>
+</body>
+</html>

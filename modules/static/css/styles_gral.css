@@ -1,0 +1,68 @@
+body{
+  background-color: #DEE1DF;
+}
+
+.head-img {
+
+}
+.navbar .navbar-brand, .glyphicon-home, .glyphicon-log-out,
+.glyphicon-user, .glyphicon-log-in{
+    color: #DEE1DF;
+}
+
+.navbar .navbar-nav li a{
+    color: #DEE1DF !important;
+}
+
+/*FORMS*/
+.form-register{
+    margin: auto;
+    width: 55%;
+    color: #dee1df;
+}
+.form-login{
+    margin: auto;
+    width: 45%
+}
+
+.form-register h3, .form-login h3 {
+    margin:auto;
+    padding: 5%;
+    text-align: center;
+    width: 60%;
+}
+.form-register .row, .form-login .row{
+    margin-bottom: 15%;
+    padding-top: 10%;
+    padding-bottom: 5%;
+}
+.form-register .row form p input , .form-register .row form p select,
+.form-login .row form p input{
+    width: 40%;
+    color: gray;
+}
+.form-register .row form p label,.form-login .row form p label {
+    width: 45%;
+    margin-left: 10%;
+}
+
+.form-register .row .helptext{
+    margin-left: 10%;
+    
+}
+
+.form-register .row form ul{
+    margin-left: 5%;
+    
+}
+
+.form-register .row form div, .form-login .row form div{
+    padding: 5%;
+    margin: auto;
+    width: 50%;
+}
+
+
+.form-register .text-muted{
+    color:#DEE1DF;
+}
