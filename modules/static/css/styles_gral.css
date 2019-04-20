@@ -5,10 +5,7 @@ body{
 .head-img {
 
 }
-.navbar .navbar-brand, .glyphicon-home, .glyphicon-log-out,
-.glyphicon-user, .glyphicon-log-in{
-    color: #DEE1DF;
-}
+
 
 .navbar .navbar-nav li a{
     color: #DEE1DF !important;
@@ -36,12 +33,11 @@ body{
     padding-top: 10%;
     padding-bottom: 5%;
 }
-.form-register .row form p input , .form-register .row form p select,
-.form-login .row form p input{
+.form-register .row form p input , .form-register .row form p select{
     width: 40%;
     color: gray;
 }
-.form-register .row form p label,.form-login .row form p label {
+.form-register .row form p label {
     width: 45%;
     margin-left: 10%;
 }
@@ -56,7 +52,7 @@ body{
     
 }
 
-.form-register .row form div, .form-login .row form div{
+.form-register .row form div{
     padding: 5%;
     margin: auto;
     width: 50%;
@@ -65,4 +61,25 @@ body{
 
 .form-register .text-muted{
     color:#DEE1DF;
+}
+
+/*ERROR FORMS*/
+.errorlist li{
+  color:#F2C84B;
+}
+
+/*LOGIN*/
+.form-login .row form div{
+    margin:auto;
+    width:50%;
+}
+
+.form-login .row form p label{
+    width:100%;
+    text-align:center;
+}
+
+.form-login .row form p input{
+    width:50%;
+    margin-left:25%;
 }

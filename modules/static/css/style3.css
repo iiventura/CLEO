@@ -3,6 +3,7 @@ oscuro:#005935
 medio:#21B176
 gris:#DEE1DF
 notas:#26CB6C
+error:#F2C84B
 */
 
 /*NAV*/
@@ -41,12 +42,21 @@ footer strong{
  color: #26CB6C; 
 }
 
-.form-register .row form div button{
+.form-register .row form div button {
   background-color: #21B176;
   color: #005935;
 }
 
+.form-login .row form div button{
+    background-color: #005935 ;
+    color: #DEE1DF;
+}
 .form-register .text-muted a{
     text-decoration: none;
     color: #26CB6C;
+}
+
+.form-login .text-muted a{
+    text-decoration: none;
+    color:#005935;
 }

@@ -1,43 +1,5 @@
 
 
-textarea{
-    color: black;
-}
-
-/*NAV*/
-
-
-.navbar .navbar-brand, .glyphicon-home, .glyphicon-log-out, .glyphicon-user, .glyphicon-log-in{
-    color: #E8B12A;
-}
-
-.navbar .navbar-brand:hover, .glyphicon-home:hover, .glyphicon-log-out:hover,
-.glyphicon-user:hover, .glyphicon-log-in:hover{
-   color: #DC9D00;
-}
-
-.navbar .navbar-nav li a{
-    color: #DBD0BE !important;
-}
-
-.navbar .navbar-nav  a:hover{
-  color: #E8B12A !important;
-}
-
-/*NAVBAR DROPDOWN */
-.navbar-nav .dropdown-menu{
-  background-color: #20135C !important;
-
-}
-.navbar-nav .dropdown-menu li a{
-    color: #E8B12A !important;
-}
-
-.navbar-nav .dropdown-menu li a:hover{
-    color: #20135C !important;
-    background-color: #DBD0BE;
-}
-
 
 
 /*FORMS CREATE*/

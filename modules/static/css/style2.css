@@ -15,6 +15,46 @@ notas:#9BE9D6
 }
 
 
+
+.navbar .navbar-brand, .glyphicon-home, .glyphicon-log-out, .glyphicon-user, .glyphicon-log-in{
+    color: #DEE1EF;
+}
+
+.navbar .navbar-brand:hover, .glyphicon-home:hover, .glyphicon-log-out:hover,
+.glyphicon-user:hover, .glyphicon-log-in:hover{
+   color: #9BE9D6;
+}
+.navbar-nav .dropdown-menu li a{
+    color: #E8B12A !important;
+}
+.navbar .navbar-nav  a:hover{
+  color:#9BE9D6 !important;
+}
+
+/*NAVBAR DROPDOWN */
+.navbar-nav .dropdown-menu{
+  background-color: #0E043D !important;
+
+}
+.navbar-nav .dropdown-menu li a{
+    color: #DEE1EF !important;
+}
+
+.navbar-nav .dropdown-menu li a:hover{
+    color: #20135C !important;
+    background-color: #DBD0BE;
+}
+
+ .navbar-nav .open .dropdown-header {
+ color: #9BE9D6 !important;
+
+}
+
+.navbar-nav .open .divider {
+  background-color: #254B9A;
+}
+
+
 /*FOOTER*/
 footer{
   background-color: #0E043D;

@@ -19,14 +19,14 @@ def register(request):
         if form.is_valid():
             form.save()
             messages.success(request,'Se ha registrado correctamente, por favor entre')
-            return redirect('base-home')
-        else:
-            messages.error(request,form.error_messages)
             return redirect('login')
+
     else:
         form = ClienteRegistrationForm()
-    return render(request,'cliente/register.html',{'color':3,'form':form})
+    return render(request,'cliente/register.html',{'form':form})
 
+
+@login_required()
 def register_empleado(request):
     if request.method == 'POST':
         form = EmpleadoRegistrationForm(request.POST)

@@ -30,19 +30,29 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/">CLEO</a>
+                    <a class="navbar-brand" href="/nosotros">CLEO</a>
                 </div>
                 <ul class="nav navbar-nav">
                     <li  class="home">
                         <a href="/"><span class="glyphicon glyphicon-home"></span></a>
                     </li>
-
-
                     <li class=" dropdown">
-                        <a href="/nosotros" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">
-                        Nosotros
-                        </a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-haspopup="true" aria-expanded="false">Usuarios</a>
+                        <ul class="dropdown-menu">
+                            <!-- EMPLEADO -->
+                            <li class="dropdown-header">Empleado</li>
+                            {% if tipo_e == 'Encargado' %}
+                            <li><a href="/registrar/empleado">Nuevo Empleado</a></li>
+                            {% endif %}
+                            <li><a href="/empleado/lista">Ver Empleados</a></li>
+                            <li role="separator" class="divider"></li>
+                            <!-- CLIENTE -->
+                            <li class="dropdown-header">Cliente</li>
+                            <li><a href="/cliente/nuevo">Nuevo Cliente</a></li>
+                            <li><a href="/cliente/lista">Ver Clientes</a></li>
+                            <li role="separator" class="divider"></li>
+                        </ul>
                     </li>
 
                 </ul>

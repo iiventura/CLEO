@@ -1,6 +1,8 @@
 from django.contrib.auth import views as auth_views
 from django.urls import path
 from . import views as users_views
+from .empleado import empleado_views
+from .cliente import cliente_views
 
 
 urlpatterns = [
@@ -13,6 +15,15 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='logout.html'), name='logout'),
     path('perfil/', users_views.perfil,name='perfil'),
 
+    #EMPLEADO CRUD
+    path('empleado/lista', empleado_views.listar, name='empleado_listar'),
+    path('<int:pk>/eliminar', empleado_views.eliminar, name='empleado_eliminar'),
+    path('<int:pk>/modificar', empleado_views.modificar, name='empleado_modificar'),
+    #CLIENTE CRUD
+    path('lista', cliente_views.listar, name='app_listar'),
+    path('<int:pk>/eliminar', cliente_views.eliminar, name='app_eliminar'),
+    path('<int:pk>/modificar', cliente_views.modificar, name='app_modificar'),
+
 ]
 
 """
@@ -20,6 +31,8 @@ urlpatterns = [
    from django.contrib.auth.models import Group
    my_group = Group.objects.get(name='my_group_name') 
    my_group.user_set.add(your_user)
+
+
 
 
    """
