@@ -108,4 +108,6 @@ venv.bak/
 .idea/
 settings.py
 venv/
+migrations/
+_init_.py
 
