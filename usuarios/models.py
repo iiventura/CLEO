@@ -19,9 +19,8 @@ class TipoEmpleado(models.Model):
 
 class Empleado(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key=True)
-    foto = models.ImageField(default='default.jpg', upload_to='profile_pics')
     dni = models.CharField(unique=True, max_length=9)
-    codigo = models.CharField(max_length=45, blank=True, null=True)
+    codigo = models.ImageField(default='default.jpg', upload_to='profile_pics')
     direccion = models.CharField(max_length=45, blank=True, null=True)
     telefono = models.CharField(max_length=9, blank=True, null=True)
     tipoempleado = models.ForeignKey('Tipoempleado', models.DO_NOTHING, db_column='tipoEmpleado_id')

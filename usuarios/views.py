@@ -2,7 +2,9 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import ClienteRegistrationForm, EmpleadoRegistrationForm
+
+from usuarios.empleado.forms import EmpleadoRegistrationForm
+from usuarios.cliente.forms import ClienteRegistrationForm
 from .models import Empleado
 
 
@@ -18,7 +20,7 @@ def register(request):
         form = ClienteRegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request,'Se ha registrado correctamente, por favor entre')
+            messages.success(request,'Se ha registrado correctamente')
             return redirect('login')
 
     else:
@@ -34,7 +36,7 @@ def register_empleado(request):
         if form.is_valid():
             form.save()
             tipo = form.cleaned_data.get('tipo')
-            messages.success(request,'Se ha registrado correctamente, por favor entre')
+            messages.success(request,'Se ha registrado correctamente')
             return redirect('login')
     else:
         form = EmpleadoRegistrationForm()
