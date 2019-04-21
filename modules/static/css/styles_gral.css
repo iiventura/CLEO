@@ -83,3 +83,11 @@ body{
     width:50%;
     margin-left:25%;
 }
+
+
+/*ALERTS*/
+.alerts{
+    margin:auto;
+    width:65%;
+    text-align:center;
+}
