@@ -2,7 +2,7 @@
 oscuro:#005935
 medio:#21B176
 gris:#DEE1DF
-notas:#26CB6C
+notas:#26CB6C #5EE27C
 error:#F2C84B
 */
 
@@ -13,6 +13,45 @@ error:#F2C84B
 .navbar {
   background-color: #005935;
   border: 1px solid #21B176;
+}
+.navbar .navbar-brand, .glyphicon-home, .glyphicon-log-out, .glyphicon-user, .glyphicon-log-in {
+    color: #DEE1EF;
+}
+
+.navbar .navbar-brand:hover, .glyphicon-home:hover, .glyphicon-log-out:hover,
+.glyphicon-user:hover, .glyphicon-log-in:hover{
+   color: #5EE27C;
+}
+
+.navbar-nav .dropdown-menu li a{
+    color: #21B176 !important;
+}
+
+.navbar .navbar-nav  a:hover{
+  color:#26CB6C  !important;
+}
+
+/*NAVBAR DROPDOWN */
+.navbar-nav .dropdown-menu{
+  background-color: #005935 !important;
+
+}
+.navbar-nav .dropdown-menu li a{
+    color: #5EE27C !important;
+}
+
+.navbar-nav .dropdown-menu li a:hover{
+    color: #005935 !important;
+    background-color: #DEE1DF;
+}
+
+ .navbar-nav .open .dropdown-header {
+ color: #9BE9D6 !important;
+
+}
+
+.navbar-nav .open .divider {
+  background-color: #21B176;
 }
 
 /*FOOTER*/
