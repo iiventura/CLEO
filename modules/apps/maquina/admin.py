@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Maquina,TipoZona
+
+admin.site.register(Maquina)
+admin.site.register(TipoZona)
