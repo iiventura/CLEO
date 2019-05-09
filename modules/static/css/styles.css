@@ -59,21 +59,8 @@
 
 
 
-/*SUBTITLE*/
-.subtitle{
-  color: #20135C;
-  margin: auto;
-  width: 60%;
-  text-align: center;
-  margin-bottom: 2%;
-  
-}
-
 /*TABLE*/
-.list-empleados{
-  width: 85%; 
-  margin: auto;
-}
+
 
 .list-producto, .list-pedidos{
    width: 65%; 

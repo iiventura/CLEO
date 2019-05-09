@@ -91,3 +91,23 @@ body{
     width:65%;
     text-align:center;
 }
+
+
+/*SUBTITLE*/
+.subtitle{
+  margin: auto;
+  width: 60%;
+  text-align: center;
+  margin-bottom: 2%;
+
+}
+
+/*TABLES*/
+.list-empleados{
+  width: 85%;
+  margin: auto;
+}
+
+.list-empleados h3{
+  text-align:center;
+}

@@ -90,3 +90,49 @@ footer strong{
     text-decoration: none;
     color: #26CB6C;
 }
+
+/*SUBTITLE*/
+.subtitle{
+  color:#0E043D ;
+}
+
+/*TABLES EMPTIES*/
+.list-empleados h3{
+  color:#254B9A;
+}
+
+/*TABLES APPEREANCE*/
+.list-empleados h3{
+  color:#254B9A;
+}
+
+/*TABLES APPEREANCE*/
+table,th{
+  text-align: center;
+  color: #0E043D;
+}
+
+tbody tr{
+  color: #254B9A;
+}
+
+tbody tr:hover, tbody tr:hover a, tbody tr:hover td .glyphicon-trash {
+  color: #DBD0BE !important;
+  background-color: #0E043D !important;
+}
+
+tbody .glyphicon-trash{
+  color:  #0E043D;
+}
+tbody tr:hover td .glyphicon-trash:hover{
+  color:  #9BE9D6 !important;
+}
+
+tbody td a{
+  color: #254B9A;
+}
+
+tbody td a:hover{
+  text-decoration: none;
+   color:  #9BE9D6 !important;
+}

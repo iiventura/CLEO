@@ -99,3 +99,42 @@ footer strong{
     text-decoration: none;
     color:#005935;
 }
+
+/*SUBTITLE*/
+.subtitle{
+  color: #005935;
+}
+
+/*TABLES EMPTIES*/
+.list-empleados h3{
+  color:#21B176;
+}
+
+/*TABLES APPEREANCE*/
+table,th{
+  text-align: center;
+  color: #0E043D;
+
+}
+
+tbody tr{
+  color: #20135C;
+}
+
+tbody tr:hover, tbody tr:hover a {
+  color: #DBD0BE !important;
+  background-color: #0E043D !important;
+
+}
+
+tbody .glyphicon-trash:hover{
+  color:  #DC9D00;
+}
+
+tbody td a{
+  color: #0E043D;
+}
+tbody td a:hover{
+  text-decoration: none;
+   color:  #DC9D00 !important;
+}
