@@ -27,15 +27,19 @@
                     </td>
                     <td> {{d.tipo}} </td>
                     <td> {{d.turno}}</td>
-                    <td>
-                        <a href="/empleado/{{d.id }}/eliminar">
-                            <span class="glyphicon glyphicon-trash"></span>
-                        </a>
-                    </td>
+                    {% if user.id != d.id %}
+                        <td>
+                            <a href="/empleado/{{d.id }}/eliminar">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </a>
+                        </td>
+                    {% endif %}
+
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
+
         {% elif not lista %}
         <h3 class="empty-sms "> No hay Empleados registrados en el Sistema. </h3>
         {% endif %}
