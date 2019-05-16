@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -26,8 +26,15 @@ def listar(request):
     return render(request,'cliente/lista.html',{"lista":lista})
 
 @login_required()
-def eliminar(request):
-    pass
+def eliminar(request, pk):
+    try:
+        Cliente.objects.filter(user_id=pk).delete()
+        CustomUser.objects.filter(id=pk).delete()
+
+    except Cliente.DoesNotExist or CustomUser.DoesNotExist:
+        raise Http404("Cliente no existe")
+
+    return HttpResponseRedirect("/cliente/lista")
 
 @login_required()
 def modificar(request):
