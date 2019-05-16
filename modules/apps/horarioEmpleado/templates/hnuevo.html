@@ -1,0 +1,56 @@
+{% extends "empleado/base.html" %}
+
+{% block content %}
+    {% if messages %}
+        <div class="alert alert-warning" role="alert">
+            {% for message in messages %}
+                <li> {{ message }}</li>
+            {% endfor %}
+        </div>
+    {% endif %}
+        <h1 class="subtitle">Asignar Horario</h1>
+        <form class="create get-form" method="GET">{% csrf_token %}
+
+            <p>
+                <label for="id_empleado">Empleado:</label>
+                <select name="empleado" required id="id_empleado">
+                    <option value="" selected>Selecciona</option>
+
+                    {% for tipo in datosEmp %}
+                        <option value="{{ tipo.id }}">{{ tipo.nom }}</option>
+                    {% endfor %}
+                </select>
+            </p>
+
+            <p>
+                <label for="id_horario">Horario:</label>
+                <select name="horario" required id="id_horario">
+                    <option value="" selected>Selecciona</option>
+
+                    {% for tipo in datosTipo %}
+                        <option value="{{ tipo.id }}">{{ tipo.nom }}</option>
+                    {% endfor %}
+                </select>
+            </p>
+
+            <p>
+                <label for="id_inicio">Inicio:</label>
+                <input type="text" name="inicio" value="{{ inicio }}" required readonly id="id_inicio">
+            </p>
+
+            <p>
+                <label for="id_finn">Fin:</label>
+                <input type="text" name="finn" value="{{ fin }}" required readonly id="id_finn">
+            </p>
+
+            <div class="row ">
+            <input type="submit" class="btn " value=Asignar>
+            </div>
+
+        </form>
+
+
+
+
+
+{% endblock %}

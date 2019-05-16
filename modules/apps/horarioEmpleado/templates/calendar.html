@@ -1,0 +1,65 @@
+{% extends "empleado/base.html" %}
+
+{% block content %}
+    <h1 class="subtitle">Turnos {{inicio}} - {{fin}} de {{mes}}</h1>
+    <div class="container list-empleados">
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    {% for d in dias %}
+                        <th> {{d.dia}} {{d.num}} </th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td><stronge> Mañana</stronge> </td>
+
+
+                        {% for d in mañana %} <!-- lista de cada empleado -->
+
+                            {% for x in d %}<!-- infromcion de cada empleado -->
+
+                                <td  style="background-color:#efc7f3" >
+                                    {% if x.id %}
+                                         {{x.nom}}
+                                    {% endif %}
+                                </td>
+
+                            {% endfor %}
+
+                        {% if not forloop.last  %} <!--si no es el ultimo añadimos fila -->
+                            <tr></tr><td></td>
+                        {% endif %}
+
+                        {% endfor %}
+                </tr>
+
+                <tr>
+                    <td><stronge> Tarde</stronge> </td>
+                        {% for d in tarde %} <!-- lista de cada empleado -->
+
+                            {% for x in d %}<!-- infromcion de cada empleado -->
+
+                                <td style="background-color:#dbc7f3" >
+                                    {% if x.id %}
+                                         {{x.nom}}
+                                    {% endif %}
+                                </td>
+
+                            {% endfor %}
+
+                            {% if not forloop.last  %} <!--si no es el ultimo añadimos fila -->
+                                <tr></tr><td></td>
+                            {% endif %}
+
+                        {% endfor %}
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

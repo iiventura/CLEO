@@ -49,6 +49,13 @@
                             {% endif %}
                             <li><a href="/empleado/lista">Ver Empleados</a></li>
                             <li role="separator" class="divider"></li>
+                            <!-- HORARIO EMPLEADO -->
+                            <li class="dropdown-header">Horario Empleado</li>
+                            {% if request.session.type_staff == 'Encargado' %}
+                            <li><a href="/horario/nuevo">Asignar Horario</a></li>
+                            {% endif %}
+                            <li><a href="/horario/lista">Ver Horarios</a></li>
+                            <li role="separator" class="divider"></li>
                             <!-- CLIENTE -->
                             <li class="dropdown-header">Cliente</li>
                             <li><a href="/registrar">Nuevo Cliente</a></li>
