@@ -26,7 +26,7 @@ def listar(request):
 
         lista.append(data)
     sorted(lista, key=lambda i: (i['nom'], i['ape']))
-    return render(request,'empleado/lista.html',{"lista":lista})
+    return render(request,'empleado/lista.html',{"lista":lista, 'tipo_e':request.session['type_staff']})
 
 @login_required()
 def eliminar(request, pk):

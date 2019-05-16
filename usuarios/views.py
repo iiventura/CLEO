@@ -10,7 +10,7 @@ from .models import Empleado
 
 
 def home(request):
-        return render(request, 'main.html')
+    return render(request, 'main.html')
 
 def about(request):
     pass
@@ -37,7 +37,7 @@ def register_empleado(request):
             form.save()
             tipo = form.cleaned_data.get('tipo')
             messages.success(request,'Se ha registrado correctamente')
-            return redirect('login')
+            return redirect('registro-empleado')
     else:
         form = EmpleadoRegistrationForm()
     return render(request, 'empleado/register.html', {'color':2,'form': form})
@@ -48,19 +48,13 @@ def perfil (request):
 
     if request.user.is_staff and (not request.user.is_superuser):
             empleado=Empleado.objects.get(user_id=request.user.id)
-            return render(request, 'empleado/perfil.html',{'tipo_e':empleado.tipoempleado.nombre})
+            request.session['type_staff']= empleado.tipoempleado.nombre
+            return render(request, 'empleado/perfil.html')
 
     elif request.user.is_staff and  request.user.is_superuser:
+        request.session['type_staff'] = 'Admin'
         return HttpResponseRedirect('/admin')
 
     elif request.user.is_client:
             return render(request, 'cliente/perfil.html')
-
-
-
-
-
-
-
-
 

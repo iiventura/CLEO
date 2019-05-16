@@ -27,6 +27,7 @@
                     </td>
                     <td> {{d.tipo}} </td>
                     <td> {{d.turno}}</td>
+                    {% if request.session.type_staff == 'Encargado'%}
                     {% if user.id != d.id %}
                         <td>
                             <a href="/empleado/{{d.id }}/eliminar">
@@ -34,6 +35,8 @@
                             </a>
                         </td>
                     {% endif %}
+                    {% endif %}
+
 
                 </tr>
                 {% endfor %}

@@ -44,16 +44,16 @@
                         <ul class="dropdown-menu">
                             <!-- EMPLEADO -->
                             <li class="dropdown-header">Empleado</li>
-                            {% if tipo_e == 'Encargado' %}
+                            {% if request.session.type_staff == 'Encargado' %}
                             <li><a href="/registrar/empleado">Nuevo Empleado</a></li>
                             {% endif %}
                             <li><a href="/empleado/lista">Ver Empleados</a></li>
                             <li role="separator" class="divider"></li>
                             <!-- CLIENTE -->
                             <li class="dropdown-header">Cliente</li>
-                            <li><a href="/cliente/nuevo">Nuevo Cliente</a></li>
+                            <li><a href="/registrar">Nuevo Cliente</a></li>
                             <li><a href="/cliente/lista">Ver Clientes</a></li>
-                            <li role="separator" class="divider"></li>
+
                         </ul>
                     </li>
                     <li class=" dropdown">
@@ -62,21 +62,21 @@
                         <ul class="dropdown-menu">
                             <!-- SALA -->
                             <li class="dropdown-header">Sala</li>
-                            {% if tipo_e == 'Encargado' %}
+                            {% if request.session.type_staff == 'Encargado' %}
                             <li><a href="/sala/nuevo">Nueva Sala</a></li>
                             {% endif %}
                             <li><a href="/sala/lista">Ver Salas</a></li>
                             <li role="separator" class="divider"></li>
                             <!-- MAQUINA -->
                             <li class="dropdown-header">Maquina</li>
-                            {% if tipo_e == 'Encargado' %}
+                            {% if request.session.type_staff == 'Encargado' %}
                             <li><a href="/maquina/nuevo">Nueva Maquina</a></li>
                             {% endif %}
                             <li><a href="/maquina/lista">Ver Maquinas</a></li>
                             <li role="separator" class="divider"></li>
                             <!-- TRATAMIENTO -->
                             <li class="dropdown-header">Tratamiento</li>
-                            {% if tipo_e == 'Encargado' %}
+                            {% if request.session.type_staff == 'Encargado' %}
                             <li><a href="/tratamiento/nuevo">Nuevo Tratamiento</a></li>
                             {% endif %}
                             <li><a href="/tratamiento/lista">Ver Tratamientos</a></li>
@@ -88,33 +88,34 @@
                         <ul class="dropdown-menu">
                             <!-- INVENTARIO -->
                             <li class="dropdown-header">Inventario</li>
-                            {% if tipo_e == 'Encargado' %}
+                            {% if request.session.type_staff == 'Encargado' %}
                             <li><a href="/inventario/nuevo">Nueva Inventario</a></li>
                             {% endif %}
                             <li><a href="/inventario/lista">Ver Inventario</a></li>
                             <li role="separator" class="divider"></li>
                             <!-- PRODUCTO -->
                             <li class="dropdown-header">Producto</li>
-                            {% if tipo_e == 'Encargado' %}
+                            {% if request.session.type_staff == 'Encargado' %}
                             <li><a href="/producto/nuevo">Nuevo Producto</a></li>
                             {% endif %}
                             <li><a href="/producto/lista">Ver Productos</a></li>
                             <li role="separator" class="divider"></li>
                             <!-- PROVEEDOR -->
                             <li class="dropdown-header">Proveedor</li>
-                            {% if tipo_e == 'Encargado' %}
+                            {% if request.session.type_staff == 'Encargado' %}
                             <li><a href="/proveedor/nuevo">Nuevo Proveedor</a></li>
                             {% endif %}
                             <li><a href="/proveedor/lista">Ver Proveedores</a></li>
                             <li role="separator" class="divider"></li>
                             <!-- PEDIDO -->
                             <li class="dropdown-header">Pedido</li>
-                            {% if tipo_e == 'Encargado' %}
+                            {% if request.session.type_staff == 'Encargado' %}
                             <li><a href="/pedido/nuevo">Nuevo Pedido</a></li>
                             {% endif %}
                             <li><a href="/pedido/lista">Ver Pedidos</a></li>
                         </ul>
                     </li>
+                    {% if request.session.type_staff == 'Encargado' %}
                     <li class=" dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                            aria-haspopup="true" aria-expanded="false">
@@ -129,6 +130,7 @@
                             <li><a href="/publicidad/lista">Ver Publicidades</a></li>
                         </ul>
                     </li>
+                    {% endif %}
 
                     <li class=" dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
