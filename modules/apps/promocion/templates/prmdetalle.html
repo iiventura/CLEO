@@ -1,0 +1,75 @@
+{% extends "empleado/base.html" %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="subtitle">Promocion</h1>
+        <div class="row ">
+            <div class="col-md-4"></div>
+
+            <div class="col-md-4 detalle">
+                <div class="row">
+
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Codigo:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em> {{datos.cod}}</em>
+                            </strong>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Nombre:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em> {{datos.nom}}</em>
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Observacion:</strong>
+                        </div>
+                        <div class="col-md-12">
+                            <strong>
+                                <em> {{datos.obs}}</em>
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Descuento:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em> {{datos.des}}</em>
+                            </strong>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <div class="row d2botones">
+
+            <form>
+                <div class="col-md-6 edit">
+                    <button  type="submit" formmethod="get" formaction="/promocion/{{datos.id }}/modificar" class="btn ">Editar
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </button>
+                </div>
+                <div class="col-md-6 del">
+                    <button  type="submit" formmethod="get" formaction="/promocion/{{datos.id }}/eliminar"class="btn ">Eliminar
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
