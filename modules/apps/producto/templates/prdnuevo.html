@@ -1,0 +1,57 @@
+{% extends "empleado/base.html" %}
+
+{% block content %}
+    {% if messages %}
+        <div class="alert alert-warning" role="alert">
+            {% for message in messages %}
+                <li> {{ message }}</li>
+            {% endfor %}
+        </div>
+    {% endif %}
+        <h1 class="subtitle">Añadir producto</h1>
+        <form class="create post-form" method="POST">{% csrf_token %}
+
+            <p>
+                <label for="codigo">Codigo:</label>
+                    <input type="text" name="codigo" id="codigo" required>
+            </p>
+            <p>
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" id="nombre" maxlength="45" required>
+            </p>
+
+            <p>
+                <label for="precio">Precio:</label>
+                <input type="text" name="precio" id="precio" maxlength="45" required>
+            </p>
+
+            <p>
+               <label for="id_Tipo">Tipo:</label>
+
+                <select name="Tipo" id="id_Tipo" required>
+                    <option value="" selected>Selecciona</option>
+
+                    {% for tipo in datosTipo %}
+                        <option value="{{ tipo.id }}">{{ tipo.nom }}</option>
+                    {% endfor %}
+                </select>
+            </p>
+
+             <p>
+               <label for="id_proveedor">Proveedor:</label>
+
+                <select name="proveedor" id="id_proveedor" required>
+                    <option value="" selected>Selecciona</option>
+
+                    {% for tipo in datosProv %}
+                        <option value="{{ tipo.id }}">{{ tipo.nom }}</option>
+                    {% endfor %}
+                </select>
+            </p>
+
+            <div class="row ">
+                <input type="submit" class="btn " value=Añadir>
+            </div>
+        </form>
+
+{% endblock %}
