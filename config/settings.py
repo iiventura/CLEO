@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     'usuarios',
     'modules.apps.horarioEmpleado',
     'modules.apps.maquina',
- #   'modules.apps.sala',
+    'modules.apps.sala',
  #   'modules.apps.promocion',
   #  'modules.apps.publicidad',
    # 'modules.apps.notificacion',

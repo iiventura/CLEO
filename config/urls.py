@@ -7,7 +7,7 @@ urlpatterns = [
     path('', include('usuarios.urls')),
     path('horario/', include('modules.apps.horarioEmpleado.urls')),
     path('maquina/', include('modules.apps.maquina.urls')),
-    #path('sala/', include('modules.apps.sala.urls')),
+    path('sala/', include('modules.apps.sala.urls')),
     #path('promocion/', include('modules.apps.promocion.urls')),
     #path('publicidad/', include('modules.apps.publicidad.urls')),
     #path('notificacion/', include('modules.apps.notificacion.urls')),
