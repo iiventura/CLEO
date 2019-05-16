@@ -29,6 +29,19 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'usuarios',
     'modules.apps.horarioEmpleado',
+    'modules.apps.maquina',
+ #   'modules.apps.sala',
+ #   'modules.apps.promocion',
+  #  'modules.apps.publicidad',
+   # 'modules.apps.notificacion',
+   # 'modules.apps.proveedor',
+   # 'modules.apps.producto',
+    #'modules.apps.stock',
+    #'modules.apps.pedido',
+    #'modules.apps.inventario',
+    #'modules.apps.tratamiento',
+    #'modules.apps.cita',
+    #'modules.apps.factura',
 ]
 
 MIDDLEWARE = [
