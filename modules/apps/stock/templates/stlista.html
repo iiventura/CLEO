@@ -1,0 +1,46 @@
+{% extends "empleado/base.html" %}
+
+{% block content %}
+    <h1 class="subtitle">Stock</h1>
+    <div class="container stock">
+        {% if lista %}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Proveedor</th>
+                    <th>Producto</th>
+                    <th>Cantidad-T</th>
+                    <th>Cantidad-P</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for d in lista %}
+                <tr>
+                    <td>
+                        {{d.prov}}
+                    </td>
+                    <td>
+                        {{d.prod}}
+                    </td>
+                    <td>
+                        {{d.total}}
+                    </td>
+                    <td>
+                        {{d.provisional}}
+                    </td>
+                    <td>
+                        <a href="/stock/{{d.id }}/detalle">
+                            <span class="glyphicon glyphicon-option-horizontal"></span>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+         {% elif not lista %}
+        <h3 class="empty-sms "> No hay Productos en la empresa. </h3>
+        {% endif %}
+    </div>
+{% endblock %}

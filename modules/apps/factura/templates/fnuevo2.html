@@ -1,0 +1,65 @@
+{% extends "ebase.html" %}
+
+{% block content %}
+    {% if messages %}
+        <div class="alert alert-warning" role="alert">
+            {% for message in messages %}
+                <li> {{ message }}</li>
+            {% endfor %}
+        </div>
+    {% endif %}
+        <h1 class="subtitle">Añadir Factura</h1>
+        <form class="create create-longer post-form" method="POST"> {% csrf_token %}
+
+            <p>
+               <label for="id_cita">Cita:</label>
+
+                <select name="cita" id="id_cita" required>
+                    <option value="{{ datos.idCitaEle }}">{{ datos.idCitaEle }}</option>
+
+                </select>
+            </p>
+
+            <p>
+                <label for="cliente">Cliente:</label>
+                <input type="text" name="cliente" id="cliente" maxlength="9" value="{{ datos.dniCliEle }}" readonly>
+            </p>
+
+            <p>
+                <label for="empleado">Empleado:</label>
+                <input type="text" name="empleado" id="empleado" maxlength="9"  value="{{ datos.dniEmpEle }}" readonly>
+            </p>
+
+            <p>
+                <label for="id_fecha">Fecha:</label>
+                <input type="text" name="fecha" id="id_fecha" value="{{ datos.fecha }}" readonly>
+            </p>
+
+            <p>
+                <label for="total">Total:</label>
+                <input type="text" name="total" id="total"  value="{{ datos.total }}" readonly>
+            </p>
+
+            <p>
+               <label for="id_estado">Estado:</label>
+
+                <select name="estado" id="id_estado" required>
+                    <option value="" selected>Selecciona</option>
+
+                    {% for tipo in datosEstado %}
+                        <option value="{{ tipo.id }}">{{ tipo.nom }}</option>
+                    {% endfor %}
+                </select>
+            </p>
+
+            <p>
+                <label for="paga">Paga:</label>
+                <input type="text" name="paga" id="paga" required>
+            </p>
+
+            <div class="row ">
+                <input type="submit" class="btn " value="Aceptar">
+            </div>
+        </form>
+
+{% endblock %}

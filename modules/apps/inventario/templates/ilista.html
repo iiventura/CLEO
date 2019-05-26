@@ -1,0 +1,85 @@
+{% extends "empleado/base.html" %}
+
+{% block content %}
+    <h1 class="subtitle">Inventarios</h1>
+    <div class="container list-inventarios">
+
+
+        <form class="create post-form" method="POST">{% csrf_token %}
+
+            <p>
+               <label for="id_mes">Mes:</label>
+
+                <select name="mes" id="id_mes" required>
+                    <option value="" selected>Selecciona</option>
+                    <option value="0">---</option>
+
+                    {% for tipo in datosMes %}
+                        <option value="{{ tipo.id }}">{{ tipo.nom }}</option>
+                    {% endfor %}
+                </select>
+            </p>
+
+            <p>
+               <label for="id_proveedor">Proveedor:</label>
+
+                <select name="proveedor" id="id_proveedor" required>
+                    <option value="" selected>Selecciona</option>
+                    <option value="0">---</option>
+
+                    {% for tipo in datosProv %}
+                        <option value="{{ tipo.id }}">{{ tipo.nom }}</option>
+                    {% endfor %}
+                </select>
+            </p>
+
+             <div class="row ">
+                <input type="submit" class="btn " value=Filtrar>
+            </div>
+        </form>
+
+        {% if lista %}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Fecha Pedi</th>
+                    <th>Fecha Entr</th>
+                    <th>Cantidad</th>
+                    <th>Estado</th>
+                    <th>Producto</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for d in lista %}
+                <tr>
+                    <td>
+                        {{d.fechaini}}
+                    </td>
+                    <td>
+                        {{d.fechafin}}
+                    </td>
+                    <td>
+                        {{d.cantidad}}
+                    </td>
+                    <td>
+                        {{d.estado}}
+                    </td>
+                    <td>
+                        {{d.producto}}
+                    </td>
+                    <td>
+                        <a href="/inventario/{{d.id }}/detalle">
+                            <span class="glyphicon glyphicon-option-horizontal"></span>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% elif not lista %}
+        <h3 class="empty-sms "> No hay Pedidos en el sistema. </h3>
+        {% endif %}
+    </div>
+{% endblock %}

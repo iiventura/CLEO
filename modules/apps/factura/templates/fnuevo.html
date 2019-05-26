@@ -1,0 +1,31 @@
+{% extends "ebase.html" %}
+
+{% block content %}
+    {% if messages %}
+        <div class="alert alert-warning" role="alert">
+            {% for message in messages %}
+                <li> {{ message }}</li>
+            {% endfor %}
+        </div>
+    {% endif %}
+        <h1 class="subtitle">Añadir Factura</h1>
+        <form class="create create-longer post-form" method="GET">
+
+            <p>
+               <label for="id_cita">Cita:</label>
+
+                <select name="cita" id="id_cita" required>
+                    <option value="" selected>Selecciona</option>
+
+                    {% for tipo in datosCita %}
+                        <option value="{{ tipo.id }}">{{ tipo.id }}</option>
+                    {% endfor %}
+                </select>
+            </p>
+
+            <div class="row ">
+                <input type="submit" class="btn " value="Continuar">
+            </div>
+        </form>
+
+{% endblock %}

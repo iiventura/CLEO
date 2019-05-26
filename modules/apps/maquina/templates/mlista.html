@@ -10,8 +10,11 @@
                     <th>Nombre</th>
                     <th>Fecha</th>
                     <th>Tipo</th>
-                    <th></th>
-                    <th></th>
+                    {% if request.session.type_staff == 'Encargado' %}
+                        <th></th>
+                        <th></th>
+                    {% endif %}
+
                 </tr>
             </thead>
             <tbody>
@@ -20,16 +23,19 @@
                     <td> {{d.nom}} </td>
                     <td> {{d.date}} </td>
                     <td> {{d.tipo}} </td>
-                    <td>
+                    {% if request.session.type_staff == 'Encargado' %}
+                        <td>
                         <a href="/maquina/{{d.id }}/eliminar">
                             <span class="glyphicon glyphicon-trash"></span>
                         </a>
-                    </td>
-                    <td>
+                        </td>
+                        <td>
                         <a href="/maquina/{{d.id }}/modificar">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
-                    </td>
+                        </td>
+                    {% endif %}
+
                 </tr>
                 {% endfor %}
             </tbody>

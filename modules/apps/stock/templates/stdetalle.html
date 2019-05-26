@@ -1,0 +1,68 @@
+{% extends "empleado/base.html" %}
+
+{% block content %}
+    <div class="container ">
+        <h1 class="subtitle">Pedido</h1>
+        <div class="row ">
+            <div class="col-md-4"></div>
+
+            <div class="col-md-4 detalle2">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Proveedor:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.prov}}</em>
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Producto:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.prod}}</em>
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Cantidad-Total:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.total}}</em>
+                            </strong>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Cantidad-Prov:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.provisional}}</em>
+                            </strong>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <div class="row d2botones">
+
+            <form>
+                <div class="col-md-6">
+                    <button  type="submit" formmethod="get" formaction="/stock/lista" class="btn ">Aceptar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

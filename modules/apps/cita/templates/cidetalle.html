@@ -1,0 +1,106 @@
+{% extends "ebase.html" %}
+
+{% block content %}
+    <div class="container ">
+        <h1 class="subtitle">Cita </h1>
+        <div class="row ">
+            <div class="col-md-4"></div>
+
+            <div class="col-md-4 detalle2">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Fecha:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.fecha}}</em>
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Estado:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.estado}}</em>
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Cliente:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.cliente}}</em>
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Empleado:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.empleado}}</em>
+                            </strong>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Tratamiento:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.trat}}</em>
+                            </strong>
+                        </div>
+                    </div>
+
+                     <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Entrada:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.entrada}}</em>
+                            </strong>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Salida:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.salida}}</em>
+                            </strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <div class="row d2botones">
+
+            <form>
+                <div class="col-md-6 edit">
+                    <button  type="submit" formmethod="get" formaction="/cita/{{datos.id }}/modificar" class="btn ">Editar
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </button>
+                </div>
+
+                <div class="col-md-6 del">
+                    <button  type="submit" formmethod="get" formaction="/cita/{{datos.id }}/eliminar"class="btn ">Eliminar
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

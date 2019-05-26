@@ -87,6 +87,16 @@
                             <li><a href="/tratamiento/nuevo">Nuevo Tratamiento</a></li>
                             {% endif %}
                             <li><a href="/tratamiento/lista">Ver Tratamientos</a></li>
+                            <li role="separator" class="divider"></li>
+                            <!-- CITA -->
+                            <li class="dropdown-header">Citas</li>
+                            <li><a href="/cita/nuevo">Nuevo Cita</a></li>
+                            <li><a href="/tratamiento/lista">Ver Citas</a></li>
+                            <li role="separator" class="divider"></li>
+                            <!-- FACTURA -->
+                            <li class="dropdown-header">Factura</li>
+                            <li><a href="/tratamiento/nuevo">Nueva Factura</a></li>
+                            <li><a href="/tratamiento/lista">Ver Facturas</a></li>
                         </ul>
                     </li>
                     <li class=" dropdown">
@@ -94,11 +104,9 @@
                            aria-haspopup="true" aria-expanded="false">Almacen</a>
                         <ul class="dropdown-menu">
                             <!-- INVENTARIO -->
-                            <li class="dropdown-header">Inventario</li>
-                            {% if request.session.type_staff == 'Encargado' %}
-                            <li><a href="/inventario/nuevo">Nueva Inventario</a></li>
-                            {% endif %}
+                            <li class="dropdown-header">Aprovisionamiento</li>
                             <li><a href="/inventario/lista">Ver Inventario</a></li>
+                             <li><a href="/stock/lista">Ver Stock</a></li>
                             <li role="separator" class="divider"></li>
                             <!-- PRODUCTO -->
                             <li class="dropdown-header">Producto</li>
@@ -132,6 +140,7 @@
                             <li class="dropdown-header">Promocion</li>
                             <li><a href="/promocion/nueva">Nueva Promocion</a></li>
                             <li><a href="/promocion/lista">Ver Promociones</a></li>
+                            <li role="separator" class="divider"></li>
                             <li class="dropdown-header">Publicidad</li>
                             <li><a href="/publicidad/nueva">Nueva Publicidad</a></li>
                             <li><a href="/publicidad/lista">Ver Publicidades</a></li>

@@ -1,0 +1,51 @@
+{% extends "empleado/base.html" %}
+
+{% block content %}
+    {% if messages %}
+        <div class="alert alert-warning" role="alert">
+            {% for message in messages %}
+                <li> {{ message }}</li>
+            {% endfor %}
+        </div>
+    {% endif %}
+        <h1 class="subtitle">Añadir Pedido</h1>
+        <form class="create create-longer post-form" method="POST"> {% csrf_token %}
+            <p>
+                <label for="cantidad">Cantidad:</label>
+                    <input type="text" name="cantidad" id="cantidad" required>
+            </p>
+            <p>
+                <label for="id_fecha">Fecha:</label>
+                <input type="text" name="Fecha" id="id_fecha" maxlength="45" value="{{fecha}}" readonly>
+            </p>
+
+            <p>
+               <label for="id_Estado">Estado:</label>
+
+                <select name="Estado" id="id_Estado" required>
+                    <option value="" selected>Selecciona</option>
+
+                    {% for tipo in datosEstado %}
+                        <option value="{{ tipo.id }}">{{ tipo.nom }}</option>
+                    {% endfor %}
+                </select>
+            </p>
+
+             <p>
+               <label for="id_producto">Producto:</label>
+
+                <select name="producto" id="id_producto" required>
+                    <option value="" selected>Selecciona</option>
+
+                    {% for tipo in datosProd %}
+                        <option value="{{ tipo.id }}">{{ tipo.nom }}</option>
+                    {% endfor %}
+                </select>
+            </p>
+
+            <div class="row ">
+                <input type="submit" class="btn " value="Crear Pedido">
+            </div>
+        </form>
+
+{% endblock %}

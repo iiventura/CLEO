@@ -1,0 +1,58 @@
+{% extends "ebase.html" %}
+
+{% block content %}
+    {% if messages %}
+        <div class="alert alert-warning" role="alert">
+            {% for message in messages %}
+                <li> {{ message }}</li>
+            {% endfor %}
+        </div>
+    {% endif %}
+        <h1 class="subtitle">Pedir Cita</h1>
+
+        <form class="create post-form" method="POST">{% csrf_token %}
+
+            <p>
+                <label for="dni">Dni :</label>
+                <input type="text" name="cliente" id="dni" maxlength="9"  value="{{datos.dni}}" readonly>
+            </p>
+
+            <p>
+                <label for="id_fecha">Fecha:</label>
+                <input type="text" name="fecha" required id="id_fecha" value="{{datos.fecha}}" readonly>
+            </p>
+
+            <p>
+                <label for="id_tratamiento">Tratamiento:</label>
+                <select name="tratamiento" required id="id_tratamiento">
+                    <option selected value="{{ datos.idTraEle }}">{{ datos.nomTraEle }}</option>
+                </select>
+            </p>
+
+            <p>
+                <label for="id_hora">Hora:</label>
+                <select name="hora" required id="id_hora">
+                    <option  selected value="{{ datos.idHorEle }}">{{ datos.nomHorEle }}</option>
+
+                </select>
+            </p>
+
+            <p>
+                <label for="id_empleado">Empleado:</label>
+                <select name="empleado" required id="id_empleado">
+                    <option value="" selected>Selecciona</option>
+                    <option value="0">---</option>
+
+                    {% for tipo in datosEmpleado %}
+                        <option value="{{ tipo.id }}">{{ tipo.nom }}</option>
+                    {% endfor %}
+
+                </select>
+            </p>
+
+            <div class="row ">
+                <input type="submit" class="btn " value=Pedir>
+            </div>
+        </form>
+
+{% endblock %}

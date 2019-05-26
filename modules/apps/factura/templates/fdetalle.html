@@ -1,0 +1,91 @@
+{% extends "ebase.html" %}
+
+{% block content %}
+    <div class="container ">
+        <h1 class="subtitle">Factura {{ datos.id }}</h1>
+        <div class="row ">
+            <div class="col-md-4"></div>
+
+            <div class="col-md-4 detalle2">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Cita:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.cita}}</em>
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Cliente:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.cliente}}</em>
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Empleado:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.empleado}}</em>
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Estado:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.estado}}</em>
+                            </strong>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Total:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.total}}</em>
+                            </strong>
+                        </div>
+                    </div>
+
+                     <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Paga:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.paga}}</em>
+                            </strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <!--
+        <div class="row d2botones">
+
+            <form>
+                <div class="col-md-6 edit">
+                    <button  type="submit" formmethod="get" formaction="/factura/{{datos.id }}/modificar" class="btn ">Editar
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+        -->
+    </div>
+
+{% endblock %}

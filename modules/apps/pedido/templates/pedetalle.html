@@ -1,0 +1,110 @@
+{% extends "empleado/base.html" %}
+
+{% block content %}
+    <div class="container ">
+        <h1 class="subtitle">Pedido</h1>
+        <div class="row ">
+            <div class="col-md-4"></div>
+
+            <div class="col-md-4 detalle2">
+                <div class="row">
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Fecha:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.fecha}}</em>
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Cantidad:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.cantidad}}</em>
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Total:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.total}}</em>
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Estado:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.estado}}</em>
+                            </strong>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Producto:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.producto}}</em>
+                            </strong>
+                        </div>
+                    </div>
+
+                     <div class="row">
+                        <div class="col-md-6 titulo">
+                            <strong>Proveedor:</strong>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>
+                                <em>{{datos.proveedor}}</em>
+                            </strong>
+                        </div>
+                    </div>
+
+                    <!--
+                    <div class="row">
+                        <div class="col-md-12 estado" style="padding-top:10px; padding-left:50px">
+                            <form>
+                                {% for tipo in estados %}
+                                    <button type="submit" class="btn btn-xs" formmethod="get"
+                                            formaction="/pedido/{{tipo.idPedido }}/{{tipo.id }}/estado" >
+                                        {{ tipo.nom }}
+                                    </button>
+                                {% endfor %}
+                            </form>
+                        </div>
+                    </div>
+                    -->
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <div class="row d2botones">
+
+            <form>
+                <div class="col-md-6 edit">
+                    <button  type="submit" formmethod="get" formaction="/pedido/{{datos.id }}/modificar" class="btn ">Editar
+                        <span class="glyphicon glyphicon-edit"></span>
+                    </button>
+                </div>
+
+                <div class="col-md-6 del">
+                    <button  type="submit" formmethod="get" formaction="/pedido/{{datos.id }}/eliminar"class="btn ">Eliminar
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

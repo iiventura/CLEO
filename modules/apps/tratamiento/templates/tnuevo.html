@@ -1,0 +1,59 @@
+{% extends "empleado/base.html" %}
+
+{% block content %}
+
+
+    <h1 class="subtitle">Alta Tratamiento</h1>
+        <form class="create  post-form" method="POST">{% csrf_token %}
+
+                <p>
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" name="nombre" id="nombre" maxlength="45" value="" required></p>
+                <p>
+                    <label for="id_descripcion">Descripcion:</label>
+                    <textarea name="descripcion" cols="28" rows="2" required id="id_descripcion"></textarea>
+                </p>
+
+                <p>
+                     <label for="id_maquina">Maquina:</label>
+                     <select name="maquina" required id="id_maquina">
+                         <option value="" selected>Selecciona</option>
+
+                        {% for tipo in datosMaquina %}
+                            <option value="{{ tipo.id }}">{{ tipo.nom }}</option>
+                        {% endfor %}
+                    </select>
+                 </p>
+
+                 <p>
+                     <label for="id_producto">Producto:</label>
+                     <select name="producto" required id="id_producto">
+                         <option value="" selected>Selecciona</option>
+
+                        {% for tipo in datosProducto %}
+                            <option value="{{ tipo.id }}">{{ tipo.nom }}</option>
+                        {% endfor %}
+                    </select>
+                 </p>
+
+                <p>
+                    <label for="duracion">Duracion:</label>
+                    <input type="text" name="duracion" id="duracion" value="" required></p>
+                <p>
+
+                <p>
+                    <label for="precio">Precio:</label>
+                    <input type="text" name="precio" id="precio" value="" required></p>
+                <p>
+
+                <p>
+                    <label for="espera">Espera:</label>
+                    <input type="text" name="espera" id="espera" value="" required></p>
+                <p>
+
+                <div class="row">
+                    <input type="submit" class="btn" value="Alta">
+                </div>
+
+            </form>
+{% endblock %}
